@@ -1,17 +1,20 @@
 import React, { Component, Fragment } from 'react'
 
-import Nav from '../components/Nav'
-import TextContent from '../components/Homepage/TextContent' 
+import Nav2 from '../components/Nav2'
+import TextContent from '../components/Aboutpage/TextContent' 
 import TextContent2 from '../components/Homepage/TextContent2' 
 import MccContent from '../components/Homepage/MccContent' 
 import MccContent2 from '../components/Homepage/MccContent2' 
 import withLayout from '../components/withLayout'
 
 
-class IndexPage extends Component {
+class StudentPage extends Component {
+  constructor(props){
+    super(props) ;
+  }
   render(){
     return <Fragment>
-      <Nav homepage="active" />
+      <Nav2 studentpage="active" image="bannerStudent.png"/>
       <TextContent />
       <div className="about">
         <div className="container">
@@ -25,4 +28,4 @@ class IndexPage extends Component {
     </Fragment>
   }
 }
-export default withLayout(IndexPage)
+export default withLayout(StudentPage)

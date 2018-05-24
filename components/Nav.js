@@ -1,8 +1,8 @@
 import CommonNav from './CommonNav'
 
-const Nav = () => (
+const Nav = (props) => (
 <div className="banner">
-  <CommonNav />
+  <CommonNav {...props} />
 </div>
 )
 

@@ -1,18 +1,18 @@
 import React, { Component, Fragment} from 'react'
 import CommonNav from './CommonNav'
 
-const Nav2 = () => (
+const Nav2 = (props) => (
 <Fragment>
     <div className="banner1">
-    <CommonNav />
+    <CommonNav {...props} />
     </div>
-        <style jsx>{`
-            .banner1{
-                background: url('/static/images/bannerAbout.jpg') ;
-                background-size : cover;
-            }
-        `}
-        </style>
+    <style jsx>{`
+        .banner1{
+            background: url('/static/images/${props.image}') ;
+            background-size : cover;
+        }
+    `}
+    </style>
 </Fragment>
 )
 

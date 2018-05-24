@@ -2,27 +2,25 @@ import React, { Component, Fragment } from 'react'
 
 import Nav2 from '../components/Nav2'
 import TextContent from '../components/Aboutpage/TextContent' 
-import TextContent2 from '../components/Homepage/TextContent2' 
-import MccContent from '../components/Homepage/MccContent' 
-import MccContent2 from '../components/Homepage/MccContent2' 
+import TextContent2 from '../components/Aboutpage/TextContent2'  
 import withLayout from '../components/withLayout'
 
 
-class IndexPage extends Component {
+class AboutPage extends Component {
+  constructor(props){
+    super(props) ;
+  }
   render(){
     return <Fragment>
-      <Nav2 />
+      <Nav2 aboutpage="active" image="bannerAbout.jpg" />
       <TextContent />
       <div className="about">
         <div className="container">
-          <h2 className="text-center" title="Click Here To Login as Student"><a style={{color:'#fff'}}  href="">Discover your Ideal career in 15 minutes</a></h2>
+          <h3 className="w3ls_para">COST OF MYCAREERCHOICE </h3>
+          <h4 className="text-center" title="Click Here To Login as Student"><a style={{color:'#fff'}}  href="">MCC cost $20. This is one off payment that must be made prior to being able to access the MCC test. There are various payment options and could be accessed once registration is completed.</a></h4>
         </div>
       </div>
-      <MccContent />
-      <MccContent2 />
-      <TextContent2 />
-      
     </Fragment>
   }
 }
-export default withLayout(IndexPage)
+export default withLayout(AboutPage)

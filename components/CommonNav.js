@@ -19,17 +19,17 @@ export default props =>
         <div className="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
             <nav>
                 <ul className="nav navbar-nav link-effect-5" id="link-effect-5">
-                    <li className="active">
+                    <li className={props.homepage && "active"}>
                         <a href="index" data-hover="Home">Home</a>
                     </li>
-                    <li>
+                    <li className={props.aboutpage && "active"}>
                         <a href="about" data-hover="About">About</a>
+                    </li >
+                    <li className={props.studentpage && "active"}>
+                        <a href="student" data-hover="Student">Student</a>
                     </li>
-                    <li>
-                        <a href="" data-hover="Student">Student</a>
-                    </li>
-                    <li>
-                        <a href="" data-hover="Institution">Institution</a>
+                    <li className={props.institutionpage && "active"}>
+                        <a href="institution" data-hover="Institution">Institution</a>
                     </li>
                     <li className="dropdown">
                         <a href="#" className="dropdown-toggle" data-toggle="dropdown" data-hover="Login">Login
@@ -47,8 +47,8 @@ export default props =>
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="" data-hover="Contact">Contact</a>
+                    <li className={props.contactpage && "active"}>
+                        <a href="contact" data-hover="Contact">Contact</a>
                     </li>
                 </ul>
                 <div className="w3_social_icons">
