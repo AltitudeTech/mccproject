@@ -26,7 +26,7 @@ export default class TextContent extends Component {
         <style jsx>{`
           h4{
             font-size: 26px;
-            margin-bottom: 10px;
+            margin-bottom: 10px ;
           }
           li{
               font-size: 16px;
