@@ -7,7 +7,7 @@ export default props =>
 		<h4>
 			DISCOVER AND DEVELOP YOUR TRUE PASSION AND TALENT FOR A PROFITABLE AND HAPPY CAREER IN FUTURE
 		</h4>
-		<div class="w3l_services_grids">
+		<div className="w3l_services_grids">
 			<div className="row">
 				<div className="col-md-4">	
                     <p>
