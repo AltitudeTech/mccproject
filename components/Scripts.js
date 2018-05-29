@@ -6,6 +6,7 @@ const Scripts = (props) => {
         <script type="text/javascript" src="/static/js/test.js"></script>
         <script type="text/javascript" src="/static/js/bootstrap.js"></script>
         <script type="text/javascript" src="/static/js/test2.js"></script>
+        <script type="text/javascript" src="/static/js/tawk.to.js"></script>
       </div>
     )
   }

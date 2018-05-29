@@ -3,6 +3,10 @@ import Header from './layout/Header'
 import Footer from './layout/Footer'
 import Testimonials from './Homepage/Testimonials'
 import Scripts from './Scripts'
+import injectTapEventPlugin from 'react-tap-event-plugin'
+
+
+//injectTapEventPlugin()
 
 
 export default function withLayout(Child, opts) {
