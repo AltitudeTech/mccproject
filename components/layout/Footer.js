@@ -23,7 +23,9 @@ export default props =>
           <input type="email" name="email" placeholder="Your email..." required=""/>
           <input type="submit" value=" "/>
         </form>
-        <p>Sign up now for more information about <span>MyCareerChoice</span></p>
+        <p>Sign up now for more information about <span>MyCareerChoice</span>
+        <img src='/static/images/paymentImage.png' style={{width:'60%'}} className="img-responsive" alt=""/>
+        </p>
       </div>
       <div className="clearfix"></div>
       <div className="w3layouts_footer_grid">
@@ -33,8 +35,9 @@ export default props =>
           </div>
 
           <div className="w3layouts_footer_grid_right" style={{marginBottom:'30px'}}>
-            <p><small className="help-block" style={{fontSize: '10px'}}> <a href="">Privacy Policy</a> | <a href="">Term of Use</a> | <a href="">Term of Sale</a> | <a href="">Cookie Policy</a></small>
+            <p><small className="help-block" style={{fontSize: '10px'}}> <a href="">Privacy Policy</a> | <a href="">Term of Use</a> | <a href="">Cookie Policy</a></small>
               <div className="clearfix"></div>
+
               2018 MyCareerChoice. All rights reserved | Powered by <a href="http://altitude-tech.com/" style={{color:'#FF2525'}}>Altitude Technology Worldwide</a></p>
           </div>
           <div className="clearfix"> </div>

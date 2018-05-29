@@ -74,6 +74,7 @@ export default class CandidateModal extends React.Component {
             floatingLabelText="Password"
             type="password"
           />
+          <a>Click here to create a new</a>
         </Dialog>
       </MuiThemeProvider>
     );
