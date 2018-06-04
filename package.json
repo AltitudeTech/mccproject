@@ -1,7 +1,7 @@
 {
   "name": "mcc-project",
   "scripts": {
-    "dev": "next -p 9500",
+    "dev": "next",
     "build": "next build",
     "start": "next start -p $PORT",
     "start-win": "next start",
