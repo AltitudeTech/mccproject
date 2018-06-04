@@ -4,6 +4,7 @@ import Footer from './layout/Footer'
 import Testimonials from './Homepage/Testimonials'
 import Scripts from './Scripts'
 import injectTapEventPlugin from 'react-tap-event-plugin'
+import CustomSnackbar from './CustomSnackbar'
 
 
 //injectTapEventPlugin()
@@ -28,6 +29,7 @@ export default function withLayout(Child, opts) {
             </Head>
             <div>
               <div className="">
+              <CustomSnackbar />
                   <Child {...this.props}/>
                   <Testimonials />
                 <Footer />

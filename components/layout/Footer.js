@@ -2,6 +2,12 @@ import React, { Component, Fragment } from 'react'
 
 export default props => 
 <Fragment>
+  <div>
+    <img style={{ width : '100%'}} className="item" data-topimage="7%" width="728" usemap="#imgmap" src="/static/images/mobileBanner.jpg" />
+      <map name="imgmap">
+          <area shape="square" coords="780, 400 , 1030, 480" target="_blank" href="http://www.example.com/"/>
+      </map>
+    </div>
   <div className="footer">
     <div className="container"> 
       <div className="col-md-4 w3_footer_grid">
@@ -12,8 +18,6 @@ export default props =>
           <li className=""><i className="fa fa-long-arrow-right" aria-hidden="true"></i><a href="{{ route('student') }}">Student</a></li>
 
           <li className=""><i className="fa fa-long-arrow-right" aria-hidden="true"></i><a href="{{ route('institution') }}">Institution</a></li>
-
-
           <li className=""><i className="fa fa-long-arrow-right" aria-hidden="true"></i><a href="{{ route('mail') }}">Contact</a></li>
         </ul>
       </div>
@@ -35,11 +39,12 @@ export default props =>
           </div>
 
           <div className="w3layouts_footer_grid_right" style={{marginBottom:'30px'}}>
-            <p><small className="help-block" style={{fontSize: '10px'}}> <a href="">Privacy Policy</a> | <a href="">Term of Use</a> | <a href="">Cookie Policy</a></small>
+            <p><small className="help-block" style={{fontSize: '10px'}}> <a href="privacy-policy">Privacy Policy</a> | <a href="terms-of-use">Terms of Use</a> | <a href="cookie-policy">Cookie Policy</a></small>
               <div className="clearfix"></div>
-
-              2018 MyCareerChoice. All rights reserved | Powered by <a href="http://altitude-tech.com/" style={{color:'#FF2525'}}>Altitude Technology Worldwide</a></p>
-          </div>
+                2018 MyCareerChoice. All rights reserved | Powered by <a href="http://altitude-tech.com/" style={{color:'#FF2525'}}>Altitude Technology Worldwide</a></p>
+                <div className="clearfix"></div>
+                MCC is a service offered by <img src='/static/images/cilogo.PNG' style={{width:'150px'}} />
+              </div>
           <div className="clearfix"> </div>
       </div>
     </div>

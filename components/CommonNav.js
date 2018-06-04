@@ -1,22 +1,13 @@
 import React, { Component, Fragment } from 'react'
-import CandidateModal from './LoginModals/candidate'
-import InstitutionModal from './LoginModals/institution'
-import CareerAdviserModal from './LoginModals/careeradviser'
+import LoginModal from './LoginModals/candidate'
 
 export default class extends Component{
     constructor(props){
         super(props);
     }
 
-    triggerCandModal(){
+    triggerModal(){
         this.copen.handleOpen() ;
-    }
-    
-    triggerInstitutionModal(){
-        this.iopen.handleOpen() ;
-    }
-    triggerCareerAdviserModal(){
-        this.caopen.handleOpen() ;
     }
     render(){
         return <Fragment>
@@ -48,24 +39,8 @@ export default class extends Component{
                             <li className={this.props.institutionpage && "active"}>
                                 <a href="institution" data-hover="Institution">Institution</a>
                             </li>
-                            <li className="dropdown">
-                                <a href="#" className="dropdown-toggle" data-toggle="dropdown" data-hover="Login">Login
-                                    <b className="caret"></b>
-                                </a>
-                                <ul className="dropdown-menu agile_short_dropdown">
-                                    <li>
-                                        <CandidateModal ref={open => this.copen = open} />
-                                        <a href="#!"  onClick={this.triggerCandModal.bind(this)}>Student</a>
-                                    </li>
-                                    <li>
-                                        <InstitutionModal ref={open => this.iopen = open} />
-                                        <a href="#!"  onClick={this.triggerInstitutionModal.bind(this)}>Institution</a>
-                                    </li>
-                                    <li>
-                                        <CareerAdviserModal ref={open => this.caopen = open} />
-                                        <a href="#!"  onClick={this.triggerCareerAdviserModal.bind(this)}>Career Adviser</a>
-                                    </li>
-                                </ul>
+                            <li className={this.props.pricingpage && "active"}>
+                                <a href="pricing" data-hover="Pricing">Pricing</a>
                             </li>
                             <li className={this.props.contactpage && "active"}>
                                 <a href="contact" data-hover="Contact">Contact</a>
@@ -73,6 +48,10 @@ export default class extends Component{
                         </ul>
                         <div className="w3_social_icons">
                             <ul className="w3layouts_social">
+                                <li>
+                                    <LoginModal ref={open => this.copen = open} />
+                                    <a href="#!"  onClick={this.triggerModal.bind(this)} style={{fontWeight : '500', color : 'white', margin : '10px'}}>LOGIN</a>
+                                </li>
                                 <li>
                                     <a href="https://web.facebook.com/mycareerchoice2018/" target="_blank" className="w3l_facebook">
                                         <i className="fa fa-facebook" aria-hidden="true"></i>

@@ -11,15 +11,16 @@ export default props =>
                 <li>
                 <div className="agile_testimonials_grid">
                     <div className="agile_testimonials_grid1">
-                    <p>I was very surprised by the level of accuracy of the information in my MCC report, about myself. Truly, I now have a better understanding of myself, God given talents and what I should be doing to secure a happy future. 
-                        </p>
+                    <p>
+                        I was very surprised by the level of accuracy of the information in my MCC report, about myself. Truly, I now have a better understanding of myself, God given talents and what I should be doing to secure a happy future. 
+                    </p>
                     <div className="w3_agile_testimonials_grid">
                         <div className="w3_agile_testimonials_grid_left">
                         {/* <img src="/static/images/2.png" alt=" " className="img-responsive" /> */}
                         </div>
                         <div className="w3_agile_testimonials_grid_right">
-                        <h4>Michael Rick</h4>
-                        <h5>Student</h5>
+                            <h4>Michael Rick</h4>
+                            <h5>Student</h5>
                         </div>
                         <div className="clearfix"> </div>
                     </div>
@@ -27,22 +28,22 @@ export default props =>
                 </div>
                 </li>
                 <li>
-                <div className="agile_testimonials_grid">
-                    <div className="agile_testimonials_grid1">
-                    <p>Wonderful! This is the best career decision tool I have ever seen. As a professional career coach, I would recommend it to students, young graduates in the early stages of their careers and those older professionals who desire to transit into another profession. 
-                        </p>
-                    <div className="w3_agile_testimonials_grid">
-                        <div className="w3_agile_testimonials_grid_left">
-                        {/* <img src="/static/images/4.png" alt=" " className="img-responsive" /> */}
+                    <div className="agile_testimonials_grid">
+                        <div className="agile_testimonials_grid1">
+                        <p>Wonderful! This is the best career decision tool I have ever seen. As a professional career coach, I would recommend it to students, young graduates in the early stages of their careers and those older professionals who desire to transit into another profession. 
+                            </p>
+                        <div className="w3_agile_testimonials_grid">
+                            <div className="w3_agile_testimonials_grid_left">
+                            {/* <img src="/static/images/4.png" alt=" " className="img-responsive" /> */}
+                            </div>
+                            <div className="w3_agile_testimonials_grid_right">
+                            <h4>Andria Paul</h4>
+                            <h5>Programmer</h5>
+                            </div>
+                            <div className="clearfix"> </div>
                         </div>
-                        <div className="w3_agile_testimonials_grid_right">
-                        <h4>Andria Paul</h4>
-                        <h5>Programmar</h5>
                         </div>
-                        <div className="clearfix"> </div>
                     </div>
-                    </div>
-                </div>
                 </li>
                 <li>
                 <div className="agile_testimonials_grid">

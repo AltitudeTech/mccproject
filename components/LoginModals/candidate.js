@@ -4,9 +4,11 @@ import RaisedButton from 'material-ui/RaisedButton';
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import getMuiTheme from 'material-ui/styles/getMuiTheme' ;
 import TextField from 'material-ui/TextField';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 
 
-
+const EMAIL_REGEX = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
 const muiThemebtn = getMuiTheme()
 const customContentStyle = {
   width: '30%',
@@ -24,8 +26,14 @@ export default class CandidateModal extends React.Component {
   }
   state = {
     open: false,
+    value : 1,
+    username : '',
+    password : '',
+    usernameError : '',
+    passwordError : ''
   };
 
+  loginAs = ['Candidate' , 'Institution', 'Career Adviser']
 
   handleOpen = () => {
     this.setState({open: true});
@@ -34,47 +42,118 @@ export default class CandidateModal extends React.Component {
   handleClose = () => {
     this.setState({open: false});
   };
+  usernameText = (event) => {
+    this.setState({username : event.target.value})
+    EMAIL_REGEX.test(this.state.username)? this.setState({usernameError:''}):this.setState({usernameError:'Invalid Email'})
+  };
+  
+
+
+  submitForm = (event) => {
+    event.preventDefault()
+    event.stopPropagation()
+
+    if(this.state.usernameError.length < 1 ){
+
+      this.props.login({
+        username: this.state.username,
+        password: this.state.password
+      }, (lastName)=>{
+        //function runs if login is sucessfull
+        const toastStyle = {
+          className: {
+            fontSize: '0.875rem',
+            fontWeight: '500',
+            lineHeight: '1.5',
+            background: "#4dbd74",
+            color: "white"
+          },progressClassName: {
+            background: "#3a9d5d"
+          }
+        }
+        toast(`Welcome Back ${lastName}`, {...toastStyle});
+      })
+    } else {
+      if (!this.state.phone || !this.state.phoneValid) {
+        this.setState({phoneValid: false})
+      }
+      if (!this.state.password) {
+        this.setState({passwordValid: false})
+      }
+      const toastStyle = {
+        className: {
+          fontSize: '0.875rem',
+          fontWeight: '500',
+          lineHeight: '1.5',
+          background: '#f86c6b',
+          color: "white"
+        },progressClassName: {
+          background: '#f5302e'
+        }
+      }
+      toast("Your Inputs are not valid", {...toastStyle});
+    }
+
+  }
+
+  handleLoginAs = (event, index, value) => this.setState({value});
 
   render() {
     const actions = [
+      <RaisedButton 
+        label="Login"
+        style={style}
+        primary={true}
+        onClick={this.submitForm}
+      />,
       <RaisedButton 
         label="Cancel"
         style={style}
         secondary={true}
         onClick={this.handleClose}
-      />,
-      <RaisedButton 
-        label="Submit"
-        style={style}
-        primary={true}
-      />,
+      />
     ];
 
     return (
       <MuiThemeProvider muiTheme={muiThemebtn}>
         {/* <RaisedButton label="Modal Dialog" onClick={this.handleOpen} /> */}
         <Dialog 
-          title="Candidate Login"
+          title={`${this.loginAs[this.state.value-1]} Login`}
+          // title={this.loginAs[--this.state.value]}
           actions={actions}
           modal={true}
           open={this.state.open}
           contentStyle={customContentStyle}
         >
           <TextField
-             hintText="Username or Email field"
+             hintText="Username or Email"
              fullWidth={true}
-             errorText=""
+             errorText={this.state.usernameError}
+             value={this.state.username}
+             onChange={this.usernameText.bind(this)}
              floatingLabelText="Username or Email"
              type="text"
           />
           <TextField
-            hintText="Password Field"
+            hintText="Password"
             fullWidth={true}
-            errorText=""
+            value={this.state.password}
+            onChange={(e) => this.setState({password : e.target.value})}
+            errorText={this.state.passwordError}
             floatingLabelText="Password"
             type="password"
           />
-          <a>Click here to create a new</a>
+          <SelectField
+            floatingLabelText="Login as"
+            value={this.state.value}
+            onChange={this.handleLoginAs}
+            fullWidth={true}
+          >
+            <MenuItem value={1} primaryText="Candidate" />
+            <MenuItem value={2} primaryText="Institution" />
+            <MenuItem value={3} primaryText="Career Adviser" />
+          </SelectField><br/>
+          <a>Click here to create a new Account</a>
         </Dialog>
       </MuiThemeProvider>
     );
