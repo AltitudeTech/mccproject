@@ -4,6 +4,9 @@ export default props =>
 <Fragment>
     <div className="banner-bottom">
         <div className="container">
+            <div className="col-md-6 w3layouts_banner_bottom_left">
+                <img src="/static/images/1.jpg" alt=" " className="img-responsive" />
+            </div>
             <div className="col-md-6 w3layouts_banner_bottom_right">
             <p>
                 Millions of people do regret the career decisions they made years back and are now stuck with careers they really do not love, even though they may have made those decisions with good intentions. 
@@ -15,9 +18,7 @@ export default props =>
             </ul>
                         
             </div>
-            <div className="col-md-6 w3layouts_banner_bottom_left">
-            <img src="/static/images/1.jpg" alt=" " className="img-responsive" />
-            </div>
+            
             <div className="clearfix"></div>
         </div>
     </div>
