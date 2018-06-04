@@ -43,7 +43,7 @@ export default props =>
               <div className="clearfix"></div>
                 2018 MyCareerChoice. All rights reserved | Powered by <a href="http://altitude-tech.com/" style={{color:'#FF2525'}}>Altitude Technology Worldwide</a></p>
                 <div className="clearfix"></div>
-                MCC is a service offered by <img src='/static/images/cilogo.png' style={{width:'150px'}} />
+                  MCC is a service offered by <img src='/static/images/cilogo.png' style={{width:'150px'}} />
               </div>
           <div className="clearfix"> </div>
       </div>

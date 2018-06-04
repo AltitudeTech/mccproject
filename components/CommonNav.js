@@ -21,7 +21,7 @@ export default class extends Component{
                         <span className="icon-bar"></span>
                     </button>
                     <div className="wthree_logo">
-                        <a className="navbar-brand" href=""><img src="/static/images/mcclogo.png" style={{maxWidth: '140px', margin : '-10px 30px'}} className="img-responsive" alt=""/></a>
+                        <a className="navbar-brand" href=""><img src="/static/images/mcclogo.gif" style={{maxWidth: '140px', margin : '-10px 30px'}} className="img-responsive" alt=""/></a>
                     </div>
                 </div>
                 <div className="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">

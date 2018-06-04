@@ -9,7 +9,7 @@ export default props =>
             <div className="agile_testimonials_grids">
             <ul id="flexiselDemo1">	
                 <li>
-                    <div className="agile_testimonials_grid">
+                    <div className="agile_testimonials_grid effect4">
                         <div className="agile_testimonials_grid1">
                             <p>
                                 I was very surprised by the level of accuracy of the information in my MCC report, about myself. Truly, I now have a better understanding of myself, God given talents and what I should be doing to secure a happy future. 
@@ -28,7 +28,7 @@ export default props =>
                     </div>
                 </li>
                 <li>
-                    <div className="agile_testimonials_grid">
+                    <div className="agile_testimonials_grid effect4">
                         <div className="agile_testimonials_grid1">
                             <p>
                                 Wonderful! This is the best career decision tool I have ever seen. As a professional career coach, I would recommend it to students, young graduates in the early stages of their careers and those older professionals who desire to transit into another profession. 
@@ -47,7 +47,7 @@ export default props =>
                     </div>
                 </li>
                 <li>
-                    <div className="agile_testimonials_grid">
+                    <div className="agile_testimonials_grid effect4">
                         <div className="agile_testimonials_grid1">
                             <p>
                                 I have no doubt, this is a wonderful tool. I am amazed by the speed of delivery of MCC report, which is clear and easy to understand. I appreciate the fact the MCC report is also accompanied by a “practical workbook”. 
@@ -66,7 +66,7 @@ export default props =>
                     </div>
                 </li>
                 <li>
-                    <div className="agile_testimonials_grid">
+                    <div className="agile_testimonials_grid effect4">
                         <div className="agile_testimonials_grid1">
                             <p>
                                 I have no doubt, this is a wonderful tool. I am amazed by the speed of delivery of MCC report, which is clear and easy to understand. I appreciate the fact the MCC report is also accompanied by a “practical workbook”. 
@@ -85,7 +85,7 @@ export default props =>
                     </div>
                 </li>
                 <li>
-                    <div className="agile_testimonials_grid">
+                    <div className="agile_testimonials_grid effect4">
                         <div className="agile_testimonials_grid1">
                             <p>
                                 I have no doubt, this is a wonderful tool. I am amazed by the speed of delivery of MCC report, which is clear and easy to understand. I appreciate the fact the MCC report is also accompanied by a “practical workbook”. 
@@ -113,6 +113,31 @@ export default props =>
         h2 {
             font-size: 2.5em;
             text-transform: uppercase;
+        }
+        .effect4
+        {
+        position: relative;
+        }
+        .effect4:after
+        {
+        z-index: -1;
+        position: absolute;
+        content: "";
+        bottom: 15px;
+        right: 10px;
+        left: auto;
+        width: 50%;
+        top: 80%;
+        max-width:300px;
+        background: #777;
+        -webkit-box-shadow: 0 15px 10px #777;
+        -moz-box-shadow: 0 15px 10px #777;
+        box-shadow: 0 15px 10px #777;
+        -webkit-transform: rotate(3deg);
+        -moz-transform: rotate(3deg);
+        -o-transform: rotate(3deg);
+        -ms-transform: rotate(3deg);
+        transform: rotate(3deg);
         }
     `}
     </style>
