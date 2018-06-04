@@ -53,12 +53,12 @@ export default class extends Component{
                                     <a href="#!"  onClick={this.triggerModal.bind(this)} style={{fontWeight : '500', color : 'white', margin : '10px'}}>LOGIN</a>
                                 </li>
                                 <li>
-                                    <a href="https://web.facebook.com/mycareerchoice2018/" target="_blank" className="w3l_facebook">
+                                    <a href="https://www.facebook.com/career.choice.5" target="_blank" className="w3l_facebook">
                                         <i className="fa fa-facebook" aria-hidden="true"></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://twitter.com/MCareerChoice" target="_blank" className="w3l_twitter">
+                                    <a href="https://twitter.com/mycareerchoice1" target="_blank" className="w3l_twitter">
                                         <i className="fa fa-twitter" aria-hidden="true"></i>
                                     </a>
                                 </li>
