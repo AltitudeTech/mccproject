@@ -6,6 +6,9 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme' ;
 import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import {Tabs, Tab} from 'material-ui/Tabs';
+import SwipeableViews from 'react-swipeable-views';
+import { auto } from 'async';
 
 
 const EMAIL_REGEX = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
@@ -16,6 +19,23 @@ const customContentStyle = {
 };
 const style = {
   margin: 12,
+};
+const styles = {
+  headline: {
+    fontSize: 24,
+    paddingTop: 16,
+    marginBottom: 12,
+    fontWeight: 400,
+  },
+  slide: {
+    paddingTop : 10,
+    paddingBottom: 0,
+    height : 315
+  },
+  tab: {
+    backgroundColor : '#fff',
+    color : '#646666'
+  },
 };
 /**
  * A modal dialog can only be closed by selecting one of the actions.
@@ -30,7 +50,9 @@ export default class CandidateModal extends React.Component {
     username : '',
     password : '',
     usernameError : '',
-    passwordError : ''
+    passwordError : '',
+    fullname : '' ,
+    slideIndex: 0
   };
 
   loginAs = ['Candidate' , 'Institution', 'Career Adviser']
@@ -46,8 +68,15 @@ export default class CandidateModal extends React.Component {
     this.setState({username : event.target.value})
     EMAIL_REGEX.test(this.state.username)? this.setState({usernameError:''}):this.setState({usernameError:'Invalid Email'})
   };
+  fullnameText = (event) => {
+    this.setState({fullname : event.target.value})
+  };
   
-
+  handleTabChange = (value) => {
+    this.setState({
+      slideIndex: value,
+    });
+  };
 
   submitForm = (event) => {
     event.preventDefault()
@@ -118,42 +147,95 @@ export default class CandidateModal extends React.Component {
       <MuiThemeProvider muiTheme={muiThemebtn}>
         {/* <RaisedButton label="Modal Dialog" onClick={this.handleOpen} /> */}
         <Dialog 
-          title={`${this.loginAs[this.state.value-1]} Login`}
-          // title={this.loginAs[--this.state.value]}
+          style={{zIndex : 999999}}
+          // title={this.loginAs[this.state.value-1]}
           actions={actions}
           modal={true}
           open={this.state.open}
           contentStyle={customContentStyle}
         >
-          <TextField
-             hintText="Username or Email"
-             fullWidth={true}
-             errorText={this.state.usernameError}
-             value={this.state.username}
-             onChange={this.usernameText.bind(this)}
-             floatingLabelText="Username or Email"
-             type="text"
-          />
-          <TextField
-            hintText="Password"
-            fullWidth={true}
-            value={this.state.password}
-            onChange={(e) => this.setState({password : e.target.value})}
-            errorText={this.state.passwordError}
-            floatingLabelText="Password"
-            type="password"
-          />
-          <SelectField
-            floatingLabelText="Login as"
-            value={this.state.value}
-            onChange={this.handleLoginAs}
-            fullWidth={true}
-          >
-            <MenuItem value={1} primaryText="Candidate" />
-            <MenuItem value={2} primaryText="Institution" />
-            <MenuItem value={3} primaryText="Career Adviser" />
-          </SelectField><br/>
-          <a>Click here to create a new Account</a>
+
+        <Tabs
+          onChange={this.handleTabChange}
+          value={this.state.slideIndex}
+        >
+          <Tab label="Login" value={0} style={styles.tab} />
+          <Tab label="Signup" value={1} style={styles.tab}/>
+        </Tabs>
+        <SwipeableViews
+          index={this.state.slideIndex}
+          onChangeIndex={this.handleTabChange}
+        >
+          <div style={styles.slide}>
+            <TextField
+              hintText="Username or Email"
+              fullWidth={true}
+              errorText={this.state.usernameError}
+              value={this.state.username}
+              onChange={this.usernameText.bind(this)}
+              floatingLabelText="Username or Email"
+              type="text"
+            />
+            <TextField
+              hintText="Password"
+              fullWidth={true}
+              value={this.state.password}
+              onChange={(e) => this.setState({password : e.target.value})}
+              errorText={this.state.passwordError}
+              floatingLabelText="Password"
+              type="password"
+            />
+            <SelectField
+              floatingLabelText="Login as"
+              value={this.state.value}
+              onChange={this.handleLoginAs}
+              fullWidth={true}
+            >
+              <MenuItem value={1} primaryText="Candidate" />
+              <MenuItem value={2} primaryText="Institution" />
+              <MenuItem value={3} primaryText="Career Adviser" />
+            </SelectField>
+          </div>
+          <div style={styles.slide}>
+            <TextField style={styles.textfield}
+              hintText="Fullname"
+              fullWidth={true}
+              errorText=''
+              value={this.state.fullname}
+              onChange={this.fullnameText.bind(this)}
+              floatingLabelText="Fullname"
+              type="text"
+            />
+            <TextField
+              hintText="Email"
+              fullWidth={true}
+              errorText=''
+              value={this.state.username}
+              onChange={this.fullnameText.bind(this)}
+              floatingLabelText="Email"
+              type="text"
+            />
+            <TextField
+              hintText="Password"
+              fullWidth={true}
+              value={this.state.password}
+              onChange={(e) => this.setState({password : e.target.value})}
+              errorText=''
+              floatingLabelText="Password"
+              type="password"
+            />
+            <SelectField
+              floatingLabelText="Register As"
+              value={this.state.value}
+              onChange={this.handleLoginAs}
+              fullWidth={true}
+            >
+              <MenuItem value={1} primaryText="Candidate" />
+              <MenuItem value={2} primaryText="Institution" />
+              <MenuItem value={3} primaryText="Career Adviser" />
+            </SelectField>
+          </div>
+        </SwipeableViews>
         </Dialog>
       </MuiThemeProvider>
     );
