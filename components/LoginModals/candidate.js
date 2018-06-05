@@ -8,6 +8,8 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
 import { auto } from 'async';
 
 
@@ -30,7 +32,7 @@ const styles = {
   slide: {
     paddingTop : 10,
     paddingBottom: 0,
-    height : 315
+    height : 325
   },
   tab: {
     backgroundColor : '#fff',
@@ -195,6 +197,14 @@ export default class CandidateModal extends React.Component {
               <MenuItem value={2} primaryText="Institution" />
               <MenuItem value={3} primaryText="Career Adviser" />
             </SelectField>
+            
+            <FloatingActionButton mini={true} style={style}>
+              <ContentAdd />
+            </FloatingActionButton>
+           
+            <FloatingActionButton mini={true} secondary={true} style={style}>
+              <ContentAdd />
+            </FloatingActionButton>
           </div>
           <div style={styles.slide}>
             <TextField style={styles.textfield}
