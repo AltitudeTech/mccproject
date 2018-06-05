@@ -5,6 +5,12 @@ export default class extends Component{
     constructor(props){
         super(props);
     }
+    
+    componentDidMount(){
+        const {showSignIn} = this.props
+        if (showSignIn)
+            this.copen.handleOpen();
+    }
 
     triggerModal(){
         this.copen.handleOpen() ;

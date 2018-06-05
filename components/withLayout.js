@@ -14,7 +14,6 @@ export default function withLayout(Child, opts) {
     return class WrappedComponent extends React.Component {
       static async getInitialProps(context, apolloClient) {
         let ChildProps = {};
-        console.log('asdiasdas')
         if (Child.getInitialProps) {
           ChildProps = await Child.getInitialProps(context, apolloClient)
         }

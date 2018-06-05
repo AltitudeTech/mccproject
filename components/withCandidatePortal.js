@@ -27,13 +27,13 @@ export default function withLayout(Child, opts) {
       const {loggedInUser} = await checkLoggedIn(context, apolloClient)
       if (!loggedInUser.candidate) {
         // If not signed in, send them somewhere more useful
-        let target = `/`
-        let asPath = `/login`
+        let target = `/?show=signIn`
+        // let asPath = `/login`
         if (context.pathname !== '/user'){
-          target = `${target}?from=${context.pathname}`
-          asPath = `${asPath}?from=${context.pathname}`
+          target = `${target}&from=${context.pathname}`
+          // asPath = `${asPath}?from=${context.pathname}`
         }
-        redirect(context, target, asPath)
+        redirect(context, target)
       }
 
       return {

@@ -9,11 +9,9 @@ import withLayout from '../components/withLayout'
 
 
 class IndexPage extends Component {
-  static async getInitialProps(ctx) {
-    console.log('asPath-----------------------');
-    console.log(asPath);
+  static async getInitialProps({query}) {
     return {
-      isLogin: asPath == `/login`
+      showSignIn: query.show == 'signIn'
     }
   }
   
@@ -21,12 +19,9 @@ class IndexPage extends Component {
     color : 'white'
   }
   render(){
-    const {isLogin} = this.props;
-    console.log(isLogin);
-    // console.log(isLogin);
-    // console.log(isLogin);
+    const {showSignIn} = this.props;
     return <Fragment>
-      <Nav homepage="active" />
+      <Nav homepage="active" showSignIn={showSignIn}/>
       <TextContent />
       <div className="about">
         <div className="container">
