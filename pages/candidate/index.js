@@ -8,5 +8,4 @@ class CandidatePage extends Component{
         )
     }
 }
-
 export default withCandidatePortal(CandidatePage)
