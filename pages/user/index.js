@@ -3,7 +3,7 @@ import withCandidatePortal from '../../components/withCandidatePortal'
 
 class CandidatePage extends Component{
     render(){
-        render(
+        return(
             <div>Welcome candidate</div>
         )
     }
