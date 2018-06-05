@@ -3,7 +3,7 @@ import withCandidateLogin from '../../components/withCandidateLogin'
 
 class CandidatePage extends Component{
     render(){
-        render(
+        return(
             <div>Sign In candidate</div>
         )
     }

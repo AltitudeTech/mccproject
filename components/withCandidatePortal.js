@@ -7,10 +7,10 @@ import withData from '../lib/backendApi/withData'
 import redirect from '../lib/auth/redirect'
 import checkLoggedIn from '../lib/auth/checkLoggedIn'
 
-import {Container} from 'reactstrap'
+// import {Container} from 'reactstrap'
 // import Breadcrumb from './portal/Breadcrumb/Breadcrumb'
-import Sidebar from './portal/adminUI/Sidebar/Sidebar'
-import Header from './portal/adminUI/Header/Header'
+// import Sidebar from './portal/adminUI/Sidebar/Sidebar'
+// import Header from './portal/adminUI/Header/Header'
 
 import { ToastContainer } from 'react-toastify'
 
@@ -27,7 +27,7 @@ export default function withLayout(Child, opts) {
       const {loggedInUser} = await checkLoggedIn(context, apolloClient)
       if (!loggedInUser.candidate) {
         // If not signed in, send them somewhere more useful
-        let target = `/user/login`
+        let target = `/user/signIn`
         if (context.pathname !== '/user')
           target = `${target}?from=${context.pathname}`
         redirect(context, target)
@@ -59,19 +59,19 @@ export default function withLayout(Child, opts) {
             {/* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/> */}
           </Head>
           <div className="app">
-            <Header client={this.props.client}/>
+            {/* <Header client={this.props.client}/> */}
             <div className="app-body">
-              <Sidebar/>
+              {/* <Sidebar/> */}
               <main className="main" style={{
                 paddingTop: '24px'
               }}>
               {/* <Breadcrumb/> */}
-              <Container fluid>
+              {/* <Container fluid> */}
                 <p className="display-4 text-center" style={{fontSize: '2rem'}}>
                   KTT YEZ Candidate Portal
                 </p>
                 <Child />
-              </Container>
+              {/* </Container> */}
             </main>
           </div>
         </div>
