@@ -149,14 +149,12 @@ export default class CandidateModal extends React.Component {
       <MuiThemeProvider muiTheme={muiThemebtn}>
         {/* <RaisedButton label="Modal Dialog" onClick={this.handleOpen} /> */}
         <Dialog 
-          style={{zIndex : 999999}}
-          // title={this.loginAs[this.state.value-1]}
+          style={{zIndex : 1000}}
           actions={actions}
           modal={true}
           open={this.state.open}
           contentStyle={customContentStyle}
         >
-
         <Tabs
           onChange={this.handleTabChange}
           value={this.state.slideIndex}
@@ -199,7 +197,7 @@ export default class CandidateModal extends React.Component {
             </SelectField>
             
             <FloatingActionButton mini={true} style={style}>
-              <ContentAdd />
+              f
             </FloatingActionButton>
            
             <FloatingActionButton mini={true} secondary={true} style={style}>
