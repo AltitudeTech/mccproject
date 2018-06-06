@@ -132,7 +132,7 @@ export default class CandidateModal extends React.Component {
   render() {
     const actions = [
       <RaisedButton 
-        label="Login"
+        label={this.state.slideIndex == 0 ? 'Login' : 'Register'}
         style={style}
         primary={true}
         onClick={this.submitForm}

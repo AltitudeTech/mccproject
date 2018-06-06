@@ -34,7 +34,7 @@ class IndexPage extends Component {
             </div>
             <div className="col-md-6">
               <img src="/static/images/personalitymap.jpg" style={{width:'100%'}} />
-              <p className="text-center lead" style={{color : '#fff'}}>CAREER MAP</p>
+              <p className="text-center lead" style={{color : '#fff'}}>CAREER PERSONALITY MAP</p>
             </div>
           </div>
         </div>
