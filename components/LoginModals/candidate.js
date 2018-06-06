@@ -54,6 +54,7 @@ export default class CandidateModal extends React.Component {
     usernameError : '',
     passwordError : '',
     fullname : '' ,
+    regEmail : '' ,
     slideIndex: 0
   };
 
@@ -70,9 +71,7 @@ export default class CandidateModal extends React.Component {
     this.setState({username : event.target.value})
     EMAIL_REGEX.test(this.state.username)? this.setState({usernameError:''}):this.setState({usernameError:'Invalid Email'})
   };
-  fullnameText = (event) => {
-    this.setState({fullname : event.target.value})
-  };
+
   
   handleTabChange = (value) => {
     this.setState({
@@ -168,12 +167,12 @@ export default class CandidateModal extends React.Component {
         >
           <div style={styles.slide}>
             <TextField
-              hintText="Username or Email"
+              hintText="example@gmail.com"
               fullWidth={true}
               errorText={this.state.usernameError}
               value={this.state.username}
               onChange={this.usernameText.bind(this)}
-              floatingLabelText="Username or Email"
+              floatingLabelText="Email"
               type="text"
             />
             <TextField
@@ -210,24 +209,24 @@ export default class CandidateModal extends React.Component {
               fullWidth={true}
               errorText=''
               value={this.state.fullname}
-              onChange={this.fullnameText.bind(this)}
+              onChange={(e) => this.setState({fullname : e.target.value})}
               floatingLabelText="Fullname"
               type="text"
             />
             <TextField
-              hintText="Email"
+              hintText="example@gmail.com"
               fullWidth={true}
               errorText=''
-              value={this.state.username}
-              onChange={this.fullnameText.bind(this)}
+              value={this.state.regEmail}
+              onChange={(e) => this.setState({regEmail : e.target.value})}
               floatingLabelText="Email"
               type="text"
             />
             <TextField
               hintText="Password"
               fullWidth={true}
-              value={this.state.password}
-              onChange={(e) => this.setState({password : e.target.value})}
+              value={this.state.regPassword}
+              onChange={(e) => this.setState({regPassword : e.target.value})}
               errorText=''
               floatingLabelText="Password"
               type="password"
