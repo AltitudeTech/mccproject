@@ -205,12 +205,12 @@ export default class CandidateModal extends React.Component {
           </div>
           <div style={styles.slide}>
             <TextField style={styles.textfield}
-              hintText="Fullname"
+              hintText={this.state.value == 2 ? 'Institution Name'  : 'Fullname'}
               fullWidth={true}
               errorText=''
               value={this.state.fullname}
               onChange={(e) => this.setState({fullname : e.target.value})}
-              floatingLabelText="Fullname"
+              floatingLabelText={this.state.value == 2 ? 'Institution Name'  : 'Fullname'}
               type="text"
             />
             <TextField
