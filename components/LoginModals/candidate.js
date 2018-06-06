@@ -195,14 +195,14 @@ export default class CandidateModal extends React.Component {
               <MenuItem value={2} primaryText="Institution" />
               <MenuItem value={3} primaryText="Career Adviser" />
             </SelectField>
-            
+{/*             
             <FloatingActionButton mini={true} style={style}>
               f
             </FloatingActionButton>
            
             <FloatingActionButton mini={true} secondary={true} style={style}>
               <ContentAdd />
-            </FloatingActionButton>
+            </FloatingActionButton> */}
           </div>
           <div style={styles.slide}>
             <TextField style={styles.textfield}
