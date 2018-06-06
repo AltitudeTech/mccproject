@@ -25,7 +25,7 @@ export default function withLayout(Child, opts) {
 
       //Validate loggedin user
       const {loggedInUser} = await checkLoggedIn(context, apolloClient)
-      if (!loggedInUser.candidate) {
+      if (!loggedInUser.institution) {
         // If not signed in, send them somewhere more useful
         let target = `/?show=signIn`
         // let asPath = `/login`
@@ -43,7 +43,7 @@ export default function withLayout(Child, opts) {
     }
 
     render() {
-      if (!this.props.loggedInUser.candidate) {
+      if (!this.props.loggedInUser.institution) {
         return (
           <div>Hollup</div>
         )
