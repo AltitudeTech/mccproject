@@ -41,7 +41,7 @@ export default class CustomSnackbar extends React.Component {
         <Snackbar
           open={this.state.open}
           bodyStyle={styles}
-          
+          style={{zIndex:900}}
           autoHideDuration={60000}
           onRequestClose={this.handleRequestClose}
         />
