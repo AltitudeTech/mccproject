@@ -4,7 +4,7 @@ import withCandidateLogin from '../../components/HOCS/candidate/withCandidateLog
 class CandidatePage extends Component{
     render(){
         return(
-            <div>Sign In candidate</div>
+            <div>Sign In institution</div>
         )
     }
 }

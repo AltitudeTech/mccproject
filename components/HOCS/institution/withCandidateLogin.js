@@ -3,13 +3,13 @@ import Head from 'next/head'
 import { Mutation, withApollo, compose } from 'react-apollo'
 import cookie from 'cookie'
 
-import withData from '../lib/backendApi/withData'
-import redirect from '../lib/auth/redirect'
-import checkLoggedIn from '../lib/auth/checkLoggedIn'
-import { LOGIN_CANDIDATE_MUTATION } from '../lib/backendApi/mutations'
+import withData from '../../../lib/backendApi/withData'
+import redirect from '../../../lib/auth/redirect'
+import checkLoggedIn from '../../../lib/auth/checkLoggedIn'
+import { LOGIN_CANDIDATE_MUTATION } from '../../../lib/backendApi/mutations'
 
 import { ToastContainer, toast} from 'react-toastify'
-import { TOAST_STYLE } from '../utils/common'
+import { TOAST_STYLE } from '../../../utils/common'
 
 export default function withLayout(Child, opts) {
   class WrappedComponent extends React.Component {

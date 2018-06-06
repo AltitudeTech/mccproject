@@ -3,9 +3,9 @@ import Head from 'next/head'
 import { withApollo, compose } from 'react-apollo'
 //import 'isomorphic-fetch'
 
-import withData from '../lib/backendApi/withData'
-import redirect from '../lib/auth/redirect'
-import checkLoggedIn from '../lib/auth/checkLoggedIn'
+import withData from '../../../lib/backendApi/withData'
+import redirect from '../../../lib/auth/redirect'
+import checkLoggedIn from '../../../lib/auth/checkLoggedIn'
 
 // import {Container} from 'reactstrap'
 // import Breadcrumb from './portal/Breadcrumb/Breadcrumb'

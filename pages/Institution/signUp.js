@@ -4,7 +4,7 @@ import withCandidateRegister from '../../components/HOCS/candidate/withCandidate
 class CandidatePage extends Component{
     render(){
         return(
-            <div>Create candidate account</div>
+            <div>Create institution account</div>
         )
     }
 }
