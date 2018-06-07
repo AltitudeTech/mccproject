@@ -1,27 +1,21 @@
 import React, { Component, Fragment } from 'react'
 
 import Nav2 from '../components/Nav2'
-import TextContent from '../components/Studentpage/TextContent'  
+import TextContent from '../components/Pricingpage/TextContent'  
 import withLayout from '../components/withLayout'
 
 
 class StudentPage extends Component {
   constructor(props){
-    super(props) ;
+    super(props)
   }
   render(){
     return <Fragment>
-      <Nav2 studentpage="active" image="bannerStudent.png"/>
-      <TextContent />
+      <Nav2 pricingpage="active" image="pricing.jpg"/>
       <div className="about">
         <div className="container">
-        <h2 className="text-center"><a id="discover" href="">Discover your Ideal career in 15 minutes</a></h2>
-          <br/>
-          <div className="row">
-            <p style={{color : '#fff'}}>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-            <br/>
-            <p style={{color : '#fff'}}>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-          </div>
+        <h2 className="text-center"><a style={{color : '#fff'}} href="">MCC Pricing Plans</a></h2>
+          <TextContent />
         </div>
       </div>      
     </Fragment>

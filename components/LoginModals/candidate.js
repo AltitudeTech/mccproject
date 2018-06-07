@@ -16,8 +16,7 @@ import { auto } from 'async';
 const EMAIL_REGEX = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
 const muiThemebtn = getMuiTheme()
 const customContentStyle = {
-  width: '30%',
-  maxWidth: 'none',
+  maxWidth: '40%',
 };
 const style = {
   margin: 12,
@@ -194,14 +193,14 @@ export default class CandidateModal extends React.Component {
               <MenuItem value={2} primaryText="Institution" />
               <MenuItem value={3} primaryText="Career Adviser" />
             </SelectField>
-{/*             
-            <FloatingActionButton mini={true} style={style}>
-              f
-            </FloatingActionButton>
+             
+             <FloatingActionButton mini={true} style={style}>
+               <ContentAdd />
+             </FloatingActionButton>
            
-            <FloatingActionButton mini={true} secondary={true} style={style}>
-              <ContentAdd />
-            </FloatingActionButton> */}
+             <FloatingActionButton mini={true} secondary={true} style={style}>
+               <ContentAdd />
+             </FloatingActionButton>
           </div>
           <div style={styles.slide}>
             <TextField style={styles.textfield}
