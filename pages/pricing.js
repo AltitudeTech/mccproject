@@ -11,7 +11,7 @@ class StudentPage extends Component {
   }
   render(){
     return <Fragment>
-      <Nav2 pricingpage="active" image="pricing.jpg"/>
+      <Nav2 pricingpage="active" image="pricing.gif"/>
       <div className="about">
         <div className="container">
         <h2 className="text-center"><a style={{color : '#fff'}} href="">MCC Pricing Plans</a></h2>
