@@ -1,7 +1,7 @@
-import { Component } from 'react'
-import withInstitutionPortal from '../../components/HOCS/institution/withInstitutionPortal'
+import React, {Component} from 'react';
+import Head from 'next/head'
 
-class CandidatePage extends Component{
+export default class extends Component{
     render(){
         return<div>
         <Head>
@@ -198,4 +198,3 @@ class CandidatePage extends Component{
         </div>
     }
 }
-export default withInstitutionPortal(CandidatePage)

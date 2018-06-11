@@ -129,12 +129,17 @@ export default class CandidateModal extends React.Component {
 
   render() {
     const actions = [
-      <RaisedButton 
-        label={this.state.slideIndex == 0 ? 'Login' : 'Register'}
+     (this.state.slideIndex == 0 ? <RaisedButton 
+        label='Login'
         style={style}
         primary={true}
         onClick={this.submitForm}
-      />,
+      /> : <RaisedButton 
+      label='Register'
+      style={style}
+      primary={true}
+      onClick={this.submitForm}
+    />),
       <RaisedButton 
         label="Cancel"
         style={style}
@@ -183,16 +188,7 @@ export default class CandidateModal extends React.Component {
               floatingLabelText="Password"
               type="password"
             />
-            <SelectField
-              floatingLabelText="Login as"
-              value={this.state.value}
-              onChange={this.handleLoginAs}
-              fullWidth={true}
-            >
-              <MenuItem value={1} primaryText="Candidate" />
-              <MenuItem value={2} primaryText="Institution" />
-              <MenuItem value={3} primaryText="Career Adviser" />
-            </SelectField>
+           
              
              <FloatingActionButton mini={true} style={style}>
                <ContentAdd />
