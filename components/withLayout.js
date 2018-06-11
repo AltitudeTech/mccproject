@@ -5,19 +5,21 @@ import Testimonials from './Homepage/Testimonials'
 import Scripts from './Scripts'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import CustomSnackbar from './CustomSnackbar'
+import { withApollo, compose } from 'react-apollo'
+import { ToastContainer } from 'react-toastify'
 
-
+import withData from '../lib/backendApi/withData'
 //injectTapEventPlugin()
 
 
 export default function withLayout(Child, opts) {
-    return class WrappedComponent extends React.Component {
+    class WrappedComponent extends React.Component {
       static async getInitialProps(context, apolloClient) {
         let ChildProps = {};
         if (Child.getInitialProps) {
           ChildProps = await Child.getInitialProps(context, apolloClient)
         }
-  
+
         return {
           ...ChildProps,
         }
@@ -53,9 +55,17 @@ export default function withLayout(Child, opts) {
               }
             `}
             </style>
+            <ToastContainer />
           </div>
         )
       }
     }
+
     //return withData(WrappedComponent)
+    return compose(
+      // withData gives us server-side graphql queries before rendering
+      withData,
+      // withApollo exposes `this.props.client` used when logging out
+      withApollo
+    )(WrappedComponent)
   }

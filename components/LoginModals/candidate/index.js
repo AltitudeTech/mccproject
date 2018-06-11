@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Dialog from 'material-ui/Dialog';
 import RaisedButton from 'material-ui/RaisedButton';
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
@@ -12,6 +13,7 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import { auto } from 'async';
 
+import LoginButton from './LoginButton'
 
 const EMAIL_REGEX = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
 const muiThemebtn = getMuiTheme()
@@ -71,76 +73,25 @@ export default class CandidateModal extends React.Component {
     EMAIL_REGEX.test(this.state.username)? this.setState({usernameError:''}):this.setState({usernameError:'Invalid Email'})
   };
 
-  
   handleTabChange = (value) => {
     this.setState({
       slideIndex: value,
     });
   };
 
-  submitForm = (event) => {
-    event.preventDefault()
-    event.stopPropagation()
-
-    if(this.state.usernameError.length < 1 ){
-
-      this.props.login({
-        username: this.state.username,
-        password: this.state.password
-      }, (lastName)=>{
-        //function runs if login is sucessfull
-        const toastStyle = {
-          className: {
-            fontSize: '0.875rem',
-            fontWeight: '500',
-            lineHeight: '1.5',
-            background: "#4dbd74",
-            color: "white"
-          },progressClassName: {
-            background: "#3a9d5d"
-          }
-        }
-        toast(`Welcome Back ${lastName}`, {...toastStyle});
-      })
-    } else {
-      if (!this.state.phone || !this.state.phoneValid) {
-        this.setState({phoneValid: false})
-      }
-      if (!this.state.password) {
-        this.setState({passwordValid: false})
-      }
-      const toastStyle = {
-        className: {
-          fontSize: '0.875rem',
-          fontWeight: '500',
-          lineHeight: '1.5',
-          background: '#f86c6b',
-          color: "white"
-        },progressClassName: {
-          background: '#f5302e'
-        }
-      }
-      toast("Your Inputs are not valid", {...toastStyle});
-    }
-
-  }
-
   handleLoginAs = (event, index, value) => this.setState({value});
 
   render() {
     const actions = [
-     (this.state.slideIndex == 0 ? <RaisedButton 
-        label='Login'
-        style={style}
-        primary={true}
-        onClick={this.submitForm}
-      /> : <RaisedButton 
+     (this.state.slideIndex == 0 ?
+       <LoginButton {...this.state}/>
+        : <RaisedButton
       label='Register'
       style={style}
       primary={true}
       onClick={this.submitForm}
     />),
-      <RaisedButton 
+      <RaisedButton
         label="Cancel"
         style={style}
         secondary={true}
@@ -151,7 +102,7 @@ export default class CandidateModal extends React.Component {
     return (
       <MuiThemeProvider muiTheme={muiThemebtn}>
         {/* <RaisedButton label="Modal Dialog" onClick={this.handleOpen} /> */}
-        <Dialog 
+        <Dialog
           style={{zIndex : 1000}}
           actions={actions}
           modal={true}
@@ -188,12 +139,12 @@ export default class CandidateModal extends React.Component {
               floatingLabelText="Password"
               type="password"
             />
-           
-             
+
+
              <FloatingActionButton mini={true} style={style}>
                <ContentAdd />
              </FloatingActionButton>
-           
+
              <FloatingActionButton mini={true} secondary={true} style={style}>
                <ContentAdd />
              </FloatingActionButton>
