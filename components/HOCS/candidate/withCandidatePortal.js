@@ -68,13 +68,9 @@ export default function withLayout(Child, opts) {
               <main className="main" style={{
                 paddingTop: '24px'
               }}>
-              {/* <Breadcrumb/> */}
-              {/* <Container fluid> */}
-                <p className="display-4 text-center" style={{fontSize: '2rem'}}>
-                  KTT YEZ Candidate Portal
-                </p>
+              
                 <Child />
-              {/* </Container> */}
+              
             </main>
           </div>
         </div>

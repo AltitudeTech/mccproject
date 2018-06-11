@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import Head from 'next/head'
+import withCandidatePortal from '../components/HOCS/candidate/withCandidatePortal'
 
-export default class extends Component{
+class Dashboard extends Component{
     render(){
         return<div>
         <Head>
@@ -198,3 +199,4 @@ export default class extends Component{
         </div>
     }
 }
+export default withCandidatePortal(Dashboard)
