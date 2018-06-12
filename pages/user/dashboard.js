@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Head from 'next/head'
-import withCandidatePortal from '../components/HOCS/candidate/withCandidatePortal'
+import withCandidatePortal from '../../components/HOCS/candidate/withCandidatePortal'
 
 class Dashboard extends Component{
     render(){
@@ -8,7 +8,7 @@ class Dashboard extends Component{
         <Head>
             <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
             <meta httpEquiv="X-UA-Compatible" content="IE=edge"/>
-            <meta charSet="utf-8"/> 
+            <meta charSet="utf-8"/>
             <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
             <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
             <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -19,7 +19,7 @@ class Dashboard extends Component{
                     <div className="profile-sidebar">
                         <div className="profile-usertitle">
                             <img src="http://www.joblo.com/newsimages1/logan-x-24-hugh-jackman-villain-thumb.jpg" className="img-circle" width="100px"/>
-                    
+
                             <div className="profile-usertitle-name">
                             John Doe
                             </div>
@@ -27,11 +27,11 @@ class Dashboard extends Component{
                                 Candidate
                             </div>
                         </div>
-                         
+
                         <div className="profile-userbuttons">
                         	<button type="button" className="btn btn-danger btn-sm">Message</button>
                         </div>
-                         
+
                         <div className="profile-usermenu">
                             <ul className="nav">
                                 <li className="active">
@@ -61,7 +61,7 @@ class Dashboard extends Component{
                                 </li>
                             </ul>
                         </div>
-                         
+
                     </div>
                 </div>
                 <div className="col-md-9">
@@ -75,7 +75,7 @@ class Dashboard extends Component{
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
                         </p>
                     </div>
-                            
+
                     </div>
                 </div>
             </div>
@@ -84,18 +84,18 @@ class Dashboard extends Component{
             body {
                 background: #F1F3FA;
               }
-              
+
               .profile {
                 margin: 10px 0;
               }
-              
+
               .profile-sidebar {
                 padding: 20px 0 10px 0;
                 background: #09925E;
                 color : #fff ;
                 box-shadow:1px 1px 10px rgba(0,0,0,0.3)
               }
-              
+
               .profile-userpic img {
                 float: none;
                 margin: 0 auto;
@@ -105,12 +105,12 @@ class Dashboard extends Component{
                 -moz-border-radius: 50% !important;
                 border-radius: 50% !important;
               }
-              
+
               .profile-usertitle {
                 text-align: center;
                 margin-top: 20px;
               }
-              
+
               .profile-usertitle-name {
                 color: #fff;
                 font-size: 20px;
@@ -118,19 +118,19 @@ class Dashboard extends Component{
                 margin-top:5px;
                 margin-bottom: 7px;
               }
-              
+
               .profile-usertitle-job {
                 color: #b2b2b2;
                 font-size: 12px;
                 font-weight: 600;
                 margin-bottom: 15px;
               }
-              
+
               .profile-userbuttons {
                 text-align: center;
                 margin-top: 10px;
               }
-              
+
               .profile-userbuttons .btn {
                 text-transform: uppercase;
                 font-size: 11px;
@@ -138,51 +138,51 @@ class Dashboard extends Component{
                 padding: 6px 15px;
                 margin-right: 5px;
               }
-              
+
               .profile-userbuttons .btn:last-child {
                 margin-right: 0px;
               }
-                  
+
               .profile-usermenu {
                 margin-top: 30px;
               }
-              
+
               .profile-usermenu ul li {
                 border-bottom: 1px solid #096C47;
               }
-              
+
               .profile-usermenu ul li:last-child {
                 border-bottom: none;
               }
-              
+
               .profile-usermenu ul li a {
                 color: #b2b2b2;
                 font-size: 16px;
                 font-weight: 400;
                 padding : 20px;
               }
-              
+
               .profile-usermenu ul li a i {
                 margin-right: 8px;
                 font-size: 14px;
               }
-              
+
               .profile-usermenu ul li a:hover {
                 background-color: #096C47;
                 color: #fff;
               }
-              
+
               .profile-usermenu ul li.active {
                 border-bottom: none;
               }
-              
+
               .profile-usermenu ul li.active a {
                 color: #fff;
                 background-color: #096C47;
                 border-right: 2px solid #3EC28F;
                 margin-right: -2px;
               }
-              
+
               .profile-content{box-shadow:1px 1px 10px rgba(0,0,0,0.3);}
               .profile-content {
                 padding: 20px;

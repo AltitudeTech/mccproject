@@ -1,19 +1,22 @@
 import React, { Component, Fragment } from 'react'
 import LoginModal from './LoginModals/candidate'
+import { Query, withApollo } from 'react-apollo'
 
-export default class extends Component{
+import { CANDIDATE_ISAUTHENTICATED_QUERY } from '../lib/backendApi/queries'
+
+class CommonNav extends Component{
     constructor(props){
         super(props);
     }
-    
+
     componentDidMount(){
-        const {showSignIn} = this.props
-        if (showSignIn)
-            this.copen.handleOpen();
+      const {showSignIn} = this.props
+      if (showSignIn)
+        this.copen.handleOpen();
     }
 
     triggerModal(){
-        this.copen.handleOpen() ;
+      this.copen.handleOpen() ;
     }
     render(){
         return <Fragment>
@@ -55,8 +58,27 @@ export default class extends Component{
                         <div className="w3_social_icons">
                             <ul className="w3layouts_social">
                                 <li>
-                                    <LoginModal ref={open => this.copen = open} />
-                                    <a href="#!"  onClick={this.triggerModal.bind(this)} style={{fontWeight : '500', color : 'white', margin : '10px'}}>LOGIN</a>
+                                  <Query query={CANDIDATE_ISAUTHENTICATED_QUERY}>
+                                    {({loading, error, data}) => {
+                                      if (loading)
+                                        return "Loading...";
+                                      if (error) {
+                                        console.log(error);
+                                        return `XXX`;
+                                      }
+
+                                      const { candidateIsAuthenticated } = data;
+                                      return <Fragment>
+                                        { candidateIsAuthenticated ?
+                                          <a href="#!"  style={{fontWeight : '500', color : 'white', margin : '10px'}}>LOGOUT</a>
+                                          :
+                                          <Fragment>
+                                            <LoginModal ref={open => this.copen = open} />
+                                            <a href="#!"  onClick={this.triggerModal.bind(this)} style={{fontWeight : '500', color : 'white', margin : '10px'}}>LOGIN</a>
+                                          </Fragment>
+                                      }</Fragment>
+                                    }}
+                                  </Query>
                                 </li>
                                 <li>
                                     <a href="https://www.facebook.com/career.choice.5" target="_blank" className="w3l_facebook">
@@ -82,3 +104,5 @@ export default class extends Component{
     </Fragment>
     }
 }
+
+export default withApollo(CommonNav)

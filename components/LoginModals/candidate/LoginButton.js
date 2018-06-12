@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import { Mutation } from 'react-apollo';
+import { Mutation, withApollo } from 'react-apollo';
 import cookie from 'cookie'
 import RaisedButton from 'material-ui/RaisedButton';
 
@@ -13,7 +13,7 @@ const style = {
   margin: 12,
 };
 
-export default class LoginButton extends Component{
+class LoginButton extends Component{
 
   onLoginCompleted = (data) => {
     // Store the token in cookie
@@ -25,10 +25,10 @@ export default class LoginButton extends Component{
     })
     // Force a reload of all the current queries now that the user is
     // logged in
-    // this.props.client.resetStore().then(() => {
-    //   const target = this.props.url.query.from || `/user/dashboard`;
-    //   redirect({}, target)
-    // })
+    this.props.client.resetStore().then(() => {
+      const target = this.props.url.query.from || `/user/dashboard`;
+      redirect({}, target)
+    })
     // const target = this.props.url.query.from || `/user/dashboard`;
     const target = `/user/dashboard`;
     redirect({}, target)
@@ -84,7 +84,7 @@ export default class LoginButton extends Component{
     return <Mutation mutation={LOGIN_USER_MUTATION}
       onCompleted={this.onLoginCompleted}
       onError={this.onLoginError}>
-      {(loginUser) => (
+      {(loginUser, { data, error }) => (
         <RaisedButton
          label='Login'
          style={style}
@@ -95,3 +95,5 @@ export default class LoginButton extends Component{
     </Mutation>
   }
 }
+
+export default withApollo(LoginButton)
