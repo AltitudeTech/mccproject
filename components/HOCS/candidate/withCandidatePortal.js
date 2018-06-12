@@ -7,6 +7,8 @@ import withData from '../../../lib/backendApi/withData'
 import redirect from '../../../lib/auth/redirect'
 import checkLoggedIn from '../../../lib/auth/checkLoggedIn'
 
+import CandidateIsAuthenticatedContext from '../../Context/CandidateIsAuthenticated'
+
 // import {Container} from 'reactstrap'
 // import Breadcrumb from './portal/Breadcrumb/Breadcrumb'
 // import Sidebar from './portal/adminUI/Sidebar/Sidebar'
@@ -16,16 +18,16 @@ import { ToastContainer } from 'react-toastify'
 
 export default function withLayout(Child, opts) {
   class WrappedComponent extends React.Component {
-    static async getInitialProps(context, apolloClient) {
+    static async getInitialProps(context) {
       let ChildProps = {};
 
       if (Child.getInitialProps) {
-        ChildProps = await Child.getInitialProps(context, apolloClient)
+        ChildProps = await Child.getInitialProps(context)
       }
 
       //Validate loggedin user
-      const {loggedInUser} = await checkLoggedIn(context, apolloClient)
-      if (!loggedInUser.candidate) {
+      const {isAuthenticated} = await checkLoggedIn(context.apolloClient)
+      if (!isAuthenticated) {
         // If not signed in, send them somewhere more useful
         let target = `/?show=signIn`
         // let asPath = `/login`
@@ -38,12 +40,14 @@ export default function withLayout(Child, opts) {
 
       return {
         ...ChildProps,
-        loggedInUser
+        isAuthenticated
       }
     }
 
     render() {
-      if (!this.props.loggedInUser.candidate) {
+      const { isAuthenticated } = this.props;
+      console.log(`isAuthenticated : ${isAuthenticated}`);
+      if (!isAuthenticated) {
         return (
           <div>Hollup</div>
         )
@@ -68,9 +72,9 @@ export default function withLayout(Child, opts) {
               <main className="main" style={{
                 paddingTop: '24px'
               }}>
-              
-                <Child />
-              
+                <CandidateIsAuthenticatedContext.Provider value={isAuthenticated}>
+                  <Child />
+                </CandidateIsAuthenticatedContext.Provider>
             </main>
           </div>
         </div>
@@ -79,10 +83,12 @@ export default function withLayout(Child, opts) {
     )}
   }
 
-  return compose(
+  return (WrappedComponent)
+
+  /*return compose(
     // withData gives us server-side graphql queries before rendering
     withData,
     // withApollo exposes `this.props.client` used when logging out
     withApollo
-  )(WrappedComponent)
+  )(WrappedComponent)*/
 }
