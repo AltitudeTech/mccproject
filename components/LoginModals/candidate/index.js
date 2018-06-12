@@ -14,6 +14,7 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 import { auto } from 'async';
 
 import LoginButton from './LoginButton'
+import RegisterButton from './RegisterButton'
 
 const EMAIL_REGEX = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
 const muiThemebtn = getMuiTheme()
@@ -83,14 +84,7 @@ export default class CandidateModal extends React.Component {
 
   render() {
     const actions = [
-     (this.state.slideIndex == 0 ?
-       <LoginButton {...this.state}/>
-        : <RaisedButton
-      label='Register'
-      style={style}
-      primary={true}
-      onClick={this.submitForm}
-    />),
+     (this.state.slideIndex == 0 ? <LoginButton {...this.state}/>:<LoginButton {...this.state}/> ),
       <RaisedButton
         label="Cancel"
         style={style}

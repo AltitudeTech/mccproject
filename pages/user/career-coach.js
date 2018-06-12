@@ -4,10 +4,7 @@ import Link from 'next/link'
 import LeftNavigation from './leftnavigation'
 import withCandidatePortal from '../../components/HOCS/candidate/withCandidatePortal'
 
-class Dashboard extends Component{
-    constructor(props){
-        super(props)
-    }
+class CareerCoach extends Component{
     render(){
         return<div>
         <Head>
@@ -21,49 +18,18 @@ class Dashboard extends Component{
         <div className="container">
             <div className="row profile">
                 <div className="col-md-3">
-                    <LeftNavigation dashboard='dashboard' />
+                    <LeftNavigation career='career' />
                 </div>
                 <div className="col-md-9">
                     <div className="profile-content">
                     <div>
-                        <h2>Candidate Portal</h2><hr/>
+                        <h2>Career Coach</h2><hr/>
                         <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
                         </p>
                         <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
                         </p>
-                            {/* <Query query={PROFILE_VIEWER_CANDIDATE_QUERY}>
-                            {({loading, error, data}) => {
-                                if (loading)
-                                return "Loading...";
-                                if (error)
-                                return `Error! ${error.message}`;
-
-                                const {viewerCandidate: {candidate}} = data;
-                                return (
-                                <div>
-                                    <Row>
-                                    <Col md="8" xs="12">
-                                        <ProfileSection user={candidate} update={this.props.update}/>
-                                    </Col>
-                                    <Col md="4" xs="12">
-                                        <DetailsSection user={candidate}/>
-                                    </Col>
-                                    </Row>
-                                    <Row>
-                                    <Col md="8">
-                                        <MoreDetails user={candidate} update={this.props.update}/>
-                                        <ExperienceSection />
-                                        <EducationSection />
-                                        <CertificatesSection />
-                                        <RefereesSection />
-                                        </Col>
-                                    </Row>
-                                </div>
-                                )
-                            }}
-                            </Query> */}
                     </div>
                             
                     </div>
@@ -95,4 +61,4 @@ class Dashboard extends Component{
         </div>
     }
 }
-export default withCandidatePortal(Dashboard)
+export default withCandidatePortal(CareerCoach)

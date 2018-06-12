@@ -1,6 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import { withApollo, compose } from 'react-apollo'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 //import 'isomorphic-fetch'
 
 import withData from '../../../lib/backendApi/withData'
@@ -50,7 +51,7 @@ export default function withLayout(Child, opts) {
       }
       const opts = opts || {};
       return (
-        <div>
+        <MuiThemeProvider>
           <Head>
             <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
             <meta httpEquiv="X-UA-Compatible" content="IE=edge"/>
@@ -68,14 +69,13 @@ export default function withLayout(Child, opts) {
               <main className="main" style={{
                 paddingTop: '24px'
               }}>
-              
                 <Child />
               
             </main>
           </div>
         </div>
         <ToastContainer />
-      </div>
+      </MuiThemeProvider>
     )}
   }
 
