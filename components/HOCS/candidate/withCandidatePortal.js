@@ -33,7 +33,7 @@ export default function withLayout(Child, opts) {
         let target = `/?show=signIn`
         // let asPath = `/login`
         if (context.pathname !== '/user'){
-          target = `${target}`
+          target = `${target}&from=${context.pathname}`
           // asPath = `${asPath}?from=${context.pathname}`
         }
         redirect(context, target)
@@ -47,6 +47,7 @@ export default function withLayout(Child, opts) {
 
     render() {
       const { isAuthenticated } = this.props;
+      console.log(`isAuthenticated : ${isAuthenticated}`);
       if (!isAuthenticated) {
         return (
           <div>Hollup</div>
