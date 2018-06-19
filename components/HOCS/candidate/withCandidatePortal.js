@@ -8,8 +8,6 @@ import withData from '../../../lib/backendApi/withData'
 import redirect from '../../../lib/auth/redirect'
 import checkLoggedIn from '../../../lib/auth/checkLoggedIn'
 
-import CandidateIsAuthenticatedContext from '../../Context/CandidateIsAuthenticated'
-
 // import {Container} from 'reactstrap'
 // import Breadcrumb from './portal/Breadcrumb/Breadcrumb'
 // import Sidebar from './portal/adminUI/Sidebar/Sidebar'
@@ -72,14 +70,7 @@ export default function withLayout(Child, opts) {
               <main className="main" style={{
                 paddingTop: '24px'
               }}>
-<<<<<<< HEAD
                 <Child />
-              
-=======
-                <CandidateIsAuthenticatedContext.Provider value={isAuthenticated}>
-                  <Child />
-                </CandidateIsAuthenticatedContext.Provider>
->>>>>>> 5ef650e31aa1a2af6d920f8a741994ece999bcd2
             </main>
           </div>
         </div>

@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
 import Head from 'next/head'
-<<<<<<< HEAD
 import Link from 'next/link'
 import LeftNavigation from './leftnavigation'
-=======
->>>>>>> 5ef650e31aa1a2af6d920f8a741994ece999bcd2
 import withCandidatePortal from '../../components/HOCS/candidate/withCandidatePortal'
 
 class Dashboard extends Component{
@@ -14,19 +11,6 @@ class Dashboard extends Component{
     render(){
         return<div>
         <Head>
-<<<<<<< HEAD
-          <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-          <meta httpEquiv="X-UA-Compatible" content="IE=edge"/>
-          <meta charSet="utf-8"/> 
-          <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
-          <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-          <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-        </Head>
-        <div className="container">
-            <div className="row profile">
-                <div className="col-md-3">
-                    <LeftNavigation dashboard='dashboard' />
-=======
             <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
             <meta httpEquiv="X-UA-Compatible" content="IE=edge"/>
             <meta charSet="utf-8"/>
@@ -84,7 +68,6 @@ class Dashboard extends Component{
                         </div>
 
                     </div>
->>>>>>> 5ef650e31aa1a2af6d920f8a741994ece999bcd2
                 </div>
                 <div className="col-md-9">
                     <div className="profile-content">
@@ -141,9 +124,6 @@ class Dashboard extends Component{
               .profile {
                 margin: 10px 0;
               }
-<<<<<<< HEAD
-              
-=======
 
               .profile-sidebar {
                 padding: 20px 0 10px 0;
@@ -239,7 +219,6 @@ class Dashboard extends Component{
                 margin-right: -2px;
               }
 
->>>>>>> 5ef650e31aa1a2af6d920f8a741994ece999bcd2
               .profile-content{box-shadow:1px 1px 10px rgba(0,0,0,0.3);}
               .profile-content {
                 padding: 20px;
