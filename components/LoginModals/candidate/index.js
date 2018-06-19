@@ -61,13 +61,7 @@ export default class CandidateModal extends React.Component {
 
   loginAs = ['Candidate' , 'Institution', 'Career Adviser']
 
-  handleOpen = () => {
-    this.setState({open: true});
-  };
 
-  handleClose = () => {
-    this.setState({open: false});
-  };
   usernameText = (event) => {
     this.setState({username : event.target.value})
     EMAIL_REGEX.test(this.state.username)? this.setState({usernameError:''}):this.setState({usernameError:'Invalid Email'})
@@ -95,7 +89,7 @@ export default class CandidateModal extends React.Component {
         label="Cancel"
         style={style}
         secondary={true}
-        onClick={this.handleClose}
+        onClick={this.props.close}
       />
     ];
 
@@ -106,7 +100,7 @@ export default class CandidateModal extends React.Component {
           style={{zIndex : 1000}}
           actions={actions}
           modal={true}
-          open={this.state.open}
+          open={this.props.isOpen}
           contentStyle={customContentStyle}
         >
         <Tabs
