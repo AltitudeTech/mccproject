@@ -26,7 +26,7 @@ class LoginButton extends Component{
     // Force a reload of all the current queries now that the user is
     // logged in
     this.props.client.resetStore().then(() => {
-      const target = this.props.url.query.from || `/user/dashboard`;
+      const target = `/user/dashboard`;
       redirect({}, target)
     })
     // const target = this.props.url.query.from || `/user/dashboard`;
