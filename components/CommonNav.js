@@ -25,7 +25,6 @@ class CommonNav extends Component{
     }
 
     signout = () => {
-      console.log('signing out');
       document.cookie = cookie.serialize('token', '', {
         maxAge: -1 // Expire the cookie immediately
       })

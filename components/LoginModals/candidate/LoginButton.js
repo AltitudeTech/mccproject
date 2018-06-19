@@ -56,6 +56,7 @@ class LoginButton extends Component{
 
   doLogin = (event, runMutation) => {
     const { username, password } = this.props;
+    // console.log(`logging in user:${username}, password:${password}`);
 
     event.preventDefault()
     event.stopPropagation()
