@@ -1,23 +1,51 @@
 import React, { Component, Fragment } from 'react'
 import LoginModal from './LoginModals/candidate'
 import { Query, withApollo } from 'react-apollo'
+import cookie from 'cookie'
+import redirect from '../lib/auth/redirect'
 
 import { CANDIDATE_ISAUTHENTICATED_QUERY } from '../lib/backendApi/queries'
 
 class CommonNav extends Component{
     constructor(props){
         super(props);
+        this.handleModalOpen = this.handleModalOpen.bind(this);
+        this.handleModalClose = this.handleModalClose.bind(this);
+        this.signout = this.signout.bind(this);
+
+        this.state = {
+          open: false
+        }
     }
 
     componentDidMount(){
       const {showSignIn} = this.props
       if (showSignIn)
-        this.copen.handleOpen();
+        this.setState({open: true});
     }
 
-    triggerModal(){
-      this.copen.handleOpen() ;
+    signout = () => {
+      console.log('signing out');
+      document.cookie = cookie.serialize('token', '', {
+        maxAge: -1 // Expire the cookie immediately
+      })
+
+      // Force a reload of all the current queries now that the user is
+      // logged in, so we don't accidentally leave any state around.
+      this.props.client.cache.reset().then(() => {
+        // Redirect to a more useful page when signed out
+        redirect({}, '/')
+      })
     }
+
+    handleModalOpen = () => {
+      this.setState({open: true});
+    };
+
+    handleModalClose = () => {
+      this.setState({open: false});
+    };
+
     render(){
         return <Fragment>
         <div className="container ">
@@ -70,11 +98,11 @@ class CommonNav extends Component{
                                       const { candidateIsAuthenticated } = data;
                                       return <Fragment>
                                         { candidateIsAuthenticated ?
-                                          <a href="#!"  style={{fontWeight : '500', color : 'white', margin : '10px'}}>LOGOUT</a>
+                                          <a href="#!" onClick={this.signout} style={{fontWeight : '500', color : 'white', margin : '10px'}}>LOGOUT</a>
                                           :
                                           <Fragment>
-                                            <LoginModal ref={open => this.copen = open} />
-                                            <a href="#!"  onClick={this.triggerModal.bind(this)} style={{fontWeight : '500', color : 'white', margin : '10px'}}>LOGIN</a>
+                                            <LoginModal isOpen = {this.state.open} close={this.handleModalClose} />
+                                            <a href="#!"  onClick={this.handleModalOpen} style={{fontWeight : '500', color : 'white', margin : '10px'}}>LOGIN</a>
                                           </Fragment>
                                       }</Fragment>
                                     }}
