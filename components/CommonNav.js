@@ -97,11 +97,11 @@ class CommonNav extends Component{
                                       const { candidateIsAuthenticated } = data;
                                       return <Fragment>
                                         { candidateIsAuthenticated ?
-                                          <a href="#!" onClick={this.signout} style={{fontWeight : '500', color : 'white', margin : '10px'}}>LOGOUT</a>
+                                          <a href="#!" onClick={this.signout} style={{fontWeight : '500', color : 'white', width : 'auto', margin : '0px 15px'}}>LOGOUT</a>
                                           :
                                           <Fragment>
                                             <LoginModal isOpen = {this.state.open} close={this.handleModalClose} />
-                                            <a href="#!"  onClick={this.handleModalOpen} style={{fontWeight : '500', color : 'white', margin : '10px'}}>LOGIN</a>
+                                            <a href="#!"  onClick={this.handleModalOpen} style={{fontWeight : '500', color : 'white', margin : '0px 20px'}}>LOGIN</a>
                                           </Fragment>
                                       }</Fragment>
                                     }}
