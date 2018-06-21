@@ -147,7 +147,7 @@ input[type="reset"],
   display: block;
   text-align: center;
   background: transparent;
-  margin : auto 5px ;
+  margin : 0px 1px ;
 }
 .w3layouts_social li a i {
   display: block;
