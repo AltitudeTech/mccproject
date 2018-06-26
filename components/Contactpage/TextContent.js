@@ -1,8 +1,25 @@
-import React, { Component, Fragment } from 'react'
+import { Component, Fragment } from 'react'
+import { Mutation, withApollo } from 'react-apollo'
 
-
+import { CREATE_ENQUIRY_MUTATION } from '../../lib/backendApi/mutations'
 export default class TextContent extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      confirmationMessage: null
+    }
+  }
+
+  onEquirySucessfull = (data) => {
+    this.setState({confirmationMessage: 'Thank you for reaching out!!'})
+    this.setTimeout(()=>{
+      this.setState({confirmationMessage: null})
+    }, 5000)
+  }
+
   render() {
+     let name, email, message
+
     return (
       <Fragment>
         <div className="mail">
@@ -41,12 +58,33 @@ export default class TextContent extends Component {
             <div className="container">
                 <p className="w3ls_para">OUR CUSTOMER SERVICE TEAM ARE WAITING FOR YOUR MESSAGE</p>
                 <div className="w3l_services_bottom_grids contact-right-w3l">
-                    <form action="#" method="post">
-                        <input type="text" className="name" name="name" placeholder="Your Name" required=""/>
-                        <input type="email" className="name" name="name" placeholder="Email" required=""/>
-                        <textarea placeholder="Your Message" required=""></textarea>
-                        <input type="submit" value="SEND MESSAGE"/>
-                    </form>
+                  <Mutation mutation={CREATE_ENQUIRY_MUTATION} onCompleted={this.onEquirySucessfull} onError={(error) => {
+                    console.log(error)
+                  }}>
+                    {(createEnquiry, { data, error }) => (
+                      <form onSubmit={e => {
+                        e.preventDefault()
+                        e.stopPropagation()
+
+                        createEnquiry({
+                          variables: {
+                            name: name.value,
+                            email: email.value,
+                            message: message.value
+                          }
+                        })
+
+                        name.value = email.value = message.value = ''
+                      }}>
+                      <input type="text" className="name" name="name" placeholder="Your Name" required="" ref={node => { name = node }}/>
+                      <input  type="email" className="name" name="email" placeholder="Email" required="" ref={node => { email = node }}/>
+                      <textarea name="message" placeholder="Your Message" required="" ref={node => { message = node }}></textarea>
+                      <input type="submit" value="SEND MESSAGE"/>
+                      {error && <p>Issue occured while registering :(</p>}
+                      {this.state.confirmationMessage && <p>{this.state.confirmationMessage}</p>}
+                      </form>
+                    )}
+                  </Mutation>
                 </div>
             </div>
         </div>
@@ -57,13 +95,13 @@ export default class TextContent extends Component {
             }
             .contact-right-w3l:-moz-placeholder {
             color: #fff;
-            } 
-            .contact-right-w3l ::-moz-placeholder { 
-                color: #fff;  
-            } 
-            .contact-main :-ms-input-placeholder {  
+            }
+            .contact-right-w3l ::-moz-placeholder {
                 color: #fff;
-            }	
+            }
+            .contact-main :-ms-input-placeholder {
+                color: #fff;
+            }
             .contact-right-w3l input[type="text"], .contact-right-w3l input[type="email"] {
                 font-size: 1em;
                 border: none;
