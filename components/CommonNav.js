@@ -4,24 +4,15 @@ import { Query, withApollo } from 'react-apollo'
 import cookie from 'cookie'
 import redirect from '../lib/auth/redirect'
 
+import { LoginModalContext } from './Context/LoginModalContext'
 import { CANDIDATE_ISAUTHENTICATED_QUERY } from '../lib/backendApi/queries'
+
+import { loaderStyles } from '../utils/styles'
 
 class CommonNav extends Component{
     constructor(props){
         super(props);
-        this.handleModalOpen = this.handleModalOpen.bind(this);
-        this.handleModalClose = this.handleModalClose.bind(this);
         this.signout = this.signout.bind(this);
-
-        this.state = {
-          open: false
-        }
-    }
-
-    componentDidMount(){
-      const {showSignIn} = this.props
-      if (showSignIn)
-        this.setState({open: true});
     }
 
     signout = () => {
@@ -36,14 +27,6 @@ class CommonNav extends Component{
         redirect({}, '/')
       })
     }
-
-    handleModalOpen = () => {
-      this.setState({open: true});
-    };
-
-    handleModalClose = () => {
-      this.setState({open: false});
-    };
 
     render(){
         return <Fragment>
@@ -88,7 +71,10 @@ class CommonNav extends Component{
                                   <Query query={CANDIDATE_ISAUTHENTICATED_QUERY}>
                                     {({loading, error, data}) => {
                                       if (loading)
-                                        return "Loading...";
+                                        return <Fragment>
+                                          <div className="loader"></div>
+                                          <style jsx>{`${loaderStyles}`}</style>
+                                        </Fragment>;
                                       if (error) {
                                         console.log(error);
                                         return `XXX`;
@@ -100,8 +86,16 @@ class CommonNav extends Component{
                                           <a href="#!" onClick={this.signout} style={{fontWeight : '500', color : 'white', width : 'auto', margin : '0px 15px'}}>LOGOUT</a>
                                           :
                                           <Fragment>
-                                            <LoginModal isOpen = {this.state.open} close={this.handleModalClose} />
-                                            <a href="#!"  onClick={this.handleModalOpen} style={{fontWeight : '500', color : 'white', margin : '0px 20px'}}>LOGIN</a>
+                                            <LoginModalContext.Consumer>{
+                                              ({open, toggleModal}) => (
+                                                <Fragment>
+                                                  <LoginModal isOpen = {open} close={toggleModal} />
+                                                  <a href="#!"  onClick={toggleModal} style={{fontWeight : '500', color : 'white', margin : '0px 20px'}}>LOGIN</a>
+                                                </Fragment>
+                                              )
+                                            }</LoginModalContext.Consumer>
+                                            {/* <LoginModal isOpen = {this.state.open} close={this.handleModalClose} />
+                                            <a href="#!"  onClick={this.handleModalOpen} style={{fontWeight : '500', color : 'white', margin : '0px 20px'}}>LOGIN</a> */}
                                           </Fragment>
                                       }</Fragment>
                                     }}

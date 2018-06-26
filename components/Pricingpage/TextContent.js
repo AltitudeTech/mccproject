@@ -1,63 +1,14 @@
-// import React, { Component} from 'react'
-// import Button from '@material-ui/core/Button'
-
-
-// export default class TextContent extends Component {
-//   render() {
-//     return (
-//       <div className="banner-bottom">
-//         <div className="container">
-//           <div className="col-md-4 w3layouts_banner_bottom_left hidden-md">
-//             <img src="/static/images/1-1.png" alt=" " style={{width:'100%'}} className="img-responsive" />
-//           </div>
-//           <div className="col-md-4 col-sm-12 w3layouts_banner_bottom_right">
-//             <h4>welcome to MyCareerChoice</h4>
-//             <p>
-//               The secret to career satisfaction lies in doing what you enjoy most. Careers that match your personality style make the best use of your natural gifts and talents and will give you the greatest happiness in your life. There is a strong link between the career you choose and your purpose in life. Your Career is the vehicle that carries you to your purpose.
-//             </p>
-//             <div className="w3_more">
-//             <Button size="large" color="primary" variant="outlined" href="about" >
-//               Read More
-//             </Button>
-//             </div>
-//           </div>
-//           <div className="col-md-4 col-sm-12 w3layouts_banner_bottom_right">
-//             <h4>welcome to MyCareerChoice</h4>
-//             <p>
-//               The secret to career satisfaction lies in doing what you enjoy most. Careers that match your personality style make the best use of your natural gifts and talents and will give you the greatest happiness in your life. There is a strong link between the career you choose and your purpose in life. Your Career is the vehicle that carries you to your purpose.
-//             </p>
-//             <div className="w3_more">
-//             <Button size="large" color="primary" variant="outlined" href="about" >
-//               Read More
-//             </Button>
-//             </div>
-//           </div>
-//           <div className="clearfix"></div>
-//         </div>
-//         <style jsx>{`
-//           h4{
-//             font-size: 26px;
-//             margin-bottom: 10px ;
-//           }
-//           li{
-//               font-size: 16px;
-//               line-height : 30px;
-//               color : black ;
-//           }
-//           `}
-//         </style>
-//       </div>
-//     );
-//   }
-// }
-
-
 import React from 'react';
+import Router from 'next/router';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import { ApolloConsumer } from 'react-apollo'
+
+import { CANDIDATE_ISAUTHENTICATED_QUERY } from '../../lib/backendApi/queries'
+import { LoginModalContext } from '../Context/LoginModalContext'
 
 const style = {
   height: 'auto',
@@ -68,6 +19,7 @@ const style = {
   textAlign: 'center',
   display: 'inline-block',
 };
+
 
 const TextComponent = () => (
   <MuiThemeProvider>
@@ -85,7 +37,23 @@ const TextComponent = () => (
           secondaryText="Your status is visible to everyone you use with"
         />
       </List><br/>
-      <RaisedButton label="Place Order NOW" labelColor="#fff" backgroundColor="#FF6C36" />
+      <LoginModalContext.Consumer>{
+        ({toggleModal}) => (
+          <ApolloConsumer>
+            {client => (
+              <RaisedButton label="Place Order NOW" labelColor="#fff" backgroundColor="#FF6C36"
+                onClick={async () => {
+                  const { data : { candidateIsAuthenticated } } = await client.query({query: CANDIDATE_ISAUTHENTICATED_QUERY});
+                  if (candidateIsAuthenticated) {
+                    Router.push('/user/dashboard');
+                  } else {
+                    toggleModal();
+                  }
+                }}/>
+              )}
+            </ApolloConsumer>
+        )}
+      </LoginModalContext.Consumer>
     </Paper>
     <Paper style={style} zDepth={2}>
       <h3 className='institution'>Institution</h3><br/>

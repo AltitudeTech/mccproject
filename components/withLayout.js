@@ -8,9 +8,10 @@ import CustomSnackbar from './CustomSnackbar'
 import { withApollo, compose } from 'react-apollo'
 import { ToastContainer } from 'react-toastify'
 
+import { LoginModalWrapper } from './Context/LoginModalContext'
+
 import withData from '../lib/backendApi/withData'
 //injectTapEventPlugin()
-
 
 export default function withLayout(Child, opts) {
     class WrappedComponent extends React.Component {
@@ -42,9 +43,11 @@ export default function withLayout(Child, opts) {
             </Head>
             <div>
               <div className="">
-              <CustomSnackbar />
+                <CustomSnackbar />
+                <LoginModalWrapper>
                   <Child {...this.props}/>
-                  <Testimonials />
+                </LoginModalWrapper>
+                <Testimonials />
                 <Footer />
               </div>
               <Scripts />
