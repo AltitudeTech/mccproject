@@ -1,6 +1,11 @@
 import React, { Component, Fragment } from 'react'
+import { Mutation, withApollo } from 'react-apollo'
 
-export default props => 
+import { NEWSLETTER_SUBSCRIPTION_MUTATION } from '../../lib/backendApi/mutations'
+
+let email
+
+export default props =>
 <Fragment>
   <div>
     <img style={{ width : '100%'}} className="item" data-topimage="7%" width="728" usemap="#imgmap" src="/static/images/mobileBanner.jpg" />
@@ -9,24 +14,44 @@ export default props =>
       </map>
     </div>
   <div className="footer">
-    <div className="container"> 
+    <div className="container">
       <div className="col-md-4 w3_footer_grid">
         <h3>About Us</h3>
         <ul>
-          <li className=""><i className="fa fa-long-arrow-right" aria-hidden="true"></i><a href="{{ route('index') }}">Home</a></li>
-          <li className=""><i className="fa fa-long-arrow-right" aria-hidden="true"></i><a href="{{ route('about') }}">About</a></li>
-          <li className=""><i className="fa fa-long-arrow-right" aria-hidden="true"></i><a href="{{ route('student') }}">Student</a></li>
+          <li className=""><i className="fa fa-long-arrow-right" aria-hidden="true"></i><a href="/">Home</a></li>
+          <li className=""><i className="fa fa-long-arrow-right" aria-hidden="true"></i><a href="/about">About</a></li>
+          <li className=""><i className="fa fa-long-arrow-right" aria-hidden="true"></i><a href="/student">Student</a></li>
 
-          <li className=""><i className="fa fa-long-arrow-right" aria-hidden="true"></i><a href="{{ route('institution') }}">Institution</a></li>
-          <li className=""><i className="fa fa-long-arrow-right" aria-hidden="true"></i><a href="{{ route('mail') }}">Contact</a></li>
+          <li className=""><i className="fa fa-long-arrow-right" aria-hidden="true"></i><a href="/institution">Institution</a></li>
+          <li className=""><i className="fa fa-long-arrow-right" aria-hidden="true"></i><a href="/contact">Contact</a></li>
         </ul>
       </div>
       <div className="col-md-5 col-md-offset-3 w3_footer_grid">
         <h3>Newsletter</h3>
-        <form action="#" method="post">
-          <input type="email" name="email" placeholder="Your email..." required=""/>
-          <input type="submit" value=" "/>
-        </form>
+        <Mutation mutation={NEWSLETTER_SUBSCRIPTION_MUTATION} onCompleted={({subscribeToNewsletter: {address}}) => {
+          email.value = ''
+          console.log(`${address} has subscribed sucessfully`)
+        }} onError={(error) => {
+          console.log(error)
+        }}>
+          {(subscribeToNewsletter, { data, error }) => (
+            <form onSubmit={e => {
+              e.preventDefault()
+              e.stopPropagation()
+
+              subscribeToNewsletter({
+                variables: {
+                  address: email.value,
+                }
+              })
+
+
+            }}>
+              <input required="" ref={node => { email = node }} type="email" name="email" placeholder="Your email..." required=""/>
+              <input type="submit" value=" "/>
+            </form>
+          )}
+        </Mutation>
         <p>Sign up now for more information about <span>MyCareerChoice</span>
         <img src='/static/images/paymentImage.png' style={{width:'60%'}} className="img-responsive" alt=""/>
         </p>

@@ -12,7 +12,7 @@ export default class TextContent extends Component {
 
   onEquirySucessfull = (data) => {
     this.setState({confirmationMessage: 'Thank you for reaching out!!'})
-    this.setTimeout(()=>{
+    setTimeout(()=>{
       this.setState({confirmationMessage: null})
     }, 5000)
   }

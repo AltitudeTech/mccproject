@@ -5,7 +5,7 @@ import cookie from 'cookie'
 import redirect from '../lib/auth/redirect'
 
 import { LoginModalContext } from './Context/LoginModalContext'
-import { CANDIDATE_ISAUTHENTICATED_QUERY } from '../lib/backendApi/queries'
+import { USER_ISAUTHENTICATED_QUERY } from '../lib/backendApi/queries'
 
 import { loaderStyles } from '../utils/styles'
 
@@ -47,28 +47,28 @@ class CommonNav extends Component{
                     <nav>
                         <ul className="nav navbar-nav link-effect-5" id="link-effect-5">
                             <li className={this.props.homepage && "active"}>
-                                <a href="index" data-hover="Home">Home</a>
+                                <a href="/" data-hover="Home">Home</a>
                             </li>
                             <li className={this.props.aboutpage && "active"}>
-                                <a href="about" data-hover="About">About</a>
+                                <a href="/about" data-hover="About">About</a>
                             </li >
                             <li className={this.props.studentpage && "active"}>
-                                <a href="student" data-hover="Student">Student</a>
+                                <a href="/student" data-hover="Student">Student</a>
                             </li>
                             <li className={this.props.institutionpage && "active"}>
-                                <a href="institution" data-hover="Institution">Institution</a>
+                                <a href="/institution" data-hover="Institution">Institution</a>
                             </li>
                             <li className={this.props.pricingpage && "active"}>
-                                <a href="pricing" data-hover="Pricing">Pricing</a>
+                                <a href="/pricing" data-hover="Pricing">Pricing</a>
                             </li>
                             <li className={this.props.contactpage && "active"}>
-                                <a href="contact" data-hover="Contact">Contact</a>
+                                <a href="/contact" data-hover="Contact">Contact</a>
                             </li>
                         </ul>
                         <div className="w3_social_icons">
                             <ul className="w3layouts_social">
                                 <li>
-                                  <Query query={CANDIDATE_ISAUTHENTICATED_QUERY}>
+                                  <Query query={USER_ISAUTHENTICATED_QUERY}>
                                     {({loading, error, data}) => {
                                       if (loading)
                                         return <Fragment>
@@ -80,9 +80,9 @@ class CommonNav extends Component{
                                         return `XXX`;
                                       }
 
-                                      const { candidateIsAuthenticated } = data;
+                                      const { userIsAuthenticated } = data;
                                       return <Fragment>
-                                        { candidateIsAuthenticated ?
+                                        { userIsAuthenticated ?
                                           <a href="#!" onClick={this.signout} style={{fontWeight : '500', color : 'white', width : 'auto', margin : '0px 15px'}}>LOGOUT</a>
                                           :
                                           <Fragment>

@@ -43,6 +43,8 @@ const styles = {
     color : '#646666'
   },
 };
+
+const REGISTER_TYPES = ['Candidate' , 'Institution', 'Career Adviser']
 /**
  * A modal dialog can only be closed by selecting one of the actions.
  */
@@ -59,9 +61,6 @@ export default class CandidateModal extends React.Component {
     regEmail : '' ,
   };
 
-  loginAs = ['Candidate' , 'Institution', 'Career Adviser']
-
-
   usernameText = (event) => {
     this.setState({username : event.target.value})
     EMAIL_REGEX.test(this.state.username)? this.setState({usernameError:''}):this.setState({usernameError:'Invalid Email'})
@@ -74,7 +73,10 @@ export default class CandidateModal extends React.Component {
           ({slideIndex, handleTabChange, registerType, changeRegisterType}) => {
 
             const actions = [
-              (slideIndex == 0 ? <LoginButton {...this.state}/>:<RegisterButton {...this.state}/> ),
+              (slideIndex == 0 ?
+                <LoginButton {...this.state}/>
+                :
+                <RegisterButton REGISTER_TYPES={REGISTER_TYPES} registerType={registerType} {...this.state}/> ),
               <RaisedButton
                 label="Cancel"
                 style={style}
@@ -125,22 +127,22 @@ export default class CandidateModal extends React.Component {
                         />
 
 
-                        <FloatingActionButton mini={true} style={style}>
+                        {/* <FloatingActionButton mini={true} style={style}>
                           <ContentAdd />
                         </FloatingActionButton>
 
                         <FloatingActionButton mini={true} secondary={true} style={style}>
                           <ContentAdd />
-                        </FloatingActionButton>
+                        </FloatingActionButton> */}
                       </div>
                       <div style={styles.slide}>
                         <TextField style={styles.textfield}
-                          hintText={registerType == 2 ? 'Institution Name'  : 'Fullname'}
+                          // hintText={registerType == 1 ? 'Fullname' : registerType == 2 ? 'Institution Name'  : 'Adviser Fullname'}
                           fullWidth={true}
                           errorText=''
                           value={this.state.fullname}
                           onChange={(e) => this.setState({fullname : e.target.value})}
-                          floatingLabelText={registerType == 2 ? 'Institution Name'  : 'Fullname'}
+                          floatingLabelText={registerType == 0 ? 'Fullname' : registerType == 1 ? 'Institution Name'  : 'Adviser Fullname'}
                           type="text"
                         />
                         <TextField
@@ -153,7 +155,7 @@ export default class CandidateModal extends React.Component {
                           type="text"
                         />
                         <TextField
-                          hintText="Password"
+                          // hintText="Password"
                           fullWidth={true}
                           value={this.state.regPassword}
                           onChange={(e) => this.setState({regPassword : e.target.value})}
@@ -167,9 +169,7 @@ export default class CandidateModal extends React.Component {
                           onChange={changeRegisterType}
                           fullWidth={true}
                           >
-                            <MenuItem value={1} primaryText="Candidate" />
-                            <MenuItem value={2} primaryText="Institution" />
-                            <MenuItem value={3} primaryText="Career Adviser" />
+                            {REGISTER_TYPES.map((type, index) => <MenuItem value={index} primaryText={type} />)}
                           </SelectField>
                         </div>
                       </SwipeableViews>

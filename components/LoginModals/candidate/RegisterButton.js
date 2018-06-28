@@ -15,7 +15,7 @@ const style = {
 
 export default class RegisterButton extends Component{
 
-  onLoginCompleted = (data) => {
+  onsignUpCompleted = (data) => {
     // Store the token in cookie
     const {jwt, name: {last}} = data.loginUser
     // toast(`Welcome Back ${last}!`, {...TOAST_STYLE.success});
@@ -34,9 +34,9 @@ export default class RegisterButton extends Component{
     redirect({}, target)
   }
 
-  onLoginError = (error) => {
+  onsignUpError = (error) => {
     // If you want to send error to external service?
-    // console.log(error)
+    console.log(error)
     if (error.graphQLErrors.length==0)
       toast("Something Went Wrong With your request", {...TOAST_STYLE.fail});
 
@@ -54,7 +54,7 @@ export default class RegisterButton extends Component{
     })
   }
 
-  doLogin = (event, runMutation) => {
+  dosignUp = (event, runMutation) => {
     const { username, password } = this.props;
 
     event.preventDefault()
@@ -81,22 +81,30 @@ export default class RegisterButton extends Component{
   }
 
   render(){
-    return <Mutation mutation={LOGIN_USER_MUTATION}
-      onCompleted={this.onLoginCompleted}
-      onError={this.onLoginError}>
+    const { REGISTER_TYPES, registerType } = this.props;
+    let mutation = LOGIN_USER_MUTATION;
+    REGISTER_TYPES[registerType]=='Candidate' && (mutation=LOGIN_USER_MUTATION);
+    REGISTER_TYPES[registerType]=='Institution' && (mutation=LOGIN_USER_MUTATION);
+    REGISTER_TYPES[registerType]=='Career Adviser' && (mutation=LOGIN_USER_MUTATION);
+    console.log(registerType);
+    console.log(REGISTER_TYPES[registerType]);
+    return <Mutation mutation={mutation}
+      onCompleted={this.onsignUpCompleted}
+      onError={this.onsignUpError}>
       {(loginUser) => (
           <RaisedButton
           label='Register'
           style={style}
           primary={true}
-        //   onClick={this.submitForm}
+          onClick={e=>this.dosignUp(e, loginUser)}
+          //   onClick={this.submitForm}
         />
 
     //     <RaisedButton
-    //      label='Login'
+    //      label='signUp'
     //      style={style}
     //      primary={true}
-    //      onClick={e=>this.doLogin(e, loginUser)}
+    //      onClick={e=>this.dosignUp(e, loginUser)}
     //    />
       )}
     </Mutation>

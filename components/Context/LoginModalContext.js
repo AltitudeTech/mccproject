@@ -9,7 +9,7 @@ const LoginModalContext = React.createContext({
   open: false,
   value: 1,
   slideIndex: 0,
-  registerType : 1,
+  registerType : 0,
   toggleModal: () => {},
   handleTabChange: () => {},
   handleModalOpen: () => {},
@@ -25,10 +25,10 @@ class LoginModalWrapper extends Component {
     this.changeRegisterType = this.changeRegisterType.bind(this);
 
     this.state = {
-      open: false,
+      open: this.props.showSignIn || false,
       value: 1,
       slideIndex: 0,
-      registerType : 1,
+      registerType : 0,
       toggleModal: this.toggleModal,
       handleTabChange: this.handleTabChange,
       handleModalOpen: this.handleModalOpen,

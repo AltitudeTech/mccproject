@@ -17,7 +17,7 @@ class LoginButton extends Component{
 
   onLoginCompleted = (data) => {
     // Store the token in cookie
-    const {jwt, name: {last}} = data.loginUser
+    const { jwt, name: {last}, userType } = data.loginUser
     // toast(`Welcome Back ${last}!`, {...TOAST_STYLE.success});
     console.log(`Welcome Back ${last}!`);
     document.cookie = cookie.serialize('token', jwt, {
@@ -26,17 +26,17 @@ class LoginButton extends Component{
     // Force a reload of all the current queries now that the user is
     // logged in
     this.props.client.resetStore().then(() => {
-      const target = `/user/dashboard`;
+      // const target = this.props.url.query.from || `/user/dashboard`;
+      let target = `/user/dashboard`;
+      userType == 'Candidate' && (target=`/user/dashboard`)
+      userType == 'Institution' && (target=`/institution/dashboard`)
       redirect({}, target)
     })
-    // const target = this.props.url.query.from || `/user/dashboard`;
-    const target = `/user/dashboard`;
-    redirect({}, target)
   }
 
   onLoginError = (error) => {
     // If you want to send error to external service?
-    // console.log(error)
+    console.log(error)
     if (error.graphQLErrors.length==0)
       toast("Something Went Wrong With your request", {...TOAST_STYLE.fail});
 

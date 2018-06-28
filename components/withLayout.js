@@ -27,6 +27,8 @@ export default function withLayout(Child, opts) {
       }
 
       render() {
+        const {showSignIn} = this.props;
+
         return (
           <div>
             <Head>
@@ -44,7 +46,7 @@ export default function withLayout(Child, opts) {
             <div>
               <div className="">
                 <CustomSnackbar />
-                <LoginModalWrapper>
+                <LoginModalWrapper showSignIn={showSignIn}>
                   <Child {...this.props}/>
                 </LoginModalWrapper>
                 <Testimonials />

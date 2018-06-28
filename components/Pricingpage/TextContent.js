@@ -7,7 +7,7 @@ import Subheader from 'material-ui/Subheader';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import { ApolloConsumer } from 'react-apollo'
 
-import { CANDIDATE_ISAUTHENTICATED_QUERY } from '../../lib/backendApi/queries'
+import { USER_ISAUTHENTICATED_QUERY } from '../../lib/backendApi/queries'
 import { LoginModalContext } from '../Context/LoginModalContext'
 
 const style = {
@@ -43,8 +43,8 @@ const TextComponent = () => (
             {client => (
               <RaisedButton label="Place Order NOW" labelColor="#fff" backgroundColor="#FF6C36"
                 onClick={async () => {
-                  const { data : { candidateIsAuthenticated } } = await client.query({query: CANDIDATE_ISAUTHENTICATED_QUERY});
-                  if (candidateIsAuthenticated) {
+                  const { data : { userIsAuthenticated } } = await client.query({query: USER_ISAUTHENTICATED_QUERY});
+                  if (userIsAuthenticated) {
                     Router.push('/user/dashboard');
                   } else {
                     toggleModal();
@@ -69,7 +69,23 @@ const TextComponent = () => (
           secondaryText="Your status is visible to everyone you use with"
         />
       </List><br/>
-      <RaisedButton label="Place Order NOW" labelColor="#fff" backgroundColor="#0C6053" />
+      <LoginModalContext.Consumer>{
+        ({toggleModal}) => (
+          <ApolloConsumer>
+            {client => (
+              <RaisedButton label="Place Order NOW" labelColor="#fff" backgroundColor="#0C6053"
+                onClick={async () => {
+                  const { data : { userIsAuthenticated } } = await client.query({query: USER_ISAUTHENTICATED_QUERY});
+                  if (userIsAuthenticated) {
+                    Router.push('/institution/dashboard');
+                  } else {
+                    toggleModal();
+                  }
+                }}/>
+              )}
+            </ApolloConsumer>
+        )}
+      </LoginModalContext.Consumer>
     </Paper>
     <style jsx>{`
       h3 {

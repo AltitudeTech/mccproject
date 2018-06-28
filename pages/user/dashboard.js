@@ -3,6 +3,9 @@ import Head from 'next/head'
 import Link from 'next/link'
 import LeftNavigation from './leftnavigation'
 import withCandidatePortal from '../../components/HOCS/candidate/withCandidatePortal'
+import { ApolloConsumer } from 'react-apollo'
+import cookie from 'cookie'
+import redirect from '../../lib/auth/redirect'
 
 class Dashboard extends Component{
     constructor(props){
@@ -40,29 +43,49 @@ class Dashboard extends Component{
                         <div className="profile-usermenu">
                             <ul className="nav">
                                 <li className="active">
-                                    <a href="#">
+                                    <a href="/">
                                     <i className="glyphicon glyphicon-home"></i>
                                     Home </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="/user/Payment">
                                     <i className="glyphicon glyphicon-user"></i>
                                     Make Payment  </a>
                                 </li>
-                                <li>
+                                {/* <li>
                                     <a href="#">
                                     <i className="glyphicon glyphicon-edit"></i>
                                     MCC Test Code </a>
-                                </li>
+                                </li> */}
                                 <li>
                                     <a href="#">
                                     <i className="glyphicon glyphicon-ok"></i>
                                     Career Coach</a>
                                 </li>
-                                    <li>
+                                <li>
                                     <a href="#">
                                     <i className="glyphicon glyphicon-flag"></i>
                                     Help / FAQ </a>
+                                </li>
+                                <li>
+                                  <ApolloConsumer>{
+                                    client => <a href="#!" onClick={(e)=>{
+                                      e.preventDefault();
+                                      e.stopPropagation();
+                                      document.cookie = cookie.serialize('token', '', {
+                                        maxAge: -1 // Expire the cookie immediately
+                                      })
+
+                                      // Force a reload of all the current queries now that the user is
+                                      // logged in, so we don't accidentally leave any state around.
+                                      client.cache.reset().then(() => {
+                                        // Redirect to a more useful page when signed out
+                                        redirect({}, '/')
+                                      })
+                                    }}>
+                                    <i className="glyphicon glyphicon-log-out"></i>
+                                    Logout </a>
+                                  }</ApolloConsumer>
                                 </li>
                             </ul>
                         </div>
