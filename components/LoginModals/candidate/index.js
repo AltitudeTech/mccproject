@@ -57,8 +57,9 @@ export default class CandidateModal extends React.Component {
     password : '',
     usernameError : '',
     passwordError : '',
-    fullname : '' ,
+    regFullname : '' ,
     regEmail : '' ,
+    regPassword : '' ,
   };
 
   usernameText = (event) => {
@@ -76,7 +77,11 @@ export default class CandidateModal extends React.Component {
               (slideIndex == 0 ?
                 <LoginButton {...this.state}/>
                 :
-                <RegisterButton REGISTER_TYPES={REGISTER_TYPES} registerType={registerType} {...this.state}/> ),
+                <RegisterButton
+                  REGISTER_TYPES={REGISTER_TYPES}
+                  registerType={registerType}
+                  {...this.state}/>
+                ),
               <RaisedButton
                 label="Cancel"
                 style={style}
@@ -140,8 +145,8 @@ export default class CandidateModal extends React.Component {
                           // hintText={registerType == 1 ? 'Fullname' : registerType == 2 ? 'Institution Name'  : 'Adviser Fullname'}
                           fullWidth={true}
                           errorText=''
-                          value={this.state.fullname}
-                          onChange={(e) => this.setState({fullname : e.target.value})}
+                          value={this.state.regFullname}
+                          onChange={(e) => this.setState({regFullname : e.target.value})}
                           floatingLabelText={registerType == 0 ? 'Fullname' : registerType == 1 ? 'Institution Name'  : 'Adviser Fullname'}
                           type="text"
                         />
