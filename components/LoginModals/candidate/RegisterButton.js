@@ -24,11 +24,17 @@ export default withApollo(
       if (REGISTER_TYPES[registerType]=='Candidate') {
          user=data.candidateCreateAccount;
          target = `/user/dashboard`;
+         document.cookie = cookie.serialize('userType', 'Candidate', {
+           maxAge: 30 * 24 * 60 * 60 // 30 days
+         })
        }
        // TODO
       if (REGISTER_TYPES[registerType]=='Institution') {
          user=data.institutionCreateAccount;
          target = `/institution/dashboard`;
+         document.cookie = cookie.serialize('userType', 'Institution', {
+           maxAge: 30 * 24 * 60 * 60 // 30 days
+         })
        }
 
       // Store the token in cookie

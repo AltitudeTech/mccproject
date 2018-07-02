@@ -1,31 +1,17 @@
 import React, { Component, Fragment } from 'react'
+import Router from 'next/router'
 import LoginModal from './LoginModals/candidate'
-import { Query, withApollo } from 'react-apollo'
+import { ApolloConsumer } from 'react-apollo'
 import cookie from 'cookie'
-import redirect from '../lib/auth/redirect'
 
 import { LoginModalContext } from './Context/LoginModalContext'
 import { USER_ISAUTHENTICATED_QUERY } from '../lib/backendApi/queries'
 
 import { loaderStyles } from '../utils/styles'
 
-class CommonNav extends Component{
+export default class CommonNav extends Component{
     constructor(props){
         super(props);
-        this.signout = this.signout.bind(this);
-    }
-
-    signout = () => {
-      document.cookie = cookie.serialize('token', '', {
-        maxAge: -1 // Expire the cookie immediately
-      })
-
-      // Force a reload of all the current queries now that the user is
-      // logged in, so we don't accidentally leave any state around.
-      this.props.client.cache.reset().then(() => {
-        // Redirect to a more useful page when signed out
-        redirect({}, '/')
-      })
     }
 
     render(){
@@ -68,38 +54,38 @@ class CommonNav extends Component{
                         <div className="w3_social_icons">
                             <ul className="w3layouts_social">
                                 <li>
-                                  <Query query={USER_ISAUTHENTICATED_QUERY}>
-                                    {({loading, error, data}) => {
-                                      if (loading)
-                                        return <Fragment>
-                                          <div className="loader"></div>
-                                          <style jsx>{`${loaderStyles}`}</style>
-                                        </Fragment>;
-                                      if (error) {
-                                        console.log(error);
-                                        return `XXX`;
-                                      }
-
-                                      const { userIsAuthenticated } = data;
-                                      return <Fragment>
-                                        { userIsAuthenticated ?
-                                          <a href="#!" onClick={this.signout} style={{fontWeight : '500', color : 'white', width : 'auto', margin : '0px 15px'}}>LOGOUT</a>
-                                          :
-                                          <Fragment>
-                                            <LoginModalContext.Consumer>{
-                                              ({open, toggleModal}) => (
-                                                <Fragment>
-                                                  <LoginModal isOpen = {open} close={toggleModal} />
-                                                  <a href="#!"  onClick={toggleModal} style={{fontWeight : '500', color : 'white', margin : '0px 20px'}}>LOGIN</a>
-                                                </Fragment>
-                                              )
-                                            }</LoginModalContext.Consumer>
-                                            {/* <LoginModal isOpen = {this.state.open} close={this.handleModalClose} />
-                                            <a href="#!"  onClick={this.handleModalOpen} style={{fontWeight : '500', color : 'white', margin : '0px 20px'}}>LOGIN</a> */}
-                                          </Fragment>
-                                      }</Fragment>
-                                    }}
-                                  </Query>
+                                  <LoginModalContext.Consumer>{
+                                    ({open, toggleModal}) => (
+                                      <Fragment>
+                                        <LoginModal isOpen = {open} close={toggleModal} />
+                                        <ApolloConsumer>
+                                          {client => (
+                                            <a href="#!" style={{fontWeight : '500', color : 'white', margin : '0px 20px'}}
+                                              onClick={async () => {
+                                                const { data : { userIsAuthenticated } } = await client.query({query: USER_ISAUTHENTICATED_QUERY});
+                                                if (userIsAuthenticated) {
+                                                  const {userType, token} = cookie.parse(document.cookie)
+                                                  if (userType && token) {
+                                                    // console.log(userType);
+                                                    if (userType == 'Candidate') {
+                                                      Router.push('/user/dashboard');
+                                                    } else if (userType == 'Institution') {
+                                                      Router.push('/institution/dashboard');
+                                                    } else {
+                                                      toggleModal();
+                                                    }
+                                                  } else {
+                                                    toggleModal();
+                                                  }
+                                                } else {
+                                                  toggleModal();
+                                                }
+                                              }}>LOGIN</a>
+                                            )}
+                                          </ApolloConsumer>
+                                      </Fragment>
+                                    )}
+                                  </LoginModalContext.Consumer>
                                 </li>
                                 <li>
                                     <a href="https://www.facebook.com/career.choice.5" target="_blank" className="w3l_facebook">
@@ -125,5 +111,3 @@ class CommonNav extends Component{
     </Fragment>
     }
 }
-
-export default withApollo(CommonNav)

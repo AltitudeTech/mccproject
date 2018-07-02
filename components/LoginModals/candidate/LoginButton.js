@@ -17,10 +17,13 @@ class LoginButton extends Component{
 
   onLoginCompleted = (data) => {
     // Store the token in cookie
-    const { jwt, name: {last}, userType } = data.loginUser
-    // toast(`Welcome Back ${last}!`, {...TOAST_STYLE.success});
-    console.log(`Welcome Back ${last}!`);
+    const { jwt, name, userType } = data.loginUser
+    toast(`Welcome Back ${name}!`, {...TOAST_STYLE.success});
+    console.log(`Welcome Back ${name}!`);
     document.cookie = cookie.serialize('token', jwt, {
+      maxAge: 30 * 24 * 60 * 60 // 30 days
+    })
+    document.cookie = cookie.serialize('userType', userType, {
       maxAge: 30 * 24 * 60 * 60 // 30 days
     })
     // Force a reload of all the current queries now that the user is
@@ -28,8 +31,8 @@ class LoginButton extends Component{
     this.props.client.resetStore().then(() => {
       // const target = this.props.url.query.from || `/user/dashboard`;
       let target = `/user/dashboard`;
-      userType == 'Candidate' && (target=`/user/dashboard`)
-      userType == 'Institution' && (target=`/institution/dashboard`)
+      userType == 'Candidate' && (target=`/user/dashboard`);
+      userType == 'Institution' && (target=`/institution/dashboard`);
       redirect({}, target)
     })
   }

@@ -44,7 +44,6 @@ const styles = {
   },
 };
 
-const REGISTER_TYPES = ['Candidate' , 'Institution', 'Career Adviser']
 /**
  * A modal dialog can only be closed by selecting one of the actions.
  */
@@ -71,7 +70,7 @@ export default class CandidateModal extends React.Component {
 
     return (
       <LoginModalContext.Consumer>{
-          ({slideIndex, handleTabChange, registerType, changeRegisterType}) => {
+          ({slideIndex, handleTabChange, registerType, changeRegisterType, REGISTER_TYPES}) => {
 
             const actions = [
               (slideIndex == 0 ?
@@ -142,7 +141,7 @@ export default class CandidateModal extends React.Component {
                       </div>
                       <div style={styles.slide}>
                         <TextField style={styles.textfield}
-                          // hintText={registerType == 1 ? 'Fullname' : registerType == 2 ? 'Institution Name'  : 'Adviser Fullname'}
+                          hintText={registerType == 0 ? 'e.g John Doe' : registerType == 1 ? 'e.g Google'  : 'Adviser Fullname'}
                           fullWidth={true}
                           errorText=''
                           value={this.state.regFullname}
