@@ -30,7 +30,7 @@ export default function withLayout(Child, opts) {
         let target = `/?show=signIn`
         // let asPath = `/login`
         if (context.pathname !== '/user'){
-          target = `${target}&from=${context.pathname}`
+          // target = `${target}&from=${context.pathname}`
           // asPath = `${asPath}?from=${context.pathname}`
         }
         redirect(context, target)
@@ -68,13 +68,7 @@ export default function withLayout(Child, opts) {
               <main className="main" style={{
                 paddingTop: '24px'
               }}>
-              {/* <Breadcrumb/> */}
-              {/* <Container fluid> */}
-                <p className="display-4 text-center" style={{fontSize: '2rem'}}>
-                  KTT YEZ Candidate Portal
-                </p>
                 <Child />
-              {/* </Container> */}
             </main>
           </div>
         </div>
