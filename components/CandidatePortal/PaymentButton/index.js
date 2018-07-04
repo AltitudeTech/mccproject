@@ -16,7 +16,7 @@ export default class PaymentButton extends Component {
 	}
 
 	callback = (response, runMutation) => {
-		console.log(response); // card charged successfully, get reference here
+		// console.log(response); // card charged successfully, get reference here
 		if (response.reference) {//successfully
 			runMutation({
 				variables: {

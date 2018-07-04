@@ -15,7 +15,6 @@ export default class LeftNavigation extends Component{
   }
 
   setActive = (e) => {
-    console.log('Free pizza!')
     console.log(e.target.className)
   }
 
