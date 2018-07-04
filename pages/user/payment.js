@@ -6,6 +6,9 @@ import RaisedButton from 'material-ui/RaisedButton';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
+import { CandidatePaymentsWrapper, CandidatePaymentsContext } from '../../components/Context/CandidatePaymentsContext'
+
+
 const styles = {
   customWidth: {
     width: 150,
@@ -56,11 +59,25 @@ class PaymentPage extends Component{
 
               <RaisedButton primary={true} label="Pay NOW" />
 
-              </CardActions>
-          </Card>
-          </div>
-          <div className="col-md-6">
-          </div>
+                  </CardActions>
+                </Card>
+              </div>
+              <div className="col-md-6">
+              </div>
+            </div>
+              <CandidatePaymentsContext.Consumer>{
+                ({ payments }) => <Fragment>
+                  <div>
+                    <h3>Payment History</h3><hr/>
+                    {payments.map(payment=>(
+                      <p>
+                        {payment.paystackReference} - {payment.testCode && payment.testCode.code} - {payment.createdAt}
+                      </p>
+                    ))}
+                  </div>
+                </Fragment>
+              }</CandidatePaymentsContext.Consumer>
+          </CandidatePaymentsWrapper>
         </div>
     }
 }
