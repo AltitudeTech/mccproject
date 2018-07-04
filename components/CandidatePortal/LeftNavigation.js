@@ -23,13 +23,12 @@ export default class LeftNavigation extends Component{
         return<div>
         <div className="profile-sidebar">
             <div className="profile-usertitle">
-                <img src="http://www.mycareerchoice.global/static/images/mcclogo-text-dark.png" width="100px"/>
+                <img src="/static/images/mcclogo-circle.png" width="100px"/>
                 <style jsx>{`
-                  img: {
+                  img {
                     border-radius: 50%;
                     height: 100px;
                     border: 4px solid #136458;
-                    padding: 10px;
                     background-color: #f1f3fa;
                   }
                 `}</style>
