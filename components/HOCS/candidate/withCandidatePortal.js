@@ -1,6 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
-import { withApollo, compose } from 'react-apollo'
+import { withApollo, compose, Mutation } from 'react-apollo'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 //import 'isomorphic-fetch'
 
@@ -14,7 +14,8 @@ import checkLoggedIn from '../../../lib/auth/checkLoggedIn'
 // import Header from './portal/adminUI/Header/Header'
 
 import { ToastContainer } from 'react-toastify'
-import { CandidateDetailsWrapper } from '../../Context/CandidateDetailsContext'
+import { CandidateDetailsWrapper, CandidateDetailsContext } from '../../Context/CandidateDetailsContext'
+import { SEND_ACTIVATION_LINK_CANDIDATE_MUTATION } from '../../../lib/backendApi/mutations'
 
 import LeftNavigation from '../../CandidatePortal/LeftNavigation'
 
@@ -64,7 +65,8 @@ export default function withLayout(Child, opts={}) {
             {/* <link rel="icon" href="wt_62309/images/favicon.ico" type="image/x-icon"/> */}
             {/* <!-- Stylesheets--> */}
             {/* <link rel="stylesheet" href="/static/css/portal/style.css"/> */}
-            <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
+            {/* <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/> */}
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
             <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
             <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
           </Head>
@@ -78,6 +80,32 @@ export default function withLayout(Child, opts={}) {
                 }}>
                 <div className="container">
                   <div className="row profile">
+                    <CandidateDetailsContext.Consumer>{
+                      ({ candidate: { isActivated } }) => {
+                        if (!isActivated) {
+                          return (
+                            <div className="alert alert-danger" role="alert">
+                              <strong>Warning!</strong> Your account has not been verified, please check your email to verify.
+                              <Mutation mutation={SEND_ACTIVATION_LINK_CANDIDATE_MUTATION}
+                                onCompleted={({candidateResendActivationLink: {email}}) => {
+                                  console.log(`activation link was sent to ${email}`)
+                                }}
+                                onError={(error) => {
+                                  console.log(error)
+                                }}>{
+                                  (doMutation, { data }) => <small className="resend-mail">
+                                    Can't find the email? <a href="#" onClick={e=>{
+                                      e.preventDefault();
+                                      e.stopPropagation();
+                                      doMutation();
+                                    }}>click here</a> to resend
+                                  </small>
+                                }</Mutation>
+                            </div>
+                          )
+                        }
+                      }
+                    }</CandidateDetailsContext.Consumer>
                       <div className="col-md-3">
                           <LeftNavigation activePage={activePage}/>
                       </div>
@@ -94,6 +122,10 @@ export default function withLayout(Child, opts={}) {
         <style global jsx>{`
             body {
                 background: #F1F3FA;
+              }
+
+              .resend-mail {
+                float: right;
               }
 
               .profile {
