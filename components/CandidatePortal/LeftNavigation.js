@@ -6,6 +6,8 @@ import { ApolloConsumer } from 'react-apollo'
 import cookie from 'cookie'
 import redirect from '../../lib/auth/redirect'
 
+import NotificationsList from '../CandidatePortal/NotificationsList'
+
 import { CandidateDetailsContext } from '../Context/CandidateDetailsContext'
 
 export default class LeftNavigation extends Component{
@@ -20,6 +22,10 @@ export default class LeftNavigation extends Component{
 
     render(){
         return<div>
+          {/* <Head>
+            <script src="/static/css/react-dropdown/react-buttons.css"></script>
+            <script src="/static/css/react-dropdown/react-dropdown.css"></script>
+          </Head> */}
         <div className="profile-sidebar">
             <div className="profile-usertitle">
                 <img src="/static/images/mcclogo-circle.png" width="100px"/>
@@ -44,7 +50,8 @@ export default class LeftNavigation extends Component{
             </div>
 
             <div className="profile-userbuttons">
-                <button type="button" className="btn btn-danger btn-sm">Message</button>
+                {/* <button type="button" className="btn btn-danger btn-sm">Message</button> */}
+                <NotificationsList />
             </div>
 
             <div className="profile-usermenu">
