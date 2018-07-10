@@ -4,11 +4,11 @@ import Link from 'next/link'
 
 import { ApolloConsumer } from 'react-apollo'
 import cookie from 'cookie'
-import redirect from '../../lib/auth/redirect'
+import redirect from '../../../lib/auth/redirect'
 
-import NotificationsList from '../CandidatePortal/NotificationsList'
+import NotificationsList from '../../CandidatePortal/NotificationsList'
 
-import { CandidateDetailsContext } from '../Context/CandidateDetailsContext'
+import { AffiliateDetailsContext } from '../../Context/AffiliateDetailsContext'
 
 export default class LeftNavigation extends Component{
   constructor(props){
@@ -37,15 +37,15 @@ export default class LeftNavigation extends Component{
                     background-color: #f1f3fa;
                   }
                 `}</style>
-                <CandidateDetailsContext.Consumer>{
-                  ({ candidate: { name } }) => <Fragment>
+                <AffiliateDetailsContext.Consumer>{
+                  ({ affiliate: { name } }) => <Fragment>
                     <div className="profile-usertitle-name">
                       {name}
                     </div>
                   </Fragment>
-                }</CandidateDetailsContext.Consumer>
+                }</AffiliateDetailsContext.Consumer>
                 <div className="profile-usertitle-job">
-                    Candidate
+                    Affiliate
                 </div>
             </div>
 
@@ -57,32 +57,24 @@ export default class LeftNavigation extends Component{
             <div className="profile-usermenu">
                 <ul className="nav">
                     <li className={this.props.activePage=='/' ? "active" : ""} >
-                      <Link prefetch href="/user/dashboard">
+                      <Link prefetch href="/affiliate/dashboard">
                         <a>
                         <i className="glyphicon glyphicon-home"></i>
                         Home </a>
                       </Link>
                     </li>
-                    <li className={this.props.activePage=='/payment' ? "active" : ""}>
-                        <Link prefetch href="/user/payment">
+                    <li className={this.props.activePage=='/customers' ? "active" : ""}>
+                      <Link prefetch href="/affiliate/customers">
+                      <a>
+                        <i className="glyphicon glyphicon-user"></i>
+                        Customers </a>
+                      </Link>
+                    </li>
+                    <li className={this.props.activePage=='/profile' ? "active" : ""}>
+                        <Link prefetch href="/affiliate/profile">
                         <a>
                         <i className="glyphicon glyphicon-user"></i>
-                        Make Payment  </a>
-                        </Link>
-
-                    </li>
-                    <li className={this.props.activePage=='/test' ? "active" : ""}>
-                        <Link prefetch href="/user/mcc-test-code">
-                        <a>
-                        <i className="glyphicon glyphicon-edit"></i>
-                        MCC Test Code </a>
-                        </Link>
-                    </li>
-                    <li className={this.props.activePage=='/career-coach' ? "active" : ""}>
-                        <Link prefetch href="/user/career-coach">
-                        <a>
-                        <i className="glyphicon glyphicon-ok"></i>
-                        Career Coach</a>
+                        Profile  </a>
                         </Link>
                     </li>
                     <li>
@@ -91,13 +83,6 @@ export default class LeftNavigation extends Component{
                           <i className="glyphicon glyphicon-ok"></i>Link To Website
                         </a>
                       </Link>
-                    </li>
-                    <li className={this.props.activePage=='/faq' ? "active" : ""}>
-                        <Link prefetch href="/user/faq">
-                        <a>
-                        <i className="glyphicon glyphicon-flag"></i>
-                        Help / FAQ </a>
-                        </Link>
                     </li>
                     <li>
                       <ApolloConsumer>{

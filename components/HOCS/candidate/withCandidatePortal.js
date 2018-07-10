@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
+import Router from 'next/router'
 import { withApollo, compose, Mutation } from 'react-apollo'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 //import 'isomorphic-fetch'
@@ -50,9 +51,7 @@ export default function withLayout(Child, opts={}) {
     render() {
       const { isAuthenticated } = this.props;
       if (!isAuthenticated) {
-        return (
-          <div>Hollup</div>
-        )
+        Router.push('/');
       }
       // console.log(opts);
       const { activePage } = opts;

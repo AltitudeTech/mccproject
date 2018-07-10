@@ -71,6 +71,8 @@ export default class CommonNav extends Component{
                                                       Router.push('/user/dashboard');
                                                     } else if (userType == 'Institution') {
                                                       Router.push('/institution/dashboard');
+                                                    } else if (userType == 'MccAffiliate') {
+                                                      Router.push('/affiliate/dashboard');
                                                     } else {
                                                       toggleModal();
                                                     }

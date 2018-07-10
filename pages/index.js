@@ -41,7 +41,7 @@ class IndexPage extends Component {
       </div>
       <MccContent />
       <MccContent2 />
-      <TextContent2 />
+      {/* <TextContent2 /> */}
     </Fragment>)
   }
 }
