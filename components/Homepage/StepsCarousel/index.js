@@ -25,7 +25,7 @@ export default class ControlledCarousel extends React.Component {
 		let message;
 		step==1 && (message = `Sign Up`);
 		step==2 && (message = `Login`);
-		step==3 && (message = `Verify your account`);
+		step==3 && (message = ``);
 		step==4 && (message = `Log into your portal`);
 		step==5 && (message = `Make payment`);
 		step==6 && (message = `Receive your MCC Test Code`);
@@ -51,10 +51,10 @@ export default class ControlledCarousel extends React.Component {
 							<img className="steps-slide" width={'auto'} height={400} alt="step 1" src="/static/images/ani/Sign-Up.gif" />
 						</Carousel.Item>
 						<Carousel.Item>
-							<img className="steps-slide" width={'auto'} height={400} alt="step 2" src="/static/images/ani/Login.gif" />
+							<img className="steps-slide" width={'auto'} height={400} alt="step 2" src="/static/images/ani/Email-Verification.gif" />
 						</Carousel.Item>
 						<Carousel.Item>
-							<img className="steps-slide" width={'auto'} height={400} alt="step 3" src="/static/images/ani/Email-Verification.gif" />
+							<img className="steps-slide" width={'auto'} height={400} alt="step 3" src="/static/images/ani/Login.gif" />
 						</Carousel.Item>
 						<Carousel.Item>
 							<img className="steps-slide" width={'auto'} height={400} alt="step 4" src="/static/images/ani/Candidate-Portal-Animation.gif" />
