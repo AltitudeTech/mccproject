@@ -21,10 +21,12 @@ class LoginButton extends Component{
     toast(`Welcome Back ${name}!`, {...TOAST_STYLE.success});
     console.log(`Welcome Back ${name}!`);
     document.cookie = cookie.serialize('token', jwt, {
-      maxAge: 30 * 24 * 60 * 60 // 30 days
+      maxAge: 30 * 24 * 60 * 60, // 30 days
+      path: '/'
     })
     document.cookie = cookie.serialize('userType', userType, {
-      maxAge: 30 * 24 * 60 * 60 // 30 days
+      maxAge: 30 * 24 * 60 * 60, // 30 days
+      path: '/'
     })
     // Force a reload of all the current queries now that the user is
     // logged in
