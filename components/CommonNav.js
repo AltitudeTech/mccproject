@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 // import Router from 'next/router'
-import LoginModal from './LoginModals/candidate'
+import LoginModal from './LoginModals/user'
 import { ApolloConsumer } from 'react-apollo'
 import cookie from 'cookie'
 import redirect from '../lib/auth/redirect'
