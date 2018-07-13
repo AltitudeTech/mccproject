@@ -99,10 +99,12 @@ export default class LeftNavigation extends Component{
                           e.preventDefault();
                           e.stopPropagation();
                           document.cookie = cookie.serialize('token', '', {
-                            maxAge: -1 // Expire the cookie immediately
+                            maxAge: -1, // Expire the cookie immediately
+                            path: '/'
                           })
                           document.cookie = cookie.serialize('userType', '', {
-                            maxAge: -1 // Expire the cookie immediately
+                            maxAge: -1, // Expire the cookie immediately\
+                            path: '/'
                           })
 
                           // Force a reload of all the current queries now that the user is
