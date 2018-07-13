@@ -78,11 +78,9 @@ export default class LeftNavigation extends Component{
                         </Link>
                     </li>
                     <li>
-                      <Link href="/" >
-                        <a target="_blank">
-                          <i className="glyphicon glyphicon-ok"></i>Link To Website
-                        </a>
-                      </Link>
+                      <a href="/" target="_blank">
+                        <i className="glyphicon glyphicon-ok"></i>Link To Website
+                      </a>
                     </li>
                     <li>
                       <ApolloConsumer>{

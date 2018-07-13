@@ -5,14 +5,9 @@ import { withApollo, compose, Mutation } from 'react-apollo'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 //import 'isomorphic-fetch'
 
-import withData from '../../../lib/backendApi/withData'
+// import withData from '../../../lib/backendApi/withData'
 import redirect from '../../../lib/auth/redirect'
 import checkLoggedIn from '../../../lib/auth/checkLoggedIn'
-
-// import {Container} from 'reactstrap'
-// import Breadcrumb from './portal/Breadcrumb/Breadcrumb'
-// import Sidebar from './portal/adminUI/Sidebar/Sidebar'
-// import Header from './portal/adminUI/Header/Header'
 
 import { ToastContainer } from 'react-toastify'
 import { CandidateDetailsWrapper, CandidateDetailsContext } from '../../Context/CandidateDetailsContext'
@@ -66,8 +61,8 @@ export default function withLayout(Child, opts={}) {
             {/* <link rel="stylesheet" href="/static/css/portal/style.css"/> */}
             {/* <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/> */}
             <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
-            <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-            <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+            {/* <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> */}
+            {/* <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> */}
           </Head>
           <CandidateDetailsWrapper>
             <div className="app">
@@ -242,12 +237,12 @@ export default function withLayout(Child, opts={}) {
     )}
   }
 
-  // return (WrappedComponent)
+  return (WrappedComponent)
 
-  return compose(
-    // withData gives us server-side graphql queries before rendering
-    withData,
-    // withApollo exposes `this.props.client` used when logging out
-    withApollo
-  )(WrappedComponent)
+  // return compose(
+  //   // withData gives us server-side graphql queries before rendering
+  //   withData,
+  //   // withApollo exposes `this.props.client` used when logging out
+  //   withApollo
+  // )(WrappedComponent)
 }
