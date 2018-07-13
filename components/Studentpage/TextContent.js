@@ -7,13 +7,16 @@ export default class TextContent extends Component {
       <Fragment>
       <div className="services">
         <div className="container">
-          <h2 className="w3ls_para">EXPERIENCE THE POWER OF MCC </h2>
+          <h2 className="w3ls_para">EXPERIENCE THE POWER OF MCC</h2>
           <div className="col-md-12">
-            <p>
-              Proin id arcu odio. Proin tincidunt ante lacus, at commodo felis aliquam eu. Praesent ut turpis venenatis, aliquam mauris tempus, lobortis nunc. Pellentesque maximus ipsum turpis, sed blandit diam placerat ac. Proin in mi ut nulla lacinia facilisis. Nullam semper sapien eget viverra iaculis. Integer quis vestibulum lacus, imperdiet pellentesque libero.
-              Cras feugiat dui augue, in malesuada sem porta id. Mauris tempor aliquam risus eget sagittis. Nulla eu imperdiet mauris. Morbi ornare ac elit luctus vestibulum.
-              Proin id arcu odio. Proin tincidunt ante lacus, at commodo felis aliquam eu. Praesent ut turpis venenatis, aliquam mauris tempus, lobortis nunc. Pellentesque maximus ipsum turpis, sed blandit diam placerat ac. Proin in mi ut nulla lacinia facilisis. Nullam semper sapien eget viverra iaculis. Integer quis vestibulum lacus, imperdiet pellentesque libero.
-              Cras feugiat dui augue, in malesuada sem porta id. Mauris tempor aliquam risus eget sagittis. Nulla eu imperdiet mauris. Morbi ornare ac elit luctus vestibulum. 
+            <p className="experience">
+              Join millions of students around the world who are already enjoying the unique benefits of MCC.
+              <ul>
+                <li>Secondary School.</li>
+                <li>Higher Education.</li>
+                <li>New graduates seeking their job.</li>
+                <li>Graduate from one career to another.</li>
+              </ul>
             </p>
           </div>
         </div>
@@ -60,6 +63,11 @@ export default class TextContent extends Component {
             font-size : 18px ;
             line-height : 30px ;
           }
+          
+          p.experience{
+            font-size : 2em ;
+            line-height : 1.5em ;
+          }
           li{
             font-size : 16px ;
             margin : auto 15px ;
@@ -67,6 +75,14 @@ export default class TextContent extends Component {
           }
           .w3l_services_grids{
             color : #fff !important ;
+          }
+          p.experience ul li{
+            font-size : 0.8em ;
+            margin : auto 15px ;
+            line-height : 1.4em ;
+          }
+          p.experience ul {
+            margin : 20px 15px ;
           }
           `}
         </style>

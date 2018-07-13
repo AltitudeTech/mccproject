@@ -8,9 +8,7 @@ export default props =>
                 <img src="/static/images/1.jpg" alt=" " className="img-responsive" />
             </div>
             <div className="col-md-6 w3layouts_banner_bottom_right">
-            <p>
-                Millions of people do regret the career decisions they made years back and are now stuck with careers they really do not love, even though they may have made those decisions with good intentions. 
-            </p>
+            
             <ul>
                 <li>MCC guarantees you a well informed decision making process based on your passion and talents.</li>
                 <li>MCC gives you the opportunity not to repeat the mistakes of others and ensures your career decisions gives you the best chance to succeed in life. </li>
@@ -29,9 +27,10 @@ export default props =>
     color : black !important;
     }
     li{
-        font-size: 16px;
-        line-height : 30px;
+        font-size: 1.5em;
+        line-height : 1.5em ;
         color : black ;
+        margin : 10px auto ;
     }
     `}
     </style>

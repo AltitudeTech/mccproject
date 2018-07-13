@@ -9,11 +9,8 @@ export default class TextContent extends Component {
         <div className="container">
           <h2 className="w3ls_para">LET YOUR INSTITUTION EXPERIENCE THE IMPACT OF MCC </h2>
           <div className="col-md-12">
-            <p>
-              Proin id arcu odio. Proin tincidunt ante lacus, at commodo felis aliquam eu. Praesent ut turpis venenatis, aliquam mauris tempus, lobortis nunc. Pellentesque maximus ipsum turpis, sed blandit diam placerat ac. Proin in mi ut nulla lacinia facilisis. Nullam semper sapien eget viverra iaculis. Integer quis vestibulum lacus, imperdiet pellentesque libero.
-              Cras feugiat dui augue, in malesuada sem porta id. Mauris tempor aliquam risus eget sagittis. Nulla eu imperdiet mauris. Morbi ornare ac elit luctus vestibulum.
-              Proin id arcu odio. Proin tincidunt ante lacus, at commodo felis aliquam eu. Praesent ut turpis venenatis, aliquam mauris tempus, lobortis nunc. Pellentesque maximus ipsum turpis, sed blandit diam placerat ac. Proin in mi ut nulla lacinia facilisis. Nullam semper sapien eget viverra iaculis. Integer quis vestibulum lacus, imperdiet pellentesque libero.
-              Cras feugiat dui augue, in malesuada sem porta id. Mauris tempor aliquam risus eget sagittis. Nulla eu imperdiet mauris. Morbi ornare ac elit luctus vestibulum.
+            <p style={{fontSize:'2em', lineHeight: '2em', fontWeight:'normal' }}>
+              Ideal for secondary schools, colleges, polytechnics, universties, youth organizations, employers and government institutions.
             </p>
           </div>
         </div>
@@ -63,6 +60,13 @@ export default class TextContent extends Component {
           p.institution{
             font-size : 20px ;
             line-height : 50px ;
+          }
+          p.institution::before{
+            content : '*' ;
+            margin : 10px ;
+            margin-top : -5px ;
+            margin-left : -20px ;
+            font-size: 1.5em ;
           }
           li{
             font-size : 16px ;

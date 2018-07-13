@@ -69,7 +69,7 @@ export default class PaymentButton extends Component {
 						<p>
 							{error && <p>:( There was an issue check the logs</p>}
 							<PaystackButton
-								text="Pay now"
+								text="Pay Now"
 								class="payButton"
 								callback={(response)=>{this.callback(response, candidateFindOrCreatePaymentRecord)}}
 								close={this.close}

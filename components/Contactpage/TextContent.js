@@ -24,16 +24,18 @@ export default class TextContent extends Component {
       <Fragment>
         <div className="mail">
             <div className="container">
+            <h4 className="w3ls_para">OUR CUSTOMER SERVICE TEAM ARE WAITING FOR YOUR MESSAGE</h4>
+
                 <div className="agileits_w3layouts_mail">
                     <div className="col-md-4 agileits_w3layouts_mail_left">
                         <div className="w3_agileits_mail_left">
-                            <h4><i className="fa fa-map-marker" aria-hidden="true"></i>North America </h4>
+                            <h4><i className="fa fa-phone" aria-hidden="true"></i> TELEPHONE</h4>
                             <p className="wthree_address">3481 Melrose Place, 2K32 Street , Beverly Hills, New York City 90210.</p>
                         </div>
                     </div>
                     <div className="col-md-4 agileits_w3layouts_mail_left">
                         <div className="w3_agileits_mail_left">
-                            <h4><i className="fa fa-map-marker" aria-hidden="true"></i>Europe/Asia</h4>
+                            <h4><i className="fa fa-envelope" aria-hidden="true"></i>EMAIL ADDRESS</h4>
                             <div className="w3_agileits_mail_left1">
                                 <a href="mailto:info@example.com">info@example1.com</a>
                                 <a href="mailto:info@example.com">info@example2.com</a>
@@ -42,7 +44,7 @@ export default class TextContent extends Component {
                     </div>
                     <div className="col-md-4 agileits_w3layouts_mail_left">
                         <div className="w3_agileits_mail_left">
-                            <h4><i className="fa fa-map-marker" aria-hidden="true"></i>Africa/Middle East</h4>
+                            <h4><i className="fa fa-map-marker" aria-hidden="true"></i>OFFICE ADDRESS</h4>
                             <div className="w3_agileits_mail_left1">
                                 <p className="agileinfo_para">(+000) 123 345 456</p>
                                 <p className="agileinfo_para">(+010) 123 345 458</p>
@@ -56,7 +58,7 @@ export default class TextContent extends Component {
 
         <div className="services-bottom">
             <div className="container">
-                <p className="w3ls_para">OUR CUSTOMER SERVICE TEAM ARE WAITING FOR YOUR MESSAGE</p>
+                {/* <p className="w3ls_para">OUR CUSTOMER SERVICE TEAM ARE WAITING FOR YOUR MESSAGE</p> */}
                 <div className="w3l_services_bottom_grids contact-right-w3l">
                   <Mutation mutation={CREATE_ENQUIRY_MUTATION} onCompleted={this.onEquirySucessfull} onError={(error) => {
                     console.log(error)

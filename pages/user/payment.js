@@ -37,41 +37,46 @@ class PaymentPage extends Component{
         return <div className="profile-content">
           <CandidatePaymentsWrapper>
             <div>
-              <h2>Payment Portal</h2><hr/>
+              <h2>Payment Page</h2><hr/>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
               </p>
             </div>
-            <div className="row">
-              <div className="col-md-6">
-                <Card>
-                  <CardTitle title="MCC Test Code" subtitle="Career Intelligence" />
-                  <CardText>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Donec mattis pretium massa. Aliquam erat volutpat.
-                  </CardText>
-                  <CardActions>
-                    <SelectField
-                      floatingLabelText="Select Currency"
-                      value={this.state.value}
-                      onChange={this.handleChange}
-                      maxHeight={200}
-                      style={styles.customWidth}
-                      >
-                        <MenuItem value={null} primaryText="" />
-                        <MenuItem value={"USD"} primaryText="USD" />
-                        <MenuItem value={"POUNDS"} primaryText="POUNDS" />
-                        <MenuItem value={"NAIRA"} primaryText="NAIRA" />
-                      </SelectField>
+            <div className="row" style={{margin: 'auto'}}>
+                <Card style={{margin: 'auto', background: 'rgba(255,242,0,0.2)'}}>
+                  <CardTitle title="Purchase My Career Choice Test Code" subtitle="A service of Career Intelligence" />
+                  <div className="row" style={{padding : '10px'}}>
+                    <div className="col-md-6" style={{textAlign: 'center'}}>
+                      <img src="/static/images/product.jpg" style={{width:"80%", border:'1px solid #b2b2b2', margin: 'auto' }} />
+                    </div>
+                    <div className="col-md-6">
+                    <CardText>
+                      <h3>MCC Test Code</h3>
+                      <span className="subtitle" style={{textDecoration:'italics'}}>Know the career that suits your personality in 15 minutes for </span>
+                      <span style={{letterSpacing:'2px',color:'#b2b2b2',textDecoration:'line-through', fontSize: '1.5em'}}>$20.00</span>
+                      <span style={{letterSpacing:'2px',fontWeight:'bold', fontSize: '1.5em'}}>$10.00</span>
+                      <CardActions>
+                        {/* <SelectField
+                          floatingLabelText="Select Currency"
+                          value={this.state.value}
+                          onChange={this.handleChange}
+                          maxHeight={200}
+                          style={styles.customWidth}
+                          >
+                            <MenuItem value={null} primaryText="" />
+                            <MenuItem value={"USD"} primaryText="USD" />
+                            <MenuItem value={"POUNDS"} primaryText="POUNDS" />
+                            <MenuItem value={"NAIRA"} primaryText="NAIRA" />
+                          </SelectField> 
 
-                      <RaisedButton primary={true} label="Pay NOW" />
-                      <PaymentButton email={this.state.email} amount={this.state.amount}/>
-
-                  </CardActions>
+                        */}
+                        {/* <RaisedButton primary={true} label="Pay NOW" /> */}
+                          <PaymentButton email={this.state.email} amount={this.state.amount}/>
+                      </CardActions>
+                    </CardText>
+                    </div>
+                  </div>
                 </Card>
-              </div>
-              <div className="col-md-6">
-              </div>
             </div>
               <CandidatePaymentsContext.Consumer>{
                 ({ payments }) => <Fragment>
@@ -86,6 +91,16 @@ class PaymentPage extends Component{
                 </Fragment>
               }</CandidatePaymentsContext.Consumer>
           </CandidatePaymentsWrapper>
+          <style jsx>{`
+            span{
+              display : block ;
+            }
+            span.subtitle{
+              font-size: 14px; 
+              color: rgba(0, 0, 0, 0.541176); 
+              display: block;
+            }
+        `}</style>
         </div>
     }
 }

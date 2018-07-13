@@ -29,12 +29,16 @@ const TextComponent = () => (
       <List>
         <Subheader>FEATURES</Subheader>
         <ListItem
-          primaryText="Profile photo"
+          primaryText="MCC Code"
           secondaryText="Change your Google+ profile photo"
         />
         <ListItem
-          primaryText="Show your status"
-          secondaryText="Your status is visible to everyone you use with"
+          primaryText="MCC + 1hr Phone Call"
+          secondaryText="(optional)"
+        />
+        <ListItem
+          primaryText="MCC + 1hr Video Call"
+          secondaryText="(optional)"
         />
       </List><br/>
       <LoginModalContext.Consumer>{
@@ -61,12 +65,16 @@ const TextComponent = () => (
       <List>
         <Subheader>FEATURES</Subheader>
         <ListItem
-          primaryText="Profile photo"
-          secondaryText="Change your Google+ profile photo"
+          primaryText="MCC Code"
+          secondaryText="take advantage of 20% discount for bulk purchase"
         />
         <ListItem
-          primaryText="Show your status"
-          secondaryText="Your status is visible to everyone you use with"
+          primaryText="MCC + 1hr Phone Call"
+          secondaryText="(optional)"
+        />
+        <ListItem
+          primaryText="MCC + 1hr Video Call"
+          secondaryText="(optional)"
         />
       </List><br/>
       <LoginModalContext.Consumer>{
