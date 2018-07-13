@@ -11,10 +11,17 @@ class MccTestCode extends Component{
           <div>
               <h2>MCC Test Code</h2><hr/>
               <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                You should receive your 16 digit MCC test code in your e-mail inbox
+                folder immediately after your payment has been received. The test
+                code is unique to yourself alone and cannot be used twice and should
+                not be revealed to third party. You are bound by the “Terms of Use” for
+                MCC and its partner.
               </p>
               <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                You will have to make a FRESH payment, if you
+                require replacement code because, your original code has been
+                misplaced or destroyed. Please follow the instructions in your test code
+                letter to complete the MCC test.
               </p>
           </div>
         </div>

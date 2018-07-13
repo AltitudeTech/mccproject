@@ -15,7 +15,7 @@ export default props =>
     </div>
   <div className="footer">
     <div className="container">
-      <div className="col-md-4 w3_footer_grid">
+      <div className="col-md-3 w3_footer_grid">
         <h3>About Us</h3>
         <ul>
           <li className=""><i className="fa fa-long-arrow-right" aria-hidden="true"></i><a href="/">Home</a></li>
@@ -26,7 +26,14 @@ export default props =>
           <li className=""><i className="fa fa-long-arrow-right" aria-hidden="true"></i><a href="/contact">Contact</a></li>
         </ul>
       </div>
-      <div className="col-md-5 col-md-offset-3 w3_footer_grid">
+      <div className="col-md-3 w3_footer_grid">
+        <h3>Info</h3>
+        <ul>
+          <li className=""><i className="fa fa-long-arrow-right" aria-hidden="true"></i><a href="/affiliates">Affiliates and agents</a></li>
+          <li className=""><i className="fa fa-long-arrow-right" aria-hidden="true"></i><a href="/faq">Frequently Asked Questions</a></li>
+        </ul>
+      </div>
+      <div className="col-md-5 col-md-offset-1 w3_footer_grid">
         <h3>Newsletter</h3>
         <Mutation mutation={NEWSLETTER_SUBSCRIPTION_MUTATION} onCompleted={({subscribeToNewsletter: {address}}) => {
           email.value = ''

@@ -52,6 +52,8 @@ export default class CandidateModal extends React.Component {
     super(props) ;
     this.showLoginError = this.showLoginError.bind(this);
     this.showLoginMessage = this.showLoginMessage.bind(this);
+    this.showRegisterError = this.showRegisterError.bind(this);
+    this.showRegisterMessage = this.showRegisterMessage.bind(this);
   }
   state = {
     username : '',
@@ -85,7 +87,7 @@ export default class CandidateModal extends React.Component {
     setTimeout(()=>{ this.setState({registerErrorText: ''}) },5*1000)
   }
   showRegisterMessage = (message) => {
-    this.setState({loginSuccessText: message})
+    this.setState({registerSuccessText: message})
   }
 
   render() {
@@ -104,6 +106,8 @@ export default class CandidateModal extends React.Component {
                 <RegisterButton
                   REGISTER_TYPES={REGISTER_TYPES}
                   registerType={registerType}
+                  showRegisterError={this.showRegisterError}
+                  showRegisterMessage={this.showRegisterMessage}
                   {...this.state}/>
                 ),
               <RaisedButton
@@ -140,17 +144,20 @@ export default class CandidateModal extends React.Component {
                     index={slideIndex}
                     onChangeIndex={handleTabChange}
                     >
-                      {/* <Toolbar></Toolbar> */}
                       <div style={styles.slide}>
                         <TextField
+                          underlineFocusStyle={{borderColor: "#0c6053"}}
+                          floatingLabelFocusStyle={{color: "#0c6053"}}
                           fullWidth={true}
-                          errorText={this.state.usernameError}
+                          // errorText={this.state.usernameError}
                           value={this.state.username}
                           onChange={this.usernameText.bind(this)}
                           floatingLabelText="Email"
                           type="text"
                         />
                         <TextField
+                          underlineFocusStyle={{borderColor: "#0c6053"}}
+                          floatingLabelFocusStyle={{color: "#0c6053"}}
                           fullWidth={true}
                           value={this.state.password}
                           onChange={(e) => this.setState({password : e.target.value})}
@@ -164,26 +171,7 @@ export default class CandidateModal extends React.Component {
                         {this.state.loginSuccessText && (
                           <p className='login-success-text'>{this.state.loginSuccessText}</p>
                         )}
-                        <style jsx>{`
-                          .login-error-text {
-                            padding-top: 10px;
-                            color: #ec1818;
-                            text-size-adjust: 100%;
-                            font-family: Roboto,sans-serif;
-                            font-size: 16px;
-                            line-height: 1.6;
-                            word-wrap: break-word;
-                          }
-                          .login-success-text {
-                            padding-top: 10px;
-                            color: #094211;
-                            text-size-adjust: 100%;
-                            font-family: Roboto,sans-serif;
-                            font-size: 16px;
-                            line-height: 1.6;
-                            word-wrap: break-word;
-                          }
-                          `}</style>
+
 
 
                         {/* <FloatingActionButton mini={true} style={style}>
@@ -195,8 +183,11 @@ export default class CandidateModal extends React.Component {
                         </FloatingActionButton> */}
                       </div>
                       <div style={styles.slide}>
-                        <TextField style={styles.textfield}
-                          hintText={registerType == 0 ? 'e.g John Doe' : registerType == 1 ? 'e.g Google'  : 'Adviser Fullname'}
+                        <TextField
+                          underlineFocusStyle={{borderColor: "#0c6053"}}
+                          floatingLabelFocusStyle={{color: "#0c6053"}}
+                          style={styles.textfield}
+                          // hintText={registerType == 0 ? 'e.g John Doe' : registerType == 1 ? 'e.g Google'  : 'Adviser Fullname'}
                           fullWidth={true}
                           errorText=''
                           value={this.state.regFullname}
@@ -205,7 +196,9 @@ export default class CandidateModal extends React.Component {
                           type="text"
                         />
                         <TextField
-                          hintText="example@gmail.com"
+                          underlineFocusStyle={{borderColor: "#0c6053"}}
+                          floatingLabelFocusStyle={{color: "#0c6053"}}
+                          // hintText="example@gmail.com"
                           fullWidth={true}
                           errorText=''
                           value={this.state.regEmail}
@@ -214,6 +207,8 @@ export default class CandidateModal extends React.Component {
                           type="text"
                         />
                         <TextField
+                          underlineFocusStyle={{borderColor: "#0c6053"}}
+                          floatingLabelFocusStyle={{color: "#0c6053"}}
                           // hintText="Password"
                           fullWidth={true}
                           value={this.state.regPassword}
@@ -224,14 +219,41 @@ export default class CandidateModal extends React.Component {
                         />
                         <SelectField
                           floatingLabelText="Register As"
+                          selectedMenuItemStyle={{color: "#ff5722"}}
                           value={registerType}
                           onChange={changeRegisterType}
                           fullWidth={true}
                           >
                             {REGISTER_TYPES.map((type, index) => <MenuItem value={index} primaryText={type} />)}
                           </SelectField>
+                          {this.state.registerErrorText && (
+                            <p className='login-error-text'>{this.state.registerErrorText}</p>
+                          )}
+                          {this.state.registerSuccessText && (
+                            <p className='login-success-text'>{this.state.registerSuccessText}</p>
+                          )}
                         </div>
                       </SwipeableViews>
+                      <style jsx>{`
+                        .login-error-text {
+                          padding-top: 10px;
+                          color: #ec1818;
+                          text-size-adjust: 100%;
+                          font-family: Roboto,sans-serif;
+                          font-size: 16px;
+                          line-height: 1.6;
+                          word-wrap: break-word;
+                        }
+                        .login-success-text {
+                          padding-top: 10px;
+                          color: #094211;
+                          text-size-adjust: 100%;
+                          font-family: Roboto,sans-serif;
+                          font-size: 16px;
+                          line-height: 1.6;
+                          word-wrap: break-word;
+                        }
+                        `}</style>
                     </Dialog>
                   </MuiThemeProvider>
 

@@ -86,13 +86,18 @@ export default class LeftNavigation extends Component{
                         <i className="glyphicon glyphicon-ok"></i>Link To Website
                       </a>
                     </li>
-                    <li className={this.props.activePage=='/faq' ? "active" : ""}>
+                    <li>
+                      <a href="/faq">
+                        <i className="glyphicon glyphicon-flag"></i> Help/ FAQ
+                      </a>
+                    </li>
+                    {/* <li className={this.props.activePage=='/faq' ? "active" : ""}>
                         <Link prefetch href="/user/faq">
                         <a>
                         <i className="glyphicon glyphicon-flag"></i>
                         Help / FAQ </a>
                         </Link>
-                    </li>
+                    </li> */}
                     <li>
                       <ApolloConsumer>{
                         client => <a href="#!" onClick={(e)=>{

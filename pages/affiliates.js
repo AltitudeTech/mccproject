@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from 'react'
 
 import Nav2 from '../components/Nav2'
-import TextContent from '../components/CookiePolicyPage/TextContent'
+import TextContent from '../components/AffiliatesPage/TextContent'
 // import TextContent2 from '../components/Aboutpage/TextContent2'
 import withLayout from '../components/withLayout'
 
 
-class CookiePolicyPage extends Component {
+class AffiliatesPage extends Component {
   constructor(props){
     super(props) ;
   }
@@ -23,4 +23,4 @@ class CookiePolicyPage extends Component {
     </Fragment>
   }
 }
-export default withLayout(CookiePolicyPage, {disableEndorsement: true})
+export default withLayout(AffiliatesPage, {disableEndorsement: true})

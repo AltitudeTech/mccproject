@@ -41,6 +41,7 @@ export default withApollo(
       const {jwt, name} = user;
       // toast(`Welcome Back ${last}!`, {...TOAST_STYLE.success});
       console.log(`Welcome Back ${name}!`);
+      this.props.showRegisterMessage(`Welcome ${name}!`)
       document.cookie = cookie.serialize('token', jwt, {
         maxAge: 30 * 24 * 60 * 60 // 30 days
       })
@@ -55,18 +56,22 @@ export default withApollo(
       // If you want to send error to external service?
       console.log(error)
       if (error.graphQLErrors.length==0)
-        toast("Something Went Wrong With your request", {...TOAST_STYLE.fail});
+        this.props.showRegisterError("Something went wrong while contacting the server")
+        // toast("Something Went Wrong With your request", {...TOAST_STYLE.fail});
 
       error.graphQLErrors.forEach(error=>{
         switch(error.message) {
           case `password incorrect`:
-          toast("Incorrect Username/password", {...TOAST_STYLE.fail});
+          this.props.showRegisterError("Incorrect username/password")
+          // toast("Incorrect username/password", {...TOAST_STYLE.fail});
           break;
           case `email/user not found`:
-          toast("Incorrect Username/password", {...TOAST_STYLE.fail});
+          this.props.showRegisterError("Incorrect username/password")
+          // toast("Incorrect username/password", {...TOAST_STYLE.fail});
           break;
           default:
-          toast("Something Went Wrong", {...TOAST_STYLE.fail});
+          this.props.showRegisterError("Something went wrong while contacting the server")
+          // toast("Something Went Wrong", {...TOAST_STYLE.fail});
         }
       })
     }

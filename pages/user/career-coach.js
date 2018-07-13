@@ -11,10 +11,17 @@ class CareerCoach extends Component{
           <div>
               <h2>Career Coach</h2><hr/>
               <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                MCC Career Coaches specializes in advising clients on ideal career
+                choices, by assisting the client in understanding and applying the MCC
+                test results. We have two ways of offering MCC Career Coaching, by
+                telephone and by video.
               </p>
               <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                Your dedicated MCC Career Coach will contact
+                you directly once your payment has been received. You must have
+                accessible phone line for telephone advice and you must have access to
+                a smart phone with camera for video coaching. We currently do not
+                offer MCC career coaching on a face to face basis.
               </p>
           </div>
         </div>
