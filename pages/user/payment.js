@@ -87,15 +87,7 @@ class PaymentPage extends Component{
                             <MenuItem value={"NAIRA"} primaryText="NAIRA" />
                           </SelectField> 
 
-<<<<<<< HEAD
                        <RaisedButton primary={true} label="Pay NOW" /> */}
-                          <PaymentButton email={this.state.email} amount={this.state.amount}/>
-                      </CardActions>
-                    </CardText>
-                    </div>
-                  </div>
-=======
-                      <RaisedButton primary={true} label="Pay NOW" />
                       <Checkbox
                         label="Agree to our terms and conditions"
                         checked={this.state.checked}
@@ -104,8 +96,11 @@ class PaymentPage extends Component{
                       />
                       <PaymentButton email={this.state.email} amount={this.state.amount}/>
 
-                  </CardActions>
->>>>>>> 7cb7dabc4adab5792eabfe3811160baf93b983fd
+                 
+                      </CardActions>
+                    </CardText>
+                    </div>
+                  </div>
                 </Card>
             </div>
               <CandidatePaymentsContext.Consumer>{
