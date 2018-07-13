@@ -4,6 +4,7 @@ import withCandidatePortal from '../../components/HOCS/candidate/withCandidatePo
 
 import PaymentButton from '../../components/CandidatePortal/PaymentButton'
 
+import Checkbox from 'material-ui/Checkbox';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import SelectField from 'material-ui/SelectField';
@@ -25,8 +26,17 @@ class PaymentPage extends Component{
         this.state = {
           value: 10,
           email: 'bellooladipupo41@gmail.com',
-          amount: 100*100 // equals 100NGN
+          amount: 100*100, // equals 100NGN
+          checked: false
         };
+    }
+
+    updateCheck() {
+      this.setState((oldState) => {
+        return {
+          checked: !oldState.checked,
+        };
+      });
     }
 
 
@@ -39,7 +49,15 @@ class PaymentPage extends Component{
             <div>
               <h2>Payment Page</h2><hr/>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                The unit price for MCC test code US$20. You may opt for other optional
+                services on the MCC platform such as the 1 hour telephone or video
+                from our dedicated career coaches. Career Coach Service on this
+                platform is only available to those who have purchased the MCC test
+                code. <br/>We currently do NOT have facilities to handle cash payments. You
+                cannot make a payment without prior registration on the MCC
+                platform. You are bound by the “Terms of Use” of MCC. You will
+                receive an online receipt, acknowledgement and your MCC test code
+                once your payment is received.
               </p>
             </div>
             <div className="row" style={{margin: 'auto'}}>
@@ -69,12 +87,25 @@ class PaymentPage extends Component{
                             <MenuItem value={"NAIRA"} primaryText="NAIRA" />
                           </SelectField> 
 
+<<<<<<< HEAD
                        <RaisedButton primary={true} label="Pay NOW" /> */}
                           <PaymentButton email={this.state.email} amount={this.state.amount}/>
                       </CardActions>
                     </CardText>
                     </div>
                   </div>
+=======
+                      <RaisedButton primary={true} label="Pay NOW" />
+                      <Checkbox
+                        label="Agree to our terms and conditions"
+                        checked={this.state.checked}
+                        onCheck={this.updateCheck.bind(this)}
+                        style={styles.checkbox}
+                      />
+                      <PaymentButton email={this.state.email} amount={this.state.amount}/>
+
+                  </CardActions>
+>>>>>>> 7cb7dabc4adab5792eabfe3811160baf93b983fd
                 </Card>
             </div>
               <CandidatePaymentsContext.Consumer>{

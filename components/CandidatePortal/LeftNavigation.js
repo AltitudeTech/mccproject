@@ -22,10 +22,6 @@ export default class LeftNavigation extends Component{
 
     render(){
         return<div>
-          {/* <Head>
-            <script src="/static/css/react-dropdown/react-buttons.css"></script>
-            <script src="/static/css/react-dropdown/react-dropdown.css"></script>
-          </Head> */}
         <div className="profile-sidebar">
             <div className="profile-usertitle">
                 <img src="/static/images/mcclogo-circle.png" width="100px"/>
@@ -86,29 +82,34 @@ export default class LeftNavigation extends Component{
                         </Link>
                     </li>
                     <li>
-                      <Link href="/" >
-                        <a target="_blank">
-                          <i className="glyphicon glyphicon-ok"></i>Link To Website
-                        </a>
-                      </Link>
+                      <a href="/" target="_blank">
+                        <i className="glyphicon glyphicon-ok"></i>Link To Website
+                      </a>
                     </li>
-                    <li className={this.props.activePage=='/faq' ? "active" : ""}>
+                    <li>
+                      <a href="/faq">
+                        <i className="glyphicon glyphicon-flag"></i> Help/ FAQ
+                      </a>
+                    </li>
+                    {/* <li className={this.props.activePage=='/faq' ? "active" : ""}>
                         <Link prefetch href="/user/faq">
                         <a>
                         <i className="glyphicon glyphicon-flag"></i>
                         Help / FAQ </a>
                         </Link>
-                    </li>
+                    </li> */}
                     <li>
                       <ApolloConsumer>{
                         client => <a href="#!" onClick={(e)=>{
                           e.preventDefault();
                           e.stopPropagation();
                           document.cookie = cookie.serialize('token', '', {
-                            maxAge: -1 // Expire the cookie immediately
+                            maxAge: -1, // Expire the cookie immediately
+                            path: '/'
                           })
                           document.cookie = cookie.serialize('userType', '', {
-                            maxAge: -1 // Expire the cookie immediately
+                            maxAge: -1, // Expire the cookie immediately\
+                            path: '/'
                           })
 
                           // Force a reload of all the current queries now that the user is

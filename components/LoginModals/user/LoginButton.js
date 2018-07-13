@@ -11,6 +11,7 @@ import { LOGIN_USER_MUTATION } from '../../../lib/backendApi/mutations'
 
 const style = {
   margin: 12,
+  color: 'white'
 };
 
 class LoginButton extends Component{
@@ -18,8 +19,9 @@ class LoginButton extends Component{
   onLoginCompleted = (data) => {
     // Store the token in cookie
     const { jwt, name, userType } = data.loginUser
-    toast(`Welcome Back ${name}!`, {...TOAST_STYLE.success});
-    console.log(`Welcome Back ${name}!`);
+    // toast(`Welcome Back ${name}!`, {...TOAST_STYLE.success});
+    this.props.showLoginMessage(`Welcome Back ${name}!`)
+    // console.log(`Welcome Back ${name}!`);
     document.cookie = cookie.serialize('token', jwt, {
       maxAge: 30 * 24 * 60 * 60, // 30 days
       path: '/'
@@ -43,19 +45,23 @@ class LoginButton extends Component{
   onLoginError = (error) => {
     // If you want to send error to external service?
     console.log(error)
+    // this.showLoginError()
     if (error.graphQLErrors.length==0)
       toast("Something Went Wrong With your request", {...TOAST_STYLE.fail});
 
     error.graphQLErrors.forEach(error=>{
       switch(error.message) {
         case `password incorrect`:
-        toast("Incorrect Username/password", {...TOAST_STYLE.fail});
+        this.props.showLoginError("Invalid email/password")
+        // toast("Invalid email/password", {...TOAST_STYLE.fail});
         break;
         case `email/user not found`:
-        toast("Incorrect Username/password", {...TOAST_STYLE.fail});
+        this.props.showLoginError("Invalid email/password")
+        // toast("Invalid email/password", {...TOAST_STYLE.fail});
         break;
         default:
-        toast("Something Went Wrong", {...TOAST_STYLE.fail});
+        this.props.showLoginError("Something went wrong while contacting the server")
+        // toast("Something Went Wrong", {...TOAST_STYLE.fail});
       }
     })
   }
@@ -75,14 +81,15 @@ class LoginButton extends Component{
         }
       })
     } else {
-      if (!this.props.phone || !this.props.phoneValid) {
-        this.setState({phoneValid: false})
-      }
-      if (!this.props.password) {
-        this.setState({passwordValid: false})
-      }
+      // if (!this.props.phone || !this.props.phoneValid) {
+      //   this.setState({phoneValid: false})
+      // }
+      // if (!this.props.password) {
+      //   this.setState({passwordValid: false})
+      // }
 
-      toast("Your Inputs are not valid", {...TOAST_STYLE.fail});
+      // toast("Your Inputs are not valid", {...TOAST_STYLE.fail});
+      this.props.showLoginError("Invalid email/password")
     }
 
   }
@@ -95,7 +102,8 @@ class LoginButton extends Component{
         <RaisedButton
          label='Login'
          style={style}
-         primary={true}
+         backgroundColor="#0c6053"
+         labelColor="white"
          onClick={e=>this.doLogin(e, loginUser)}
        />
       )}

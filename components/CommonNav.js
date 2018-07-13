@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react'
-import Router from 'next/router'
-import LoginModal from './LoginModals/candidate'
+// import Router from 'next/router'
+import LoginModal from './LoginModals/user'
 import { ApolloConsumer } from 'react-apollo'
 import cookie from 'cookie'
+import redirect from '../lib/auth/redirect'
 
 import { LoginModalContext } from './Context/LoginModalContext'
 import { USER_ISAUTHENTICATED_QUERY } from '../lib/backendApi/queries'
@@ -64,18 +65,28 @@ export default class CommonNav extends Component{
                                               onClick={async () => {
                                                 const { data : { userIsAuthenticated } } = await client.query({query: USER_ISAUTHENTICATED_QUERY});
                                                 if (userIsAuthenticated) {
+                                                  console.log('isAuth - fetching cookies');
                                                   const {userType, token} = cookie.parse(document.cookie)
                                                   if (userType && token) {
                                                     // console.log(userType);
-                                                    if (userType == 'Candidate') {
-                                                      Router.push('/user/dashboard');
-                                                    } else if (userType == 'Institution') {
-                                                      Router.push('/institution/dashboard');
-                                                    } else if (userType == 'MccAffiliate') {
-                                                      Router.push('/affiliate/dashboard');
-                                                    } else {
-                                                      toggleModal();
-                                                    }
+                                                    // if (userType == 'Candidate') {
+                                                    //   Router.push('/user/dashboard');
+                                                    // } else if (userType == 'Institution') {
+                                                    //   Router.push('/institution/dashboard');
+                                                    // } else if (userType == 'MccAffiliate') {
+                                                    //   Router.push('/affiliate/dashboard');
+                                                    // } else {
+                                                    //   toggleModal();
+                                                    // }
+                                                    // client.resetStore().then(() => {
+                                                    //   // console.log('isAuth - redirecting');
+                                                    //   // const target = this.props.url.query.from || `/user/dashboard`;
+                                                    // })
+                                                    let target = `/user/dashboard`;
+                                                    userType == 'Candidate' && (target=`/user/dashboard`);
+                                                    userType == 'Institution' && (target=`/institution/dashboard`);
+                                                    userType == 'MccAffiliate' && (target=`/affiliate/dashboard`);
+                                                    redirect({}, target)
                                                   } else {
                                                     toggleModal();
                                                   }

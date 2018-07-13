@@ -10,10 +10,10 @@ import { ToastContainer } from 'react-toastify'
 
 import { LoginModalWrapper } from './Context/LoginModalContext'
 
-import withData from '../lib/backendApi/withData'
+// import withData from '../lib/backendApi/withData'
 //injectTapEventPlugin()
 
-export default function withLayout(Child, opts) {
+export default function withLayout(Child, opts={}) {
     class WrappedComponent extends React.Component {
       static async getInitialProps(context, apolloClient) {
         let ChildProps = {};
@@ -28,6 +28,7 @@ export default function withLayout(Child, opts) {
 
       render() {
         const {showSignIn} = this.props;
+        const {disableEndorsement = false} = opts;
 
         return (
           <div>
@@ -49,7 +50,8 @@ export default function withLayout(Child, opts) {
                 <LoginModalWrapper showSignIn={showSignIn}>
                   <Child {...this.props}/>
                 </LoginModalWrapper>
-                <Testimonials />
+                {!disableEndorsement && <Testimonials/>}
+                {/* <Testimonials /> */}
                 <Footer />
               </div>
               <Scripts />
@@ -66,11 +68,12 @@ export default function withLayout(Child, opts) {
       }
     }
 
-    //return withData(WrappedComponent)
-    return compose(
-      // withData gives us server-side graphql queries before rendering
-      withData,
-      // withApollo exposes `this.props.client` used when logging out
-      withApollo
-    )(WrappedComponent)
+    return WrappedComponent
+    // return withData(WrappedComponent)
+    // return compose(
+    //   // withData gives us server-side graphql queries before rendering
+    //   withData,
+    //   // withApollo exposes `this.props.client` used when logging out
+    //   withApollo
+    // )(WrappedComponent)
   }

@@ -78,11 +78,9 @@ export default class LeftNavigation extends Component{
                         </Link>
                     </li>
                     <li>
-                      <Link href="/" >
-                        <a target="_blank">
-                          <i className="glyphicon glyphicon-ok"></i>Link To Website
-                        </a>
-                      </Link>
+                      <a href="/" target="_blank">
+                        <i className="glyphicon glyphicon-ok"></i>Link To Website
+                      </a>
                     </li>
                     <li>
                       <ApolloConsumer>{
@@ -90,10 +88,12 @@ export default class LeftNavigation extends Component{
                           e.preventDefault();
                           e.stopPropagation();
                           document.cookie = cookie.serialize('token', '', {
-                            maxAge: -1 // Expire the cookie immediately
+                            maxAge: -1, // Expire the cookie immediately
+                            path: '/'
                           })
                           document.cookie = cookie.serialize('userType', '', {
-                            maxAge: -1 // Expire the cookie immediately
+                            maxAge: -1, // Expire the cookie immediately
+                            path: '/'
                           })
 
                           // Force a reload of all the current queries now that the user is

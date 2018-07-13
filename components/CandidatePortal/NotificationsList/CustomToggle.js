@@ -17,7 +17,7 @@ export default class CustomToggle extends Component {
   render() {
     return (
       <div onClick={this.handleClick} className="notifications dropdown dd-trigger">
-         <span className="count animated" id="notifications-count"><Badge>4</Badge></span>
+         {/* <span className="count animated" id="notifications-count">{/*<Badge>4</Badge></span> */}
          {/* <i className="fa fa-bell-o"></i> */}
          <i className="glyphicon glyphicon-bell"></i>
          <style jsx>{`
