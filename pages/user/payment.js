@@ -69,8 +69,7 @@ class PaymentPage extends Component{
                             <MenuItem value={"NAIRA"} primaryText="NAIRA" />
                           </SelectField> 
 
-                        */}
-                        {/* <RaisedButton primary={true} label="Pay NOW" /> */}
+                       <RaisedButton primary={true} label="Pay NOW" /> */}
                           <PaymentButton email={this.state.email} amount={this.state.amount}/>
                       </CardActions>
                     </CardText>
