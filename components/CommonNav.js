@@ -27,7 +27,7 @@ export default class CommonNav extends Component{
                         <span className="icon-bar"></span>
                     </button>
                     <div className="wthree_logo">
-                        <a className="navbar-brand" href="/"><img src="/static/images/mcclogo.gif" style={{maxWidth: '140px', margin : '-10px 30px'}} className="img-responsive" alt=""/></a>
+                        <a className="navbar-brand" href=""><img src="/static/images/mcclogo.gif" style={{maxWidth: '140px', margin : '-10px 30px'}} className="img-responsive" alt=""/></a>
                     </div>
                 </div>
                 <div className="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
@@ -78,15 +78,15 @@ export default class CommonNav extends Component{
                                                     // } else {
                                                     //   toggleModal();
                                                     // }
-                                                    client.resetStore().then(() => {
-                                                      console.log('isAuth - redirecting');
-                                                      // const target = this.props.url.query.from || `/user/dashboard`;
-                                                      let target = `/user/dashboard`;
-                                                      userType == 'Candidate' && (target=`/user/dashboard`);
-                                                      userType == 'Institution' && (target=`/institution/dashboard`);
-                                                      userType == 'MccAffiliate' && (target=`/affiliate/dashboard`);
-                                                      redirect({}, target)
-                                                    })
+                                                    // client.resetStore().then(() => {
+                                                    //   // console.log('isAuth - redirecting');
+                                                    //   // const target = this.props.url.query.from || `/user/dashboard`;
+                                                    // })
+                                                    let target = `/user/dashboard`;
+                                                    userType == 'Candidate' && (target=`/user/dashboard`);
+                                                    userType == 'Institution' && (target=`/institution/dashboard`);
+                                                    userType == 'MccAffiliate' && (target=`/affiliate/dashboard`);
+                                                    redirect({}, target)
                                                   } else {
                                                     toggleModal();
                                                   }

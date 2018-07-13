@@ -253,6 +253,24 @@ export default class CandidateModal extends React.Component {
                           line-height: 1.6;
                           word-wrap: break-word;
                         }
+                        ::-webkit-scrollbar {
+                          width: 3px;
+                        }
+                        ::-webkit-scrollbar-track {
+                          webkit-box-shadow: inset 0 0 6px #e3ebef;
+                          -webkit-border-radius: 10px;
+                          border-radius: 10px;
+                          background: #e3ebef;
+                        }
+                        ::-webkit-scrollbar-thumb {
+                          -webkit-border-radius: 10px;
+                          border-radius: 10px;
+                          background: #9fb6c3;
+                          -webkit-box-shadow: none;
+                        }
+                        ::-webkit-scrollbar-thumb:window-inactive {
+                          background: #9fb6c3;
+                        }
                         `}</style>
                     </Dialog>
                   </MuiThemeProvider>

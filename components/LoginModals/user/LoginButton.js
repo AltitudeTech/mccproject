@@ -52,12 +52,12 @@ class LoginButton extends Component{
     error.graphQLErrors.forEach(error=>{
       switch(error.message) {
         case `password incorrect`:
-        this.props.showLoginError("Incorrect username/password")
-        // toast("Incorrect username/password", {...TOAST_STYLE.fail});
+        this.props.showLoginError("Invalid email/password")
+        // toast("Invalid email/password", {...TOAST_STYLE.fail});
         break;
         case `email/user not found`:
-        this.props.showLoginError("Incorrect username/password")
-        // toast("Incorrect username/password", {...TOAST_STYLE.fail});
+        this.props.showLoginError("Invalid email/password")
+        // toast("Invalid email/password", {...TOAST_STYLE.fail});
         break;
         default:
         this.props.showLoginError("Something went wrong while contacting the server")
@@ -81,14 +81,15 @@ class LoginButton extends Component{
         }
       })
     } else {
-      if (!this.props.phone || !this.props.phoneValid) {
-        this.setState({phoneValid: false})
-      }
-      if (!this.props.password) {
-        this.setState({passwordValid: false})
-      }
+      // if (!this.props.phone || !this.props.phoneValid) {
+      //   this.setState({phoneValid: false})
+      // }
+      // if (!this.props.password) {
+      //   this.setState({passwordValid: false})
+      // }
 
-      toast("Your Inputs are not valid", {...TOAST_STYLE.fail});
+      // toast("Your Inputs are not valid", {...TOAST_STYLE.fail});
+      this.props.showLoginError("Invalid email/password")
     }
 
   }
