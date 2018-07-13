@@ -33,7 +33,7 @@ export default class CustomMenu extends Component {
          <div className="dropdown-header">
            <span className="triangle"></span>
            <span className="heading">Notifications</span>
-           <span className="count" id="dd-notifications-count"><Badge>40</Badge></span>
+           <span className="count" id="dd-notifications-count"><Badge>0</Badge></span>
          </div>
          <div className="dropdown-body">
            {/* <ul className="list-unstyled">
@@ -41,7 +41,7 @@ export default class CustomMenu extends Component {
                child => !value.trim() || child.props.children.indexOf(value) !== -1
              )}
            </ul> */}
-           {[...Array(10).keys()].map(i=>(
+           {/* {[...Array(4).keys()].map(i=>(
              <div className="notification new">
                <div className="notification-image-wrapper">
                  <div className="notification-image">
@@ -61,6 +61,16 @@ export default class CustomMenu extends Component {
              </div>
              <div className="notification-text">
                <span className="highlight">Keanu Reeves</span> shared you comment
+             </div>
+           </div> */}
+           <div className="notification new">
+             {/* <div className="notification-image-wrapper">
+               <div className="notification-image">
+                 <img src="http://www.latimes.com/includes/projects/hollywood/portraits/keanu_reeves.jpg" alt="" width="32"/>
+               </div>
+             </div> */}
+             <div className="notification-text">
+               😫 <span className="highlight">You</span> have no notifications
              </div>
            </div>
          </div>
