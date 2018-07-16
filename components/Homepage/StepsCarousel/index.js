@@ -23,14 +23,13 @@ export default class ControlledCarousel extends React.Component {
 
 	displayStateMent = (step) => {
 		let message;
-		step==1 && (message = `Sign Up`);
-		step==2 && (message = `Login`);
-		step==3 && (message = ``);
-		step==4 && (message = `Log into your portal`);
-		step==5 && (message = `Make payment`);
-		step==6 && (message = `Receive your MCC Test Code`);
-		step==7 && (message = `Take the 15 minutes test`);
-		step==8 && (message = `Receive your result and make a career choice`);
+		step==1 && (message = `Create an account`);
+		step==2 && (message = `Verify your account`);
+		step==3 && (message = `Login`);
+		step==4 && (message = `Make payment`);
+		step==5 && (message = `Receive your MCC Test Code`);
+		step==6 && (message = `Take the 15 minutes test`);
+		step==7 && (message = `Receive your result and make a career choice`);
 		return `Step ${step} - ${message}`
 	}
 
@@ -39,7 +38,7 @@ export default class ControlledCarousel extends React.Component {
 
     return (
 			<Fragment>
-				<h2 className="w3ls_para">8 Easy Steps</h2>
+				<h2 className="w3ls_para">7 Easy Steps</h2>
 				<Carousel
 					activeIndex={index}
 					direction={direction}
@@ -48,28 +47,25 @@ export default class ControlledCarousel extends React.Component {
 					style={{minHeight: 400}}
 					>
 						<Carousel.Item>
-							<img className="steps-slide" width={'auto'} height={400} alt="step 1" src="/static/images/ani/Sign-Up.gif" />
+							<img className="steps-slide" width={'auto'} height={400} alt="step 1" src="/static/images/ani/1.gif" />
 						</Carousel.Item>
 						<Carousel.Item>
-							<img className="steps-slide" width={'auto'} height={400} alt="step 2" src="/static/images/ani/Email-Verification.gif" />
+							<img className="steps-slide" width={'auto'} height={400} alt="step 2" src="/static/images/ani/2.gif" />
 						</Carousel.Item>
 						<Carousel.Item>
-							<img className="steps-slide" width={'auto'} height={400} alt="step 3" src="/static/images/ani/Login.gif" />
+							<img className="steps-slide" width={'auto'} height={400} alt="step 3" src="/static/images/ani/3.gif" />
 						</Carousel.Item>
 						<Carousel.Item>
-							<img className="steps-slide" width={'auto'} height={400} alt="step 4" src="/static/images/ani/Candidate-Portal-Animation.gif" />
+							<img className="steps-slide" width={'auto'} height={400} alt="step 4" src="/static/images/ani/4.gif" />
 						</Carousel.Item>
 						<Carousel.Item>
-							<img className="steps-slide" width={'auto'} height={400} alt="step 5" src="/static/images/ani/Candidate-Portal-Animation.gif" />
+							<img className="steps-slide" width={'auto'} height={400} alt="step 5" src="/static/images/ani/5.gif" />
 						</Carousel.Item>
 						<Carousel.Item>
-							<img className="steps-slide" width={'auto'} height={400} alt="step 6" src="/static/images/ani/Candidate-Portal-Animation.gif" />
+							<img className="steps-slide" width={'auto'} height={400} alt="step 6" src="/static/images/ani/6.gif" />
 						</Carousel.Item>
 						<Carousel.Item>
-							<img className="steps-slide" width={'auto'} height={400} alt="step 7" src="/static/images/ani/Candidate-Portal-Animation.gif" />
-						</Carousel.Item>
-						<Carousel.Item>
-							<img className="steps-slide" width={'auto'} height={400} alt="step 8" src="/static/images/ani/Candidate-Portal-Animation.gif" />
+							<img className="steps-slide" width={'auto'} height={400} alt="step 7" src="/static/images/ani/7.gif" />
 						</Carousel.Item>
 					</Carousel>
 						<h3>

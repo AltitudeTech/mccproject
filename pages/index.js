@@ -47,7 +47,7 @@ class IndexPage extends Component {
                     Makes Career Choice easy.
                   </li>
                   <li>
-                    Maximiza your natural talent.
+                    Maximize your natural talent.
                   </li>
                 </ul>
               </p>
