@@ -50,22 +50,22 @@ export default class ControlledCarousel extends React.Component {
 							<img className="steps-slide" width={'auto'} height={400} alt="step 1" src="/static/images/ani/1.gif" />
 						</Carousel.Item>
 						<Carousel.Item>
-							<img className="steps-slide" width={'auto'} height={400} alt="step 2" src="/static/images/ani/2.gif" />
+							<img className="steps-slide" width={'50%'} height={400} alt="step 2" src="/static/images/ani/2.gif" />
 						</Carousel.Item>
 						<Carousel.Item>
 							<img className="steps-slide" width={'auto'} height={400} alt="step 3" src="/static/images/ani/3.gif" />
 						</Carousel.Item>
 						<Carousel.Item>
-							<img className="steps-slide" width={'auto'} height={400} alt="step 4" src="/static/images/ani/4.gif" />
+							<img className="steps-slide" width={'50%'} height={400} alt="step 4" src="/static/images/ani/4.gif" />
 						</Carousel.Item>
 						<Carousel.Item>
-							<img className="steps-slide" width={'auto'} height={400} alt="step 5" src="/static/images/ani/5.gif" />
+							<img className="steps-slide" width={'50%'} height={400} alt="step 5" src="/static/images/ani/5.gif" />
 						</Carousel.Item>
 						<Carousel.Item>
-							<img className="steps-slide" width={'auto'} height={400} alt="step 6" src="/static/images/ani/6.gif" />
+							<img className="steps-slide" width={'50%'} height={400} alt="step 6" src="/static/images/ani/6.gif" />
 						</Carousel.Item>
 						<Carousel.Item>
-							<img className="steps-slide" width={'auto'} height={400} alt="step 7" src="/static/images/ani/7.gif" />
+							<img className="steps-slide" width={'50%'} height={400} alt="step 7" src="/static/images/ani/7.gif" />
 						</Carousel.Item>
 					</Carousel>
 						<h3>
