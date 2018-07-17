@@ -1,7 +1,7 @@
 import { Component, Fragment } from 'react'
 import { Mutation, withApollo } from 'react-apollo'
 
-import { CREATE_ENQUIRY_MUTATION } from '../../lib/backendApi/mutations'
+import { CREATE_ENQUIRY_MUTATION } from '../../lib/graphql/mutations'
 export default class TextContent extends Component {
   constructor(props){
     super(props)

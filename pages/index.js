@@ -5,9 +5,9 @@ import TextContent from '../components/Homepage/TextContent'
 import TextContent2 from '../components/Homepage/TextContent2'
 import MccContent from '../components/Homepage/MccContent'
 import MccContent2 from '../components/Homepage/MccContent2'
-import withLayout from '../components/withLayout'
+import withLayout from '../hocs/withLayout'
 
-import {LoginModalContext} from '../components/Context/LoginModalContext'
+import {LoginModalContext} from '../contexts/LoginModalContext'
 
 class IndexPage extends Component {
   static async getInitialProps({query}) {

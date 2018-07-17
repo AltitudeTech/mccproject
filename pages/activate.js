@@ -2,8 +2,7 @@ import { Component, Fragment } from 'react'
 import Router from 'next/router'
 import { Mutation, withApollo, compose } from 'react-apollo'
 
-import withData from '../lib/backendApi/withData'
-import { ACTIVATE_CANDIDATE_MUTATION } from '../lib/backendApi/mutations'
+import { ACTIVATE_CANDIDATE_MUTATION } from '../lib/graphql/mutations'
 
 class RunMutaion extends Component {
   componentDidMount(){
@@ -86,9 +85,4 @@ class ActivationPage extends Component {
   }
 }
 
-export default compose(
-  // withData gives us server-side graphql queries before rendering
-  withData,
-  // withApollo exposes `this.props.client` used when logging out
-  withApollo
-)(ActivationPage)
+export default ActivationPage

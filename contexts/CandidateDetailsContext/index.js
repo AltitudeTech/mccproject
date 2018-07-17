@@ -1,19 +1,19 @@
 import React, { Component, Fragment } from 'react'
 import { Query } from 'react-apollo'
-import { PAYMENT_PAGE_QUERY } from '../../lib/backendApi/queries'
+import { HOME_VIEWER_CANDIDATE_QUERY } from '../../lib/graphql/queries'
 
 import { loaderStyles } from '../../utils/styles'
 
 export {
-  CandidatePaymentsContext,
-  CandidatePaymentsWrapper
+  CandidateDetailsContext,
+  CandidateDetailsWrapper
 }
 
-const CandidatePaymentsContext = React.createContext({
-  payments: []
+const CandidateDetailsContext = React.createContext({
+  user: {}
 });
 
-class CandidatePaymentsWrapper extends Component {
+class CandidateDetailsWrapper extends Component {
   constructor(props){
     super(props)
     // this.toggleModal= this.toggleModal.bind(this);
@@ -24,7 +24,7 @@ class CandidatePaymentsWrapper extends Component {
   }
 
   render() {
-    return <Query query={PAYMENT_PAGE_QUERY}>
+    return <Query query={HOME_VIEWER_CANDIDATE_QUERY}>
       {({loading, error, data}) => {
         if (loading)
           return <Fragment>
@@ -36,14 +36,14 @@ class CandidatePaymentsWrapper extends Component {
           return `There was an error contacting the server`;
         }
 
-        const { viewerCandidate: { candidate: { payments } } } = data;
+        const { viewerCandidate: { candidate } } = data;
         // console.log(candidate);
         return (
-          <CandidatePaymentsContext.Provider value={{payments}}>
+          <CandidateDetailsContext.Provider value={{candidate}}>
             {this.props.children}
-          </CandidatePaymentsContext.Provider>
+          </CandidateDetailsContext.Provider>
         )
-      }}
+        }}
       </Query>
   }
 }

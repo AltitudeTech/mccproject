@@ -13,7 +13,7 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import { auto } from 'async';
 
-import { LoginModalContext } from '../../Context/LoginModalContext'
+import { LoginModalContext } from '../../../contexts/LoginModalContext'
 
 import LoginButton from './LoginButton'
 import RegisterButton from './RegisterButton'

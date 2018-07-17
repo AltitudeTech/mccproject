@@ -8,7 +8,7 @@ import redirect from '../../lib/auth/redirect'
 
 import NotificationsList from '../CandidatePortal/NotificationsList'
 
-import { CandidateDetailsContext } from '../Context/CandidateDetailsContext'
+import { CandidateDetailsContext } from '../../contexts/CandidateDetailsContext'
 
 export default class LeftNavigation extends Component{
   constructor(props){

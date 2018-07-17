@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { LoginModalContext } from '../Context/LoginModalContext'
+import { LoginModalContext } from '../../contexts/LoginModalContext'
 
 export default class TextContent extends Component {
   render() {

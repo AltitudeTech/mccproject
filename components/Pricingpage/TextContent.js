@@ -7,8 +7,8 @@ import Subheader from 'material-ui/Subheader';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import { ApolloConsumer } from 'react-apollo'
 
-import { USER_ISAUTHENTICATED_QUERY } from '../../lib/backendApi/queries'
-import { LoginModalContext } from '../Context/LoginModalContext'
+import { USER_ISAUTHENTICATED_QUERY } from '../../lib/graphql/queries'
+import { LoginModalContext } from '../../contexts/LoginModalContext'
 
 const style = {
   height: 'auto',

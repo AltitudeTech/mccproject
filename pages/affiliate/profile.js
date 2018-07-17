@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 // import Link from 'next/link'
-import withAffiliatePortal from '../../components/HOCS/affiliate/withAffiliatePortal'
+import withAffiliatePortal from '../../hocs/affiliate/withAffiliatePortal'
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
 import FileCloudUpload from 'material-ui/svg-icons/file/cloud-upload';

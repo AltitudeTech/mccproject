@@ -2,8 +2,8 @@ import { Component } from 'react';
 import PaystackButton from 'react-paystack';
 import { Mutation } from 'react-apollo';
 
-import { CREATE_PAYMENT_MUTATION } from '../../../lib/backendApi/mutations'
-import { PAYMENT_PAGE_QUERY } from '../../../lib/backendApi/queries'
+import { CREATE_PAYMENT_MUTATION } from '../../../lib/graphql/mutations'
+import { PAYMENT_PAGE_QUERY } from '../../../lib/graphql/queries'
 
 const PAYSTACK_PUBLIC_KEY = 'pk_test_43f8936830aea3a5b9838c4893b16c9f1e7dee34';
 

@@ -7,7 +7,7 @@ import { ToastContainer, toast} from 'react-toastify'
 import { TOAST_STYLE } from '../../../utils/common'
 import redirect from '../../../lib/auth/redirect'
 
-import { LOGIN_USER_MUTATION } from '../../../lib/backendApi/mutations'
+import { LOGIN_USER_MUTATION } from '../../../lib/graphql/mutations'
 
 const style = {
   margin: 12,

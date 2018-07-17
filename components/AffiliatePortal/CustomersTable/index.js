@@ -4,11 +4,10 @@ import React, {Component, Fragment} from 'react';
 import { Query } from 'react-apollo'
 import moment from 'moment'
 
-// import { AffiliateDetailsContext } from '../Context/AffiliateDetailsContext'
 import { Table } from 'react-bootstrap'
 import Pagination from "react-js-pagination"
 
-import { AFFILIATE_CUSTOMERS_PAGINATION_QUERY } from '../../../lib/backendApi/queries'
+import { AFFILIATE_CUSTOMERS_PAGINATION_QUERY } from '../../../lib/graphql/queries'
 
 const EmptySpace = props => (
   <p className="display-4" style={{padding: '10px 0px 10px'}}>

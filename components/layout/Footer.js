@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { Mutation, withApollo } from 'react-apollo'
 
-import { NEWSLETTER_SUBSCRIPTION_MUTATION } from '../../lib/backendApi/mutations'
+import { NEWSLETTER_SUBSCRIPTION_MUTATION } from '../../lib/graphql/mutations'
 
 let email
 

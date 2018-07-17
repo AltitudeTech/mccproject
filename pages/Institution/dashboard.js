@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import withInstitutionPortal from '../../components/HOCS/institution/withInstitutionPortal'
+import withInstitutionPortal from '../../hocs/institution/withInstitutionPortal'
 
 class CandidatePage extends Component{
     render(){

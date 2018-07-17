@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 // import Link from 'next/link'
-import withCandidatePortal from '../../components/HOCS/candidate/withCandidatePortal'
+import withCandidatePortal from '../../hocs/candidate/withCandidatePortal'
 
 import PaymentButton from '../../components/CandidatePortal/PaymentButton'
 
@@ -10,7 +10,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
-import { CandidatePaymentsWrapper, CandidatePaymentsContext } from '../../components/Context/CandidatePaymentsContext'
+import { CandidatePaymentsWrapper, CandidatePaymentsContext } from '../../contexts/CandidatePaymentsContext'
 
 
 const styles = {
@@ -85,7 +85,7 @@ class PaymentPage extends Component{
                             <MenuItem value={"USD"} primaryText="USD" />
                             <MenuItem value={"POUNDS"} primaryText="POUNDS" />
                             <MenuItem value={"NAIRA"} primaryText="NAIRA" />
-                          </SelectField> 
+                          </SelectField>
 
                        <RaisedButton primary={true} label="Pay NOW" /> */}
                       <Checkbox
@@ -96,7 +96,7 @@ class PaymentPage extends Component{
                       />
                       <PaymentButton email={this.state.email} amount={this.state.amount}/>
 
-                 
+
                       </CardActions>
                     </CardText>
                     </div>
@@ -121,8 +121,8 @@ class PaymentPage extends Component{
               display : block ;
             }
             span.subtitle{
-              font-size: 14px; 
-              color: rgba(0, 0, 0, 0.541176); 
+              font-size: 14px;
+              color: rgba(0, 0, 0, 0.541176);
               display: block;
             }
         `}</style>

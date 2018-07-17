@@ -1,17 +1,14 @@
 import Head from 'next/head'
-import Header from './layout/Header'
-import Footer from './layout/Footer'
-import Testimonials from './Homepage/Testimonials'
-import Scripts from './Scripts'
+import Header from '../components/layout/Header'
+import Footer from '../components/layout/Footer'
+import Testimonials from '../components/Homepage/Testimonials'
+import Scripts from '../components/Scripts'
 import injectTapEventPlugin from 'react-tap-event-plugin'
-import CustomSnackbar from './CustomSnackbar'
+import CustomSnackbar from '../components/CustomSnackbar'
 import { withApollo, compose } from 'react-apollo'
 import { ToastContainer } from 'react-toastify'
 
-import { LoginModalWrapper } from './Context/LoginModalContext'
-
-// import withData from '../lib/backendApi/withData'
-//injectTapEventPlugin()
+import { LoginModalWrapper } from '../contexts/LoginModalContext'
 
 export default function withLayout(Child, opts={}) {
     class WrappedComponent extends React.Component {

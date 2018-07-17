@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 
 import Nav2 from '../components/Nav2'
 import TextContent from '../components/Studentpage/TextContent'  
-import withLayout from '../components/withLayout'
+import withLayout from '../hocs/withLayout'
 
 
 class StudentPage extends Component {

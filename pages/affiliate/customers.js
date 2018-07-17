@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 // import Link from 'next/link'
-import withAffiliatePortal from '../../components/HOCS/affiliate/withAffiliatePortal'
+import withAffiliatePortal from '../../hocs/affiliate/withAffiliatePortal'
 import CustomersTable from '../../components/AffiliatePortal/CustomersTable'
-
-// import { AffiliateDetailsContext } from '../../Context/AffiliateDetailsContext'
 
 class Dashboard extends Component{
     constructor(props){

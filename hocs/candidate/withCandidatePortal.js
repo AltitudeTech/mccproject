@@ -3,17 +3,15 @@ import Head from 'next/head'
 import Router from 'next/router'
 import { withApollo, compose, Mutation } from 'react-apollo'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-//import 'isomorphic-fetch'
 
-// import withData from '../../../lib/backendApi/withData'
-import redirect from '../../../lib/auth/redirect'
-import checkAffiliateLoggedIn from '../../../lib/auth/checkAffiliateLoggedIn'
+import redirect from '../../lib/auth/redirect'
+import checkLoggedIn from '../../lib/auth/checkLoggedIn'
 
 import { ToastContainer } from 'react-toastify'
-import { AffiliateDetailsWrapper, AffiliateDetailsContext } from '../../Context/AffiliateDetailsContext'
-// import { SEND_ACTIVATION_LINK_AFFILIATE_MUTATION } from '../../../lib/backendApi/mutations'
+import { CandidateDetailsWrapper, CandidateDetailsContext } from '../../contexts/CandidateDetailsContext'
+import { SEND_ACTIVATION_LINK_CANDIDATE_MUTATION } from '../../lib/graphql/mutations'
 
-import LeftNavigation from '../../AffiliatePortal/LeftNavigation'
+import LeftNavigation from '../../components/CandidatePortal/LeftNavigation'
 
 export default function withLayout(Child, opts={}) {
   class WrappedComponent extends React.Component {
@@ -25,7 +23,7 @@ export default function withLayout(Child, opts={}) {
       }
 
       //Validate loggedin user
-      const {isAuthenticated} = await checkAffiliateLoggedIn(context.apolloClient)
+      const {isAuthenticated} = await checkLoggedIn(context.apolloClient)
       if (!isAuthenticated) {
         // If not signed in, send them somewhere more useful
         let target = `/?show=signIn`
@@ -64,23 +62,24 @@ export default function withLayout(Child, opts={}) {
             {/* <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> */}
             {/* <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> */}
           </Head>
-          {/* <Child /> */}
-          <AffiliateDetailsWrapper>
+          <CandidateDetailsWrapper>
             <div className="app">
+              {/* <Header client={this.props.client}/> */}
               <div className="app-body">
+                {/* <Sidebar/> */}
                 <main className="main" style={{
                   paddingTop: '24px'
                 }}>
                 <div className="container">
                   <div className="row profile">
-                    {/* <AffiliateDetailsContext.Consumer>{
-                      ({ affiliate: { isActivated } }) => {
+                    <CandidateDetailsContext.Consumer>{
+                      ({ candidate: { isActivated } }) => {
                         if (!isActivated) {
                           return (
                             <div className="alert alert-danger" role="alert">
                               <strong>Warning!</strong> Your account has not been verified, please check your email to verify.
-                              <Mutation mutation={SEND_ACTIVATION_LINK_AFFILIATE_MUTATION}
-                                onCompleted={({affiliateResendActivationLink: {email}}) => {
+                              <Mutation mutation={SEND_ACTIVATION_LINK_CANDIDATE_MUTATION}
+                                onCompleted={({candidateResendActivationLink: {email}}) => {
                                   console.log(`activation link was sent to ${email}`)
                                 }}
                                 onError={(error) => {
@@ -98,7 +97,7 @@ export default function withLayout(Child, opts={}) {
                           )
                         }
                       }
-                    }</AffiliateDetailsContext.Consumer> */}
+                    }</CandidateDetailsContext.Consumer>
                       <div className="col-md-3">
                           <LeftNavigation activePage={activePage}/>
                       </div>
@@ -110,7 +109,7 @@ export default function withLayout(Child, opts={}) {
               </main>
             </div>
           </div>
-          </AffiliateDetailsWrapper>
+          </CandidateDetailsWrapper>
         <ToastContainer />
         <style global jsx>{`
             body {

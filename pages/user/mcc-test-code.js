@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 // import Link from 'next/link'
-import withCandidatePortal from '../../components/HOCS/candidate/withCandidatePortal'
+import withCandidatePortal from '../../hocs/candidate/withCandidatePortal'
 
 class MccTestCode extends Component{
     constructor(props){

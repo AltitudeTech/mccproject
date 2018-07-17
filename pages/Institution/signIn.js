@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import withCandidateLogin from '../../components/HOCS/candidate/withCandidateLogin'
+import withCandidateLogin from '../../hocs/candidate/withCandidateLogin'
 
 class CandidatePage extends Component{
     render(){

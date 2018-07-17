@@ -5,8 +5,8 @@ import { ApolloConsumer } from 'react-apollo'
 import cookie from 'cookie'
 import redirect from '../lib/auth/redirect'
 
-import { LoginModalContext } from './Context/LoginModalContext'
-import { USER_ISAUTHENTICATED_QUERY } from '../lib/backendApi/queries'
+import { LoginModalContext } from '../contexts/LoginModalContext'
+import { USER_ISAUTHENTICATED_QUERY } from '../lib/graphql/queries'
 
 import { loaderStyles } from '../utils/styles'
 

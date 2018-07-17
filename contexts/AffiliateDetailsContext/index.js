@@ -1,19 +1,19 @@
 import React, { Component, Fragment } from 'react'
 import { Query } from 'react-apollo'
-import { HOME_VIEWER_CANDIDATE_QUERY } from '../../lib/backendApi/queries'
+import { HOME_VIEWER_AFFILIATE_QUERY } from '../../lib/graphql/queries'
 
 import { loaderStyles } from '../../utils/styles'
 
 export {
-  CandidateDetailsContext,
-  CandidateDetailsWrapper
+  AffiliateDetailsContext,
+  AffiliateDetailsWrapper
 }
 
-const CandidateDetailsContext = React.createContext({
+const AffiliateDetailsContext = React.createContext({
   user: {}
 });
 
-class CandidateDetailsWrapper extends Component {
+class AffiliateDetailsWrapper extends Component {
   constructor(props){
     super(props)
     // this.toggleModal= this.toggleModal.bind(this);
@@ -24,7 +24,7 @@ class CandidateDetailsWrapper extends Component {
   }
 
   render() {
-    return <Query query={HOME_VIEWER_CANDIDATE_QUERY}>
+    return <Query query={HOME_VIEWER_AFFILIATE_QUERY}>
       {({loading, error, data}) => {
         if (loading)
           return <Fragment>
@@ -36,12 +36,12 @@ class CandidateDetailsWrapper extends Component {
           return `There was an error contacting the server`;
         }
 
-        const { viewerCandidate: { candidate } } = data;
-        // console.log(candidate);
+        const { viewerMccAffiliate: { mccAffiliate } } = data;
+        // console.log(affiliate);
         return (
-          <CandidateDetailsContext.Provider value={{candidate}}>
+          <AffiliateDetailsContext.Provider value={{affiliate: mccAffiliate}}>
             {this.props.children}
-          </CandidateDetailsContext.Provider>
+          </AffiliateDetailsContext.Provider>
         )
         }}
       </Query>

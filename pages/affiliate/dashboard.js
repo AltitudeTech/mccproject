@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 // import Link from 'next/link'
-import withAffiliatePortal from '../../components/HOCS/affiliate/withAffiliatePortal'
+import withAffiliatePortal from '../../hocs/affiliate/withAffiliatePortal'
 
 class Dashboard extends Component{
     constructor(props){
