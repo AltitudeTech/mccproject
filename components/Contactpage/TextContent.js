@@ -37,8 +37,8 @@ export default class TextContent extends Component {
                         <div className="w3_agileits_mail_left">
                             <h4><i className="fa fa-envelope" aria-hidden="true"></i>EMAIL ADDRESS</h4>
                             <div className="w3_agileits_mail_left1">
-                                <a href="mailto:info@example.com">info@example1.com</a>
-                                <a href="mailto:info@example.com">info@example2.com</a>
+                                <a href="mailto:info@example.com">info@mycareerchoice.global</a>
+                                <h3>&nbsp;</h3>
                             </div>
                         </div>
                     </div>

@@ -18,7 +18,7 @@ class AboutPage extends Component {
         <div className="row" style={{textAlign:'center', marginBottom : '30px'}}>
           <div className="col-md-4">
             <img src="/static/images/product.jpg" style={{width:'200px'}} />
-            <h4>Sample MCC test</h4>
+            <h4>MCC Brochure</h4>
             <a href="https://drive.google.com/file/d/0B7TXJNCnuUOaazZvNHN4R24zRnc/view?usp=sharing" target="_blank">View MCC Sample Test </a>
           </div>
           <div className="col-md-4">

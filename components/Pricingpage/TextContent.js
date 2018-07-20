@@ -25,7 +25,7 @@ const TextComponent = () => (
   <MuiThemeProvider>
     <Paper style={style} zDepth={2}>
       <h3>Student</h3><br/>
-      <img src='/static/images/product.jpg' style={{width:'inherit'}} /><br/>
+      <img src='/static/images/student.svg' style={{width:'inherit'}} /><br/>
       <List>
         <Subheader>FEATURES</Subheader>
         <ListItem
@@ -61,7 +61,7 @@ const TextComponent = () => (
     </Paper>
     <Paper style={style} zDepth={2}>
       <h3 className='institution'>Institution</h3><br/>
-      <img src='/static/images/product.jpg' style={{width:'inherit'}} /><br/>
+      <img src='/static/images/institution.svg' style={{width:'inherit'}} /><br/>
       <List>
         <Subheader>FEATURES</Subheader>
         <ListItem
