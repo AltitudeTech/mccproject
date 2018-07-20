@@ -5,18 +5,21 @@ import { Mutation } from 'react-apollo';
 import { CREATE_PAYMENT_MUTATION } from '../../../lib/graphql/mutations'
 import { PAYMENT_PAGE_QUERY } from '../../../lib/graphql/queries'
 
-const PAYSTACK_PUBLIC_KEY = 'pk_test_43f8936830aea3a5b9838c4893b16c9f1e7dee34';
+// const PAYSTACK_PUBLIC_KEY = 'pk_test_43f8936830aea3a5b9838c4893b16c9f1e7dee34';
+const PAYSTACK_PUBLIC_KEY = 'pk_live_ec169fc011a4a8a16544c851b69a5c89571f46a7 ';
 
 export default class PaymentButton extends Component {
 
 	state = {
 		key: PAYSTACK_PUBLIC_KEY, //PAYSTACK PUBLIC KEY
 		email: this.props.email,  // customer email
-		amount: this.props.amount //equals NGN100,
+		amount: this.props.amount, //equals NGN100,
+		message: ''
 	}
 
 	callback = (response, runMutation) => {
 		// console.log(response); // card charged successfully, get reference here
+		this.setState({message: ''})
 		if (response.reference) {//successfully
 			runMutation({
 				variables: {
@@ -28,6 +31,7 @@ export default class PaymentButton extends Component {
 
 	close = () => {
 		console.log("Payment closed");
+		this.setState({message: ''})
 	}
 
 	getReference = () => {
@@ -57,8 +61,9 @@ export default class PaymentButton extends Component {
 	}
 
   render() {
+		const {message} = this.state;
     return (
-      <div>
+      <div onClick={()=>this.setState({message: 'Contacting payment server please wait!'})}>
         <script src="https://js.paystack.co/v1/inline.js"></script>
 				<Mutation mutation={CREATE_PAYMENT_MUTATION}
 					update={this.onMutationCompleted}
@@ -80,9 +85,15 @@ export default class PaymentButton extends Component {
 								amount={this.state.amount}
 								paystackkey={this.state.key}
 							/>
+							{message && <p className="payment-message">{message}</p>}
 						</p>
 					)}
 				</Mutation>
+				<style jsx>{`
+					.payment-message {
+						color: #3c763d;
+					}
+				`}</style>
       </div>
     );
   }
