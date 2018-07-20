@@ -15,7 +15,7 @@ export default class TextContent extends Component {
           <div className="w3l_services_grids">
             <div className="row">
               <div className="col-md-12">
-                <p className="question">Q: What is My Career Choice?</p>
+                {/* <p className="question">Q: What is My Career Choice?</p>
                 <p className="answer">My Career Choice is the world’s No 1 online platform for making career choices. We help employers fill their vacancies quickly and cost-effectively by giving them access to the most relevant pool of qualified job-seekers.</p>
 
                 <p className="question">Q: Who is behind Jobberman?</p>
@@ -43,7 +43,7 @@ export default class TextContent extends Component {
                 <p className="answer">Yes. Your resume is what explains your focus, qualifications, strengths, as well as your commitment to starting or changing a career, which will help the employer make recruiting decisions.</p>
 
                 <p className="question">Q: If I get a job through Jobberman.com, will Jobberman.com collect part of my salary?</p>
-                <p className="answer">No, No and No. Jobberman.com does not get a cut out of your salary nor do we demand for such.</p>
+                <p className="answer">No, No and No. Jobberman.com does not get a cut out of your salary nor do we demand for such.</p> */}
 
               </div>
             </div>

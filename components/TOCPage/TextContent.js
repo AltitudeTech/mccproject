@@ -15,7 +15,7 @@ export default class TextContent extends Component {
           <div className="w3l_services_grids">
             <div className="row">
               <div className="col-md-12">                
-                <h3>Introduction</h3>
+                {/* <h3>Introduction</h3>
                 <p>
                 This site is owned and operated by Career Intelligence Human Capital Development Company Limited. The contents and materials of this website are displayed for personal and educational use only. All contents, materials used, including without limitations, site designs, texts, graphics, audio, video and the selection and arrangements, is the property of Career Intelligence Human Capital Development Limited or its suppliers and its protected by International copyright laws.  
                 </p>
@@ -82,7 +82,7 @@ export default class TextContent extends Component {
                 <p>Career Intelligence Human Capital Development Company Limited products are for the exclusive use of its registered clients.  Products include, MCC, JobProfiling, PRET, JobMatch and include all private label and rebranded products. Career Intelligence Human Capital Development Company Limited products cannot be sold, re-sold, shared, transferred or provided free of charge to any other entity or person.  A breach of these terms will lead to Termination and legal action. </p>
                 <h3>Jurisdiction</h3>
                 <p>This Agreement is governed by and construed in accordance with the laws of the Federal Republic of Nigeria.. Any legal matter arising will commence and conclude within the jurisdiction of the Nigerian Courts. </p> 
-                <p>Any advertisements acquired by you from JOBBERMAN must not be on-sold or supplied by you to third parties unless you are a media buyer (as approved by JOBBERMAN) whose primary business it is to acquire media on behalf of third parties, or unless you are a job recruiter and supply job recruitment services (as approved by JOBBERMAN) in conjunction with the advertisements.</p>
+                <p>Any advertisements acquired by you from JOBBERMAN must not be on-sold or supplied by you to third parties unless you are a media buyer (as approved by JOBBERMAN) whose primary business it is to acquire media on behalf of third parties, or unless you are a job recruiter and supply job recruitment services (as approved by JOBBERMAN) in conjunction with the advertisements.</p> */}
 
               </div>
             </div>
