@@ -1909,6 +1909,9 @@ p.agileinfo_para {
   .navbar-brand {
     height: 65px;
   }
+  .navbar-brand img {
+    width: 100px;
+  }
   .navbar-default {
     padding: 0.5em 1em;
   }
