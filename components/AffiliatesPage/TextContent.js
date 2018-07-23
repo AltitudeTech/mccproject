@@ -22,8 +22,7 @@ export default class TextContent extends Component {
                 </p>
                 <p>
                   To register your interest in becoming an affiliate, please
-                  send a short message indicating your interest to
-                  info@mycareerchoice.global.
+                  fill the form below.
                 </p>
               </div>
             </div>
@@ -31,6 +30,9 @@ export default class TextContent extends Component {
           <br/><br/>
         </div>
         <style jsx>{`
+          .services{
+            padding-bottom: 1em;
+          }
           h4{
             font-size: 26px;
             margin-bottom: 10px;

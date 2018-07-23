@@ -4,7 +4,7 @@ import cookie from 'cookie'
 import RaisedButton from 'material-ui/RaisedButton';
 
 import { ToastContainer, toast} from 'react-toastify'
-import { TOAST_STYLE } from '../../../utils/common'
+import { TOAST_STYLE, EMAIL_REGEX } from '../../../utils/common'
 import redirect from '../../../lib/auth/redirect'
 
 import { LOGIN_USER_MUTATION } from '../../../lib/graphql/mutations'
@@ -67,21 +67,24 @@ class LoginButton extends Component{
   }
 
   doLogin = (event, runMutation) => {
-    const { username, password } = this.props;
-    // console.log(`logging in user:${username}, password:${password}`);
+    const { email, password } = this.props;
+    // console.log('dafuq');
+    // console.log(`logging in user:${email}, password:${password}`);
 
     event.preventDefault()
     event.stopPropagation()
 
-    if(this.props.usernameError.length < 1 ){
+    if(EMAIL_REGEX.test(this.state.email)){
+      console.log('dfuq');
       runMutation({
         variables: {
-          email: username,
+          email: email,
           password: password
         }
       })
     } else {
-      if (this.props.usernameError.length > 1) {
+      // console.log('fuck');
+      if(EMAIL_REGEX.test(this.state.email)){
         this.props.showLoginError("enter a valid email address")
       }
       // if (!this.props.phone || !this.props.phoneValid) {
@@ -102,8 +105,7 @@ class LoginButton extends Component{
       onError={this.onLoginError}>
       {(loginUser, { data, error }) => (
         <RaisedButton
-         label='Login'
-         style={style}
+         label='Register'
          backgroundColor="#0c6053"
          labelColor="white"
          onClick={e=>this.doLogin(e, loginUser)}

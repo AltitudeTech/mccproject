@@ -63,7 +63,7 @@ export default class PaymentButton extends Component {
   render() {
 		const {message} = this.state;
     return (
-      <div onClick={()=>this.setState({message: 'Contacting payment server please wait!'})}>
+      <div disabled={true} onClick={()=>this.setState({message: 'Contacting payment server please wait!'})}>
         <script src="https://js.paystack.co/v1/inline.js"></script>
 				<Mutation mutation={CREATE_PAYMENT_MUTATION}
 					update={this.onMutationCompleted}
