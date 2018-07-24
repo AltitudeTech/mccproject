@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Router from 'next/router'
 import { Mutation, withApollo, compose } from 'react-apollo'
 
+import cookie from 'cookie'
 import { ACTIVATE_USER_ACCOUNT_MUTATION } from '../lib/graphql/mutations'
 import LoadingSpinner from '../components/Activatepage/LoadingSpinner'
 // import CompletedAnimation from '../components/Activatepage/CompletedAnimation'
@@ -182,4 +183,4 @@ class ActivationPage extends Component {
   }
 }
 
-export default ActivationPage
+export default withApollo(ActivationPage)
