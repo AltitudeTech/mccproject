@@ -7,8 +7,12 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import redirect from '../../lib/auth/redirect'
 import checkAffiliateLoggedIn from '../../lib/auth/checkAffiliateLoggedIn'
 
-import { ToastContainer } from 'react-toastify'
+import cookie from 'cookie'
+import { ToastContainer, toast } from 'react-toastify'
 import { AffiliateDetailsWrapper, AffiliateDetailsContext } from '../../contexts/AffiliateDetailsContext'
+import { SEND_ACTIVATION_LINK_AFFILIATE_MUTATION } from '../../lib/graphql/mutations'
+
+import { TOAST_STYLE } from '../../utils/common'
 
 import LeftNavigation from '../../components/AffiliatePortal/LeftNavigation'
 
@@ -25,12 +29,18 @@ export default function withLayout(Child, opts={}) {
       const {isAuthenticated} = await checkAffiliateLoggedIn(context.apolloClient)
       if (!isAuthenticated) {
         // If not signed in, send them somewhere more useful
+        document.cookie = cookie.serialize('token', '', {
+          maxAge: -1, // Expire the cookie immediately
+          path: '/'
+        })
+        document.cookie = cookie.serialize('userType', '', {
+          maxAge: -1, // Expire the cookie immediately
+          path: '/'
+        })
+        // client.cache.reset().then(() => {
+        //   redirect(context, target)
+        // })
         let target = `/?show=signIn`
-        // let asPath = `/login`
-        if (context.pathname !== '/user'){
-          // target = `${target}`
-          // asPath = `${asPath}?from=${context.pathname}`
-        }
         redirect(context, target)
       }
 
@@ -58,6 +68,7 @@ export default function withLayout(Child, opts={}) {
             {/* <link rel="stylesheet" href="/static/css/portal/style.css"/> */}
             {/* <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/> */}
             <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+            <link rel="stylesheet" href="/static/css/ReactToastify.min.css" />
             {/* <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> */}
             {/* <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> */}
           </Head>
@@ -70,7 +81,7 @@ export default function withLayout(Child, opts={}) {
                 }}>
                 <div className="container">
                   <div className="row profile">
-                    {/* <AffiliateDetailsContext.Consumer>{
+                    <AffiliateDetailsContext.Consumer>{
                       ({ affiliate: { isActivated } }) => {
                         if (!isActivated) {
                           return (
@@ -78,6 +89,7 @@ export default function withLayout(Child, opts={}) {
                               <strong>Warning!</strong> Your account has not been verified, please check your email to verify.
                               <Mutation mutation={SEND_ACTIVATION_LINK_AFFILIATE_MUTATION}
                                 onCompleted={({affiliateResendActivationLink: {email}}) => {
+                                  toast(`activation link was sent to ${email}`, {...TOAST_STYLE.success});
                                   console.log(`activation link was sent to ${email}`)
                                 }}
                                 onError={(error) => {
@@ -95,7 +107,7 @@ export default function withLayout(Child, opts={}) {
                           )
                         }
                       }
-                    }</AffiliateDetailsContext.Consumer> */}
+                    }</AffiliateDetailsContext.Consumer>
                       <div className="col-md-3">
                           <LeftNavigation activePage={activePage}/>
                       </div>
