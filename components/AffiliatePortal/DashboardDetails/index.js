@@ -15,11 +15,23 @@ export default class CustomersTable extends Component{
         return <Fragment>
           <AffiliateDetailsContext.Consumer>{
             ({ affiliate: { email, isActivated, isApproved, isActive, coupon } }) => <Fragment>
-              <div>email: {email}</div>
-              <div>isActivated: {isActivated ? 'true' : 'false'}</div>
-              <div>isApproved: {isApproved ? 'true' : 'false'}</div>
-              <div>isActive: {isActive ? 'true' : 'false'}</div>
-              <div>coupon: {coupon ? coupon.coupon : 'Not yet assigned'}</div>
+              <div><i className="glyphicon glyphicon-envelope"></i> {email}</div>
+              <div>
+                {isApproved ?
+                  <i className="glyphicon glyphicon-ok"></i> :
+                  <i className="glyphicon glyphicon-remove"></i>
+                }
+                &nbsp;required documents have {!isApproved && 'not'} been verified
+              </div>
+              <div>
+                {isActive ?
+                  <i className="glyphicon glyphicon-ok"></i> :
+                  <i className="glyphicon glyphicon-remove"></i>
+                }
+                &nbsp;Signed T&C's has {!isActive && 'not'} been verified
+              </div>
+              <div>Coupon Code: {isActive ? (coupon ? coupon.coupon : <a>Create your coupon</a>) : 'Your account is not yet active please complete the verification procedures'}</div>
+              <br/>
             </Fragment>
           }</AffiliateDetailsContext.Consumer>
         </Fragment>
