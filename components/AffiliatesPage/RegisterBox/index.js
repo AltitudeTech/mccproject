@@ -15,7 +15,6 @@ import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui
 
 import { Grid, Row, Col } from 'react-bootstrap'
 
-import LoginButton from './LoginButton'
 import RegisterButton from './RegisterButton'
 
 const EMAIL_REGEX = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
@@ -48,21 +47,21 @@ const styles = {
 export default class CandidateModal extends React.Component {
   constructor({props}){
     super(props) ;
-    this.showLoginError = this.showLoginError.bind(this);
-    this.showLoginMessage = this.showLoginMessage.bind(this);
     this.showRegisterError = this.showRegisterError.bind(this);
     this.showRegisterMessage = this.showRegisterMessage.bind(this);
   }
   state = {
-    email : '',
-    password : '',
-    emailError : '',
-    passwordError : '',
-    regFullname : '' ,
-    regEmail : '' ,
-    regPassword : '' ,
-    loginErrorText: '',
-    loginSuccessText: '',
+    name: '',
+    phone: '',
+    email: '',
+    password: '',
+    ConfirmPassword: '',
+    workAddress: '',
+    physicalAddress: '',
+    referee1name: '',
+    referee1phone: '',
+    referee2name: '',
+    referee2phone: '',
     registerErrorText: '',
     registerSuccessText: ''
   };
@@ -71,14 +70,6 @@ export default class CandidateModal extends React.Component {
     this.setState({email : event.target.value})
     EMAIL_REGEX.test(this.state.email)? this.setState({emailError:''}):this.setState({emailError:'Invalid Email'})
   };
-
-  showLoginError = (message) => {
-    this.setState({loginErrorText: message})
-    setTimeout(()=>{ this.setState({loginErrorText: ''}) },5*1000)
-  }
-  showLoginMessage = (message) => {
-    this.setState({loginSuccessText: message})
-  }
 
   showRegisterError = (message) => {
     this.setState({registerErrorText: message})
@@ -111,8 +102,8 @@ export default class CandidateModal extends React.Component {
                           // hintText={registerType == 0 ? 'e.g John Doe' : registerType == 1 ? 'e.g Google'  : 'Adviser Fullname'}
                           fullWidth={true}
                           errorText=''
-                          value={this.state.regFullname}
-                          onChange={(e) => this.setState({regFullname : e.target.value})}
+                          value={this.state.name}
+                          onChange={(e) => this.setState({name : e.target.value})}
                           floatingLabelText='Fullname'
                           type="text"
                         />
@@ -122,8 +113,8 @@ export default class CandidateModal extends React.Component {
                           // hintText="example@gmail.com"
                           fullWidth={true}
                           errorText=''
-                          value={this.state.regEmail}
-                          onChange={(e) => this.setState({regEmail : e.target.value})}
+                          value={this.state.email}
+                          onChange={(e) => this.setState({email : e.target.value})}
                           floatingLabelText="Email"
                           type="text"
                         />
@@ -132,8 +123,8 @@ export default class CandidateModal extends React.Component {
                           floatingLabelFocusStyle={{color: "#0c6053"}}
                           // hintText="Password"
                           fullWidth={true}
-                          value={this.state.regPassword}
-                          onChange={(e) => this.setState({regPassword : e.target.value})}
+                          value={this.state.password}
+                          onChange={(e) => this.setState({password : e.target.value})}
                           errorText=''
                           floatingLabelText="Password"
                           type="password"
@@ -143,28 +134,12 @@ export default class CandidateModal extends React.Component {
                           floatingLabelFocusStyle={{color: "#0c6053"}}
                           // hintText="Password"
                           fullWidth={true}
-                          value={this.state.regPassword}
-                          onChange={(e) => this.setState({regPassword : e.target.value})}
+                          value={this.state.ConfirmPassword}
+                          onChange={(e) => this.setState({ConfirmPassword : e.target.value})}
                           errorText=''
                           floatingLabelText="Confirm Password"
                           type="password"
                         />
-
-                        {/* <SelectField
-                          floatingLabelText="Register As"
-                          selectedMenuItemStyle={{color: "#ff5722"}}
-                          value={registerType}
-                          onChange={changeRegisterType}
-                          fullWidth={true}
-                          >
-                            {REGISTER_TYPES.map((type, index) => <MenuItem value={index} primaryText={type} />)}
-                          </SelectField> */}
-                          {this.state.registerErrorText && (
-                            <p className='login-error-text'>{this.state.registerErrorText}</p>
-                          )}
-                          {this.state.registerSuccessText && (
-                            <p className='login-success-text'>{this.state.registerSuccessText}</p>
-                          )}
                         </Col>
                     <Col md="6" sm="12">
                       <TextField
@@ -173,8 +148,8 @@ export default class CandidateModal extends React.Component {
                         hintText="eg. +1818855611"
                         fullWidth={true}
                         errorText=''
-                        value={this.state.regEmail}
-                        onChange={(e) => this.setState({regEmail : e.target.value})}
+                        value={this.state.phone}
+                        onChange={(e) => this.setState({phone : e.target.value})}
                         floatingLabelText="Phone"
                         type="text"
                       />
@@ -185,8 +160,8 @@ export default class CandidateModal extends React.Component {
                           // hintText={registerType == 0 ? 'e.g John Doe' : registerType == 1 ? 'e.g Google'  : 'Adviser Fullname'}
                           fullWidth={true}
                           errorText=''
-                          value={this.state.regFullname}
-                          onChange={(e) => this.setState({regFullname : e.target.value})}
+                          value={this.state.physicalAddress}
+                          onChange={(e) => this.setState({physicalAddress : e.target.value})}
                           floatingLabelText='Physical Address'
                           type="text"
                         />
@@ -196,8 +171,8 @@ export default class CandidateModal extends React.Component {
                           // hintText="example@gmail.com"
                           fullWidth={true}
                           errorText=''
-                          value={this.state.regEmail}
-                          onChange={(e) => this.setState({regEmail : e.target.value})}
+                          value={this.state.workAddress}
+                          onChange={(e) => this.setState({workAddress : e.target.value})}
                           floatingLabelText="Work Address (if applicable)"
                           type="text"
                         />
@@ -216,8 +191,8 @@ export default class CandidateModal extends React.Component {
                         // hintText={registerType == 0 ? 'e.g John Doe' : registerType == 1 ? 'e.g Google'  : 'Adviser Fullname'}
                         fullWidth={true}
                         errorText=''
-                        value={this.state.regFullname}
-                        onChange={(e) => this.setState({regFullname : e.target.value})}
+                        value={this.state.referee1name}
+                        onChange={(e) => this.setState({referee1name : e.target.value})}
                         floatingLabelText='Referee Name'
                         type="text"
                       />
@@ -227,8 +202,8 @@ export default class CandidateModal extends React.Component {
                         // hintText="example@gmail.com"
                         fullWidth={true}
                         errorText=''
-                        value={this.state.regEmail}
-                        onChange={(e) => this.setState({regEmail : e.target.value})}
+                        value={this.state.referee1phone}
+                        onChange={(e) => this.setState({referee1phone : e.target.value})}
                         floatingLabelText="Referee phone"
                         type="text"
                       />
@@ -241,8 +216,8 @@ export default class CandidateModal extends React.Component {
                         // hintText={registerType == 0 ? 'e.g John Doe' : registerType == 1 ? 'e.g Google'  : 'Adviser Fullname'}
                         fullWidth={true}
                         errorText=''
-                        value={this.state.regFullname}
-                        onChange={(e) => this.setState({regFullname : e.target.value})}
+                        value={this.state.referee2name}
+                        onChange={(e) => this.setState({referee2name : e.target.value})}
                         floatingLabelText='Referee Name'
                         type="text"
                       />
@@ -252,13 +227,19 @@ export default class CandidateModal extends React.Component {
                         // hintText="example@gmail.com"
                         fullWidth={true}
                         errorText=''
-                        value={this.state.regEmail}
-                        onChange={(e) => this.setState({regEmail : e.target.value})}
+                        value={this.state.referee2phone}
+                        onChange={(e) => this.setState({referee2phone : e.target.value})}
                         floatingLabelText="Referee phone"
                         type="text"
                       />
                     </Col>
                   </Row>
+                  {this.state.registerErrorText && (
+                    <p className='login-error-text'>{this.state.registerErrorText}</p>
+                  )}
+                  {this.state.registerSuccessText && (
+                    <p className='login-success-text'>{this.state.registerSuccessText}</p>
+                  )}
                   <br />
                     {/* <RaisedButton
                       className="register-button"
@@ -267,9 +248,9 @@ export default class CandidateModal extends React.Component {
                       labelColor="white"
                       onClick={this.props.close}
                     /> */}
-                    <LoginButton {...this.state}
-                      showLoginError={this.showLoginError}
-                      showLoginMessage={this.showLoginMessage}/>
+                    <RegisterButton {...this.state}
+                      showRegisterError={this.showRegisterError}
+                      showRegisterMessage={this.showRegisterMessage}/>
                       <style jsx>{`
                         .register-wrapper{
                           padding-bottom: 5em;

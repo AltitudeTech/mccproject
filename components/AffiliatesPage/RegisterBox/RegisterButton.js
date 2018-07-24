@@ -7,7 +7,7 @@ import { ToastContainer, toast} from 'react-toastify'
 import { TOAST_STYLE } from '../../../utils/common'
 import redirect from '../../../lib/auth/redirect'
 
-import { SIGNUP_CANDIDATE_MUTATION, SIGNUP_INSTITUTION_MUTATION } from '../../../lib/graphql/mutations'
+import { SIGNUP_AFFILIATE_MUTATION } from '../../../lib/graphql/mutations'
 
 const style = {
   margin: 12,
@@ -17,28 +17,12 @@ export default withApollo(
   class RegisterButton extends Component{
 
     onsignUpCompleted = (data) => {
-      const { REGISTER_TYPES, registerType } = this.props;
-
-      let user, target;
-
-      if (REGISTER_TYPES[registerType]=='Candidate') {
-         user=data.candidateCreateAccount;
-         target = `/user/dashboard`;
-         document.cookie = cookie.serialize('userType', 'Candidate', {
-           maxAge: 30 * 24 * 60 * 60 // 30 days
-         })
-       }
-       // TODO
-      if (REGISTER_TYPES[registerType]=='Institution') {
-         user=data.institutionCreateAccount;
-         target = `/institution/dashboard`;
-         document.cookie = cookie.serialize('userType', 'Institution', {
-           maxAge: 30 * 24 * 60 * 60 // 30 days
-         })
-       }
+      document.cookie = cookie.serialize('userType', 'MccAffiliate', {
+        maxAge: 30 * 24 * 60 * 60 // 30 days
+      })
 
       // Store the token in cookie
-      const {jwt, name} = user;
+      const {jwt, name} = data.affiliateCreateAccount;
       // toast(`Welcome Back ${last}!`, {...TOAST_STYLE.success});
       console.log(`Welcome Back ${name}!`);
       this.props.showRegisterMessage(`Welcome ${name}!`)
@@ -48,7 +32,7 @@ export default withApollo(
       // Force a reload of all the current queries now that the user is
       // logged in
       this.props.client.resetStore().then(() => {
-        redirect({}, target)
+        redirect({}, `/affiliate/dashboard`)
       })
     }
 
@@ -69,6 +53,10 @@ export default withApollo(
           this.props.showRegisterError("Incorrect username/password")
           // toast("Incorrect username/password", {...TOAST_STYLE.fail});
           break;
+          case `Email already exists`:
+          this.props.showRegisterError("A user with this email already exists on career intelligence database")
+          // toast("Incorrect username/password", {...TOAST_STYLE.fail});
+          break;
           default:
           this.props.showRegisterError("Something went wrong while contacting the server")
           // toast("Something Went Wrong", {...TOAST_STYLE.fail});
@@ -76,32 +64,46 @@ export default withApollo(
       })
     }
 
-    dosignUp = (event, runMutation, doRegistrationAs) => {
+    dosignUp = (event, runMutation) => {
       event.preventDefault()
       event.stopPropagation()
 
-      let variables;
-      const { regFullname, regEmail, regPassword } = this.props;
+      const {
+        name,
+        phone,
+        email,
+        password,
+        ConfirmPassword,
+        workAddress,
+        physicalAddress,
+        referee1name,
+        referee1phone,
+        referee2name,
+        referee2phone
+      } = this.props;
 
-      const names = regFullname.split(' ', 2)
+      const variables={
+        name,
+        phone,
+        email,
+        password,
+        workAddress,
+        physicalAddress,
+        referee1name,
+        referee1phone,
+        referee2name,
+        referee2phone
+      }
+      console.log(variables);
 
-      doRegistrationAs=='Candidate' && (variables={
-        firstName: names[0],
-        lastName: names[1],
-        email: regEmail,
-        password: regPassword
-      });
-      doRegistrationAs=='Institution' && (variables={
-        name: regFullname,
-        email: regEmail,
-        password: regPassword
-      });
-
-      // if(this.props.fullnameError.length < 1 ){
+      if(password == ConfirmPassword ){
         runMutation({
           variables
         })
-      // } else {
+      } else {
+        if (password != ConfirmPassword) {
+          this.props.showRegisterError("supplied passwords do not match");
+        }
       //   if (!this.props.phone || !this.props.phoneValid) {
       //     this.setState({phoneValid: false})
       //   }
@@ -110,28 +112,20 @@ export default withApollo(
       //   }
       //
       //   toast("Your Inputs are not valid", {...TOAST_STYLE.fail});
-      // }
+      }
 
     }
 
     render(){
-      const { REGISTER_TYPES, registerType } = this.props;
-      // console.log(REGISTER_TYPES[registerType]);
-      let mutation = SIGNUP_CANDIDATE_MUTATION;
-      REGISTER_TYPES[registerType]=='Candidate' && (mutation=SIGNUP_CANDIDATE_MUTATION);
-      REGISTER_TYPES[registerType]=='Institution' && (mutation=SIGNUP_INSTITUTION_MUTATION);
-      // REGISTER_TYPES[registerType]=='Career Adviser' && (mutation=LOGIN_USER_MUTATION);
-
-      return <Mutation mutation={mutation}
+      return <Mutation mutation={SIGNUP_AFFILIATE_MUTATION}
         onCompleted={this.onsignUpCompleted}
         onError={this.onsignUpError}>
         {(doMutation) => (
             <RaisedButton
             label='Register'
-            style={style}
             backgroundColor="#0c6053"
             labelColor="white"
-            onClick={e=>this.dosignUp(e, doMutation, REGISTER_TYPES[registerType])}
+            onClick={e=>this.dosignUp(e, doMutation)}
           />
         )}
       </Mutation>
