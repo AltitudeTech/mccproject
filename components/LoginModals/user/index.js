@@ -121,7 +121,6 @@ export default class CandidateModal extends React.Component {
 
             return (
             <MuiThemeProvider muiTheme={muiThemebtn}>
-              {/* <RaisedButton label="Modal Dialog" onClick={this.handleOpen} /> */}
               <Dialog
                 style={{zIndex : 1000}}
                 actions={actions}

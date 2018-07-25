@@ -1,17 +1,9 @@
 import React from 'react';
 
-import Dialog from 'material-ui/Dialog';
 import RaisedButton from 'material-ui/RaisedButton';
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import getMuiTheme from 'material-ui/styles/getMuiTheme' ;
 import TextField from 'material-ui/TextField';
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
-import {Tabs, Tab} from 'material-ui/Tabs';
-import SwipeableViews from 'react-swipeable-views';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
-import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar'
 
 import { Grid, Row, Col } from 'react-bootstrap'
 
@@ -85,7 +77,6 @@ export default class CandidateModal extends React.Component {
     return (
       <Grid>
         <MuiThemeProvider muiTheme={muiThemebtn}>
-              {/* <RaisedButton label="Modal Dialog" onClick={this.handleOpen} /> */}
               <div
                 className="register-wrapper"
                 >
