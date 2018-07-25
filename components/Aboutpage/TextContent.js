@@ -25,7 +25,7 @@ export default class TextContent extends Component {
           <div className="w3l_services_grids"  style={{backgroundColor : ''}}>
             <div className="row">
               <div className="col-md-6">
-                <h4 className="w3ls_para">Why Is MyCareerChoice ? </h4>
+                <h4 className="w3ls_para">Why MyCareerChoice ? </h4>
                 <p>
                 <MuiThemeProvider>
                   <List>
