@@ -3,14 +3,19 @@ import { Query } from 'react-apollo'
 import moment from 'moment'
 
 import { AffiliateDetailsContext } from '../../../contexts/AffiliateDetailsContext'
+import CouponModal from './CouponModal'
 
 export default class CustomersTable extends Component{
   constructor(props){
     super(props)
+    this.setModalOpen = this.setModalOpen.bind(this);
     this.state = {
+      modalOpen: false
     }
   }
 
+  setModalOpen(modalOpen){
+    this.setState({modalOpen})
   }
 
   render(){
@@ -43,6 +48,7 @@ export default class CustomersTable extends Component{
               'Your account is not yet active please complete the verification procedures'}
               </span>
             </div>
+            <CouponModal isOpen={this.state.modalOpen} setModalOpen={this.setModalOpen}/>
             <br/>
           </Fragment>
         }</AffiliateDetailsContext.Consumer>
