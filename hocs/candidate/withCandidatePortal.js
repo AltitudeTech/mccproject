@@ -4,6 +4,7 @@ import Router from 'next/router'
 import { withApollo, compose, Mutation } from 'react-apollo'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
+import cookie from 'cookie'
 import redirect from '../../lib/auth/redirect'
 import checkLoggedIn from '../../lib/auth/checkLoggedIn'
 
@@ -26,6 +27,14 @@ export default function withLayout(Child, opts={}) {
       const {isAuthenticated} = await checkLoggedIn(context.apolloClient)
       if (!isAuthenticated) {
         // If not signed in, send them somewhere more useful
+        document.cookie = cookie.serialize('token', '', {
+          maxAge: -1, // Expire the cookie immediately
+          path: '/'
+        })
+        document.cookie = cookie.serialize('userType', '', {
+          maxAge: -1, // Expire the cookie immediately
+          path: '/'
+        })
         let target = `/?show=signIn`
         // let asPath = `/login`
         if (context.pathname !== '/user'){

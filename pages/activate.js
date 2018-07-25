@@ -3,7 +3,8 @@ import Head from 'next/head'
 import Router from 'next/router'
 import { Mutation, withApollo, compose } from 'react-apollo'
 
-import { ACTIVATE_CANDIDATE_MUTATION } from '../lib/graphql/mutations'
+import cookie from 'cookie'
+import { ACTIVATE_USER_ACCOUNT_MUTATION } from '../lib/graphql/mutations'
 import LoadingSpinner from '../components/Activatepage/LoadingSpinner'
 // import CompletedAnimation from '../components/Activatepage/CompletedAnimation'
 
@@ -44,13 +45,31 @@ class ActivationPage extends Component {
   }
 
   onCompleted = (data) => {
-    // const {isActivated, name: {last}} = data.activateCandidate
+    const { jwt, name, userType } = data.userActivateAccount
     this.setState({
       successMessage: `Congratulations, your account has been activated`,
       errorMessage: '',
       defaultMessage: ''
     })
-    setTimeout(()=>Router.push('/?show=signIn'), 5*1000)
+
+    document.cookie = cookie.serialize('token', jwt, {
+      maxAge: 30 * 24 * 60 * 60, // 30 days
+      path: '/'
+    })
+    document.cookie = cookie.serialize('userType', userType, {
+      maxAge: 30 * 24 * 60 * 60, // 30 days
+      path: '/'
+    })
+    // Force a reload of all the current queries now that the user is
+    // logged in
+    this.props.client.resetStore().then(() => {
+      // const target = this.props.url.query.from || `/user/dashboard`;
+      let target = `/user/dashboard`;
+      userType == 'Candidate' && (target=`/user/dashboard`);
+      userType == 'Institution' && (target=`/institution/dashboard`);
+      userType == 'MccAffiliate' && (target=`/affiliate/dashboard`);
+      setTimeout(()=>redirect({}, target), 2.5*1000)
+    })
   }
 
   onError = (error) => {
@@ -67,13 +86,12 @@ class ActivationPage extends Component {
         case `expired token`:
         this.setState({errorMessage: `This token has expired, request a new one from your MCC portal`})
         break;
-        case `email/user not found`:
-        this.props.showLoginError("Invalid email/password")
-        // toast("Invalid email/password", {...TOAST_STYLE.fail});
-        break;
+        // case `email/user not found`:
+        // this.props.showLoginError("Invalid email/password")
+        // // toast("Invalid email/password", {...TOAST_STYLE.fail});
+        // break;
         default:
-        this.props.showLoginError("Something went wrong while contacting the server")
-        // toast("Something Went Wrong", {...TOAST_STYLE.fail});
+        this.setState({errorMessage: `Something went wrong while contacting the server`})
       }
     })
   }
@@ -90,7 +108,7 @@ class ActivationPage extends Component {
           {/* <img src="/static/images/ani/loadingAnimation.svg"/> */}
           <br/>
           <img className="mcc-logo" src="/static/images/mcc-logo.svg" />
-          {code ? <Mutation mutation={ACTIVATE_CANDIDATE_MUTATION}
+          {code ? <Mutation mutation={ACTIVATE_USER_ACCOUNT_MUTATION}
             onCompleted={this.onCompleted}
             onError={this.onError}>
             {(activateCandidate, {data, error, loading}) => (
@@ -165,4 +183,4 @@ class ActivationPage extends Component {
   }
 }
 
-export default ActivationPage
+export default withApollo(ActivationPage)

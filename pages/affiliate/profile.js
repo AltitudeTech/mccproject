@@ -6,6 +6,8 @@ import FlatButton from 'material-ui/FlatButton';
 import FileCloudUpload from 'material-ui/svg-icons/file/cloud-upload';
 import ContentSave from 'material-ui/svg-icons/content/save';
 
+import { Grid, Row, Col } from 'react-bootstrap'
+
 class Dashboard extends Component{
     constructor(props){
         super(props)
@@ -14,33 +16,65 @@ class Dashboard extends Component{
         return <div className="profile-content">
           <div>
               <h2>Profile Details</h2><hr/>
-              <p>
-                <TextField
-                  underlineFocusStyle={{borderColor: "#0c6053"}}
-                  underlineStyle={{borderColor: "#ff5722"}}
-                  floatingLabelFocusStyle={{color: "#0c6053"}}
-                  floatingLabelStyle={{color: "#ff5722"}}
-                  // value={this.state.username}
-                  // onChange={this.usernameText.bind(this)}
-                  floatingLabelText="Lastname"
-                  type="text"
-                />
-                <br />
-                <TextField
-                  underlineFocusStyle={{borderColor: "#0c6053"}}
-                  underlineStyle={{borderColor: "#ff5722"}}
-                  floatingLabelFocusStyle={{color: "#0c6053"}}
-                  floatingLabelStyle={{color: "#ff5722"}}
-                  // value={this.state.username}
-                  // onChange={this.usernameText.bind(this)}
-                  floatingLabelText="Firstname"
-                  type="text"
-                />
-                <FlatButton
-                  icon={<FileCloudUpload />}
-                  style={{margin: 12}}
-                />
-              </p>
+              <Row>
+                <Col md="6" sm="12">
+                  <TextField
+                    underlineFocusStyle={{borderColor: "#0c6053"}}
+                    underlineStyle={{borderColor: "#ff5722"}}
+                    floatingLabelFocusStyle={{color: "#0c6053"}}
+                    floatingLabelStyle={{color: "#ff5722"}}
+                    fullWidth={true}
+                    // value={this.state.username}
+                    // onChange={this.usernameText.bind(this)}
+                    floatingLabelText="Name"
+                    type="text"
+                  />
+                  <br />
+                  <TextField
+                    underlineFocusStyle={{borderColor: "#0c6053"}}
+                    underlineStyle={{borderColor: "#ff5722"}}
+                    floatingLabelFocusStyle={{color: "#0c6053"}}
+                    floatingLabelStyle={{color: "#ff5722"}}
+                    fullWidth={true}
+                    // value={this.state.username}
+                    // onChange={this.usernameText.bind(this)}
+                    floatingLabelText="Phone"
+                    type="text"
+                  />
+                </Col>
+                <Col md="6" sm="12">
+                  <TextField
+                    underlineFocusStyle={{borderColor: "#0c6053"}}
+                    underlineStyle={{borderColor: "#ff5722"}}
+                    floatingLabelFocusStyle={{color: "#0c6053"}}
+                    floatingLabelStyle={{color: "#ff5722"}}
+                    fullWidth={true}
+                    disabled={true}
+                    // value={this.state.username}
+                    // onChange={this.usernameText.bind(this)}
+                    floatingLabelText="Email"
+                    type="text"
+                  />
+                  <TextField
+                    underlineFocusStyle={{borderColor: "#0c6053"}}
+                    underlineStyle={{borderColor: "#ff5722"}}
+                    floatingLabelFocusStyle={{color: "#0c6053"}}
+                    floatingLabelStyle={{color: "#ff5722"}}
+                    fullWidth={true}
+                    // value={this.state.username}
+                    // onChange={this.usernameText.bind(this)}
+                    floatingLabelText="Physical Address"
+                    type="text"
+                  />
+                  <br />
+                </Col>
+              </Row>
+              <FlatButton
+                icon={<FileCloudUpload />}
+                style={{marginTop: 12}}
+                label='Update'
+                backgroundColor="#0c6053"
+              />
               <p>
                 <h3>Change password</h3>
                 {/* <br/> */}

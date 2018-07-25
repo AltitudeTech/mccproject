@@ -81,6 +81,9 @@ class LoginButton extends Component{
         }
       })
     } else {
+      if (this.props.usernameError.length > 1) {
+        this.props.showLoginError("enter a valid email address")
+      }
       // if (!this.props.phone || !this.props.phoneValid) {
       //   this.setState({phoneValid: false})
       // }
@@ -89,7 +92,6 @@ class LoginButton extends Component{
       // }
 
       // toast("Your Inputs are not valid", {...TOAST_STYLE.fail});
-      this.props.showLoginError("Invalid email/password")
     }
 
   }

@@ -42,9 +42,11 @@ export default class CustomersTable extends Component{
               if (error)
                 return `Error! ${error.message}`;
 
-              const {viewerMccAffiliate: { mccAffiliate : { customers, coupon: {coupon} } }, currentTime } = data;
+              const {viewerMccAffiliate: { mccAffiliate : { customers, coupon = {} } }, currentTime } = data;
+              // const {coupon = ''}
+              // console.log(coupon);
               return <Fragment>
-                <div>Coupon Code: {coupon}</div>
+                <div>Coupon Code: {coupon && coupon.coupon}</div>
                 <div>
                   showing
                   <b>

@@ -27,7 +27,7 @@ export default class TextContent extends Component {
                         event.stopPropagation()
                         handleModalOpen();
                         handleTabChange(1);
-                        changeRegisterType(null,null,2);
+                        changeRegisterType(null,null,1);
                       }
                       return (<p className="institution">
                         Institutions may register, to create an institutional account that enables the institution to purchase in bulk prices which are 20 percent
