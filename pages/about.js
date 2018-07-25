@@ -17,7 +17,7 @@ class AboutPage extends Component {
       <div className="container">
         <div className="row" style={{textAlign:'center', marginBottom : '30px'}}>
           <div className="col-md-4">
-            <img src="/static/images/product.jpg" style={{width:'200px'}} />
+            <img src="/static/images/mccbrochure.jpg" style={{width:'200px'}} />
             <h4>MCC Brochure</h4>
             <a href="https://drive.google.com/file/d/0B7TXJNCnuUOaazZvNHN4R24zRnc/view?usp=sharing" target="_blank">View MCC Sample Test </a>
           </div>
@@ -39,6 +39,14 @@ class AboutPage extends Component {
           <h4 className="text-center" title="Click Here To Login as Student"><a style={{color:'#fff'}}  href=""><img src="/static/images/mccCost.png" /> This is one off payment that must be made prior to being able to access the MCC test.</a></h4>
         </div>
       </div>
+      <style jsx>{`
+        img{
+          margin : 20px auto ;
+          box-sizing : border-box ;
+          border : 1px solid #b2b2b2 ;
+          padding : 5px ;
+        }
+      `}</style>
     </Fragment>
   }
 }
