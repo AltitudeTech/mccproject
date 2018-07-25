@@ -5,7 +5,10 @@ import { Query } from 'react-apollo'
 import moment from 'moment'
 
 import { Table } from 'react-bootstrap'
-import Pagination from "react-js-pagination"
+import Pagination from 'react-js-pagination'
+
+import { AffiliateDetailsContext } from '../../../contexts/AffiliateDetailsContext'
+
 
 import { AFFILIATE_CUSTOMERS_PAGINATION_QUERY } from '../../../lib/graphql/queries'
 
@@ -33,6 +36,11 @@ export default class CustomersTable extends Component{
 
     render(){
         return <Fragment>
+          <AffiliateDetailsContext.Consumer>{
+            ({ affiliate: {coupon } }) => (
+              <div>Coupon Code: {coupon ? coupon.coupon : 'No coupon assigned'}</div>
+            )
+          }</AffiliateDetailsContext.Consumer>
           <Query query={AFFILIATE_CUSTOMERS_PAGINATION_QUERY}
             variables={{ page: this.state.currentPage, perPage: this.state.perPage }}>
             {({loading, error, data}) => {
@@ -42,11 +50,8 @@ export default class CustomersTable extends Component{
               if (error)
                 return `Error! ${error.message}`;
 
-              const {viewerMccAffiliate: { mccAffiliate : { customers, coupon = {} } }, currentTime } = data;
-              // const {coupon = ''}
-              // console.log(coupon);
+              const {viewerMccAffiliate: { mccAffiliate : { customers } }, currentTime } = data;
               return <Fragment>
-                <div>Coupon Code: {coupon && coupon.coupon}</div>
                 <div>
                   showing
                   <b>
