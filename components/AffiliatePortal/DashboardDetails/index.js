@@ -48,7 +48,7 @@ export default class CustomersTable extends Component{
               'Your account is not yet active please complete the verification procedures'}
               </span>
             </div>
-            {coupon && <div>Coupon discount: {coupon.discount}% off</div>}
+            {coupon && <div>Coupon discount: {coupon.discount ? `${coupon.discount} % off`: 'not applicable'}</div>}
             <CouponModal isOpen={this.state.modalOpen} setModalOpen={this.setModalOpen}/>
             <br/>
           </Fragment>

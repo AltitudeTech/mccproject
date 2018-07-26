@@ -42,6 +42,7 @@ export default class CustomersTable extends Component{
             )
           }</AffiliateDetailsContext.Consumer>
           <Query query={AFFILIATE_CUSTOMERS_PAGINATION_QUERY}
+            fetchPolicy='cache-and-network'
             variables={{ page: this.state.currentPage, perPage: this.state.perPage }}>
             {({loading, error, data}) => {
               if (loading)
@@ -50,35 +51,39 @@ export default class CustomersTable extends Component{
               if (error)
                 return `Error! ${error.message}`;
 
-              const {viewerMccAffiliate: { mccAffiliate : { customers } }, currentTime } = data;
+              const {viewerMccAffiliate: { mccAffiliate : { customerPayments } }, currentTime } = data;
               return <Fragment>
                 <div>
                   showing
                   <b>
-                    {` ${!customers.pageInfo.hasPreviousPage ? 1 : (1+(customers.pageInfo.currentPage-1)*customers.pageInfo.perPage)}
+                    {` ${!customerPayments.pageInfo.hasPreviousPage ? 1 : (1+(customerPayments.pageInfo.currentPage-1)*customerPayments.pageInfo.perPage)}
                     -
-                    ${!customers.pageInfo.hasNextPage ? customers.pageInfo.itemCount : (customers.pageInfo.perPage+(customers.pageInfo.currentPage-1)*customers.pageInfo.perPage)} `}
+                    ${!customerPayments.pageInfo.hasNextPage ? customerPayments.pageInfo.itemCount : (customerPayments.pageInfo.perPage+(customerPayments.pageInfo.currentPage-1)*customerPayments.pageInfo.perPage)} `}
                   </b>
                   of
-                  <b> {customers.pageInfo.itemCount}</b> Customers
+                  <b> {customerPayments.pageInfo.itemCount}</b> Customer purchases with your coupon
                 </div>
                 <br/>
                 <Table responsive hover>
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Name</th>
-                      <th>Account verified</th>
-                      <th>Day joined</th>
+                      <th>Amount</th>
+                      <th>Currency</th>
+                      <th>Payment date</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {customers.items.map((customer, index)=>(
+                    {customerPayments.items.map((payment, index)=>(
                       <tr>
                         <td>{index+1}</td>
-                        <td>{customer.name}</td>
-                        <td>{customer.isActivated? 'Yes' : 'No'}</td>
-                        <td>{`${moment(customer.createdAt).from(currentTime)} <${moment(customer.createdAt).format('MMMM Do YYYY')}>`}</td>
+                        <td>{payment.amount || 'Not available'}</td>
+                        <td>{payment.currency || 'Not available'}</td>
+                        <td>{payment.transactionDate ?
+                          `${moment(payment.createdAt).from(currentTime)} <${moment(payment.createdAt).format('MMMM Do YYYY')}>`
+                          :
+                          `not available`
+                        }</td>
                       </tr>
                     ))}
                   </tbody>
@@ -86,8 +91,8 @@ export default class CustomersTable extends Component{
                 <div className="pagination-wrapper">
                   <Pagination
                     activePage={this.state.currentPage}
-                    itemsCountPerPage={customers.pageInfo.perPage}
-                    totalItemsCount={customers.pageInfo.itemCount}
+                    itemsCountPerPage={customerPayments.pageInfo.perPage}
+                    totalItemsCount={customerPayments.pageInfo.itemCount}
                     pageRangeDisplayed={5}
                     onChange={this.handlePageChange}
                   />
@@ -95,6 +100,7 @@ export default class CustomersTable extends Component{
                 <style jsx>{`
                   .pagination-wrapper {
                     margin: auto;
+                    display: table;
                   }
                 `}</style>
               </Fragment>

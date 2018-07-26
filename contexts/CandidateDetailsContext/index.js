@@ -36,10 +36,10 @@ class CandidateDetailsWrapper extends Component {
           return `There was an error contacting the server`;
         }
 
-        const { viewerCandidate: { candidate } } = data;
+        const { viewerCandidate: { candidate }, price } = data;
         // console.log(candidate);
         return (
-          <CandidateDetailsContext.Provider value={{candidate}}>
+          <CandidateDetailsContext.Provider value={{ candidate, price }}>
             {this.props.children}
           </CandidateDetailsContext.Provider>
         )
