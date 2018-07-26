@@ -7,128 +7,100 @@ import { ToastContainer, toast} from 'react-toastify'
 import { TOAST_STYLE } from '../../../utils/common'
 import redirect from '../../../lib/auth/redirect'
 
-import { SIGNUP_CANDIDATE_MUTATION, SIGNUP_INSTITUTION_MUTATION } from '../../../lib/graphql/mutations'
+import { LOGIN_USER_MUTATION } from '../../../lib/graphql/mutations'
 
 const style = {
   margin: 12,
 };
 
-export default withApollo(
-  class RegisterButton extends Component{
+class LoginButton extends Component{
 
-    onsignUpCompleted = (data) => {
-      const { REGISTER_TYPES, registerType } = this.props;
+  onLoginCompleted = (data) => {
+    // Store the token in cookie
+    const { jwt, name, userType } = data.loginUser
+    toast(`Welcome Back ${name}!`, {...TOAST_STYLE.success});
+    console.log(`Welcome Back ${name}!`);
+    document.cookie = cookie.serialize('token', jwt, {
+      maxAge: 30 * 24 * 60 * 60, // 30 days
+      path: '/'
+    })
+    document.cookie = cookie.serialize('userType', userType, {
+      maxAge: 30 * 24 * 60 * 60, // 30 days
+      path: '/'
+    })
+    // Force a reload of all the current queries now that the user is
+    // logged in
+    this.props.client.resetStore().then(() => {
+      // const target = this.props.url.query.from || `/user/dashboard`;
+      let target = `/user/dashboard`;
+      userType == 'Candidate' && (target=`/user/dashboard`);
+      userType == 'Institution' && (target=`/institution/dashboard`);
+      userType == 'MccAffiliate' && (target=`/affiliate/dashboard`);
+      redirect({}, target)
+    })
+  }
 
-      let user, target;
+  onLoginError = (error) => {
+    // If you want to send error to external service?
+    console.log(error)
+    if (error.graphQLErrors.length==0)
+      toast("Something Went Wrong With your request", {...TOAST_STYLE.fail});
 
-      if (REGISTER_TYPES[registerType]=='Candidate') {
-         user=data.candidateCreateAccount;
-         target = `/user/dashboard`;
-         document.cookie = cookie.serialize('userType', 'Candidate', {
-           maxAge: 30 * 24 * 60 * 60 // 30 days
-         })
-       }
-       // TODO
-      if (REGISTER_TYPES[registerType]=='Institution') {
-         user=data.institutionCreateAccount;
-         target = `/institution/dashboard`;
-         document.cookie = cookie.serialize('userType', 'Institution', {
-           maxAge: 30 * 24 * 60 * 60 // 30 days
-         })
-       }
+    error.graphQLErrors.forEach(error=>{
+      switch(error.message) {
+        case `password incorrect`:
+        toast("Incorrect Username/password", {...TOAST_STYLE.fail});
+        break;
+        case `email/user not found`:
+        toast("Incorrect Username/password", {...TOAST_STYLE.fail});
+        break;
+        default:
+        toast("Something Went Wrong", {...TOAST_STYLE.fail});
+      }
+    })
+  }
 
-      // Store the token in cookie
-      const {jwt, name} = user;
-      // toast(`Welcome Back ${last}!`, {...TOAST_STYLE.success});
-      console.log(`Welcome Back ${name}!`);
-      document.cookie = cookie.serialize('token', jwt, {
-        maxAge: 30 * 24 * 60 * 60 // 30 days
-      })
-      // Force a reload of all the current queries now that the user is
-      // logged in
-      this.props.client.resetStore().then(() => {
-        redirect({}, target)
-      })
-    }
+  doLogin = (event, runMutation) => {
+    const { username, password } = this.props;
+    // console.log(`logging in user:${username}, password:${password}`);
 
-    onsignUpError = (error) => {
-      // If you want to send error to external service?
-      console.log(error)
-      if (error.graphQLErrors.length==0)
-        toast("Something Went Wrong With your request", {...TOAST_STYLE.fail});
+    event.preventDefault()
+    event.stopPropagation()
 
-      error.graphQLErrors.forEach(error=>{
-        switch(error.message) {
-          case `password incorrect`:
-          toast("Incorrect Username/password", {...TOAST_STYLE.fail});
-          break;
-          case `email/user not found`:
-          toast("Incorrect Username/password", {...TOAST_STYLE.fail});
-          break;
-          default:
-          toast("Something Went Wrong", {...TOAST_STYLE.fail});
+    if(this.props.usernameError.length < 1 ){
+      runMutation({
+        variables: {
+          email: username,
+          password: password
         }
       })
+    } else {
+      if (!this.props.phone || !this.props.phoneValid) {
+        this.setState({phoneValid: false})
+      }
+      if (!this.props.password) {
+        this.setState({passwordValid: false})
+      }
+
+      toast("Your Inputs are not valid", {...TOAST_STYLE.fail});
     }
 
-    dosignUp = (event, runMutation, doRegistrationAs) => {
-      event.preventDefault()
-      event.stopPropagation()
-
-      let variables;
-      const { regFullname, regEmail, regPassword } = this.props;
-
-      const names = regFullname.split(' ', 2)
-
-      doRegistrationAs=='Candidate' && (variables={
-        firstName: names[0],
-        lastName: names[1],
-        email: regEmail,
-        password: regPassword
-      });
-      doRegistrationAs=='Institution' && (variables={
-        name: regFullname,
-        email: regEmail,
-        password: regPassword
-      });
-
-      // if(this.props.fullnameError.length < 1 ){
-        runMutation({
-          variables
-        })
-      // } else {
-      //   if (!this.props.phone || !this.props.phoneValid) {
-      //     this.setState({phoneValid: false})
-      //   }
-      //   if (!this.props.password) {
-      //     this.setState({passwordValid: false})
-      //   }
-      //
-      //   toast("Your Inputs are not valid", {...TOAST_STYLE.fail});
-      // }
-
-    }
-
-    render(){
-      const { REGISTER_TYPES, registerType } = this.props;
-      // console.log(REGISTER_TYPES[registerType]);
-      let mutation = SIGNUP_CANDIDATE_MUTATION;
-      REGISTER_TYPES[registerType]=='Candidate' && (mutation=SIGNUP_CANDIDATE_MUTATION);
-      REGISTER_TYPES[registerType]=='Institution' && (mutation=SIGNUP_INSTITUTION_MUTATION);
-      // REGISTER_TYPES[registerType]=='Career Adviser' && (mutation=LOGIN_USER_MUTATION);
-
-      return <Mutation mutation={mutation}
-        onCompleted={this.onsignUpCompleted}
-        onError={this.onsignUpError}>
-        {(doMutation) => (
-            <RaisedButton
-            label='Register'
-            style={style}
-            primary={true}
-            onClick={e=>this.dosignUp(e, doMutation, REGISTER_TYPES[registerType])}
-          />
-        )}
-      </Mutation>
-    }
   }
-)
+
+  render(){
+    return <Mutation mutation={LOGIN_USER_MUTATION}
+      onCompleted={this.onLoginCompleted}
+      onError={this.onLoginError}>
+      {(loginUser, { data, error }) => (
+        <RaisedButton
+         label='Login'
+         style={style}
+         primary={true}
+         onClick={e=>this.doLogin(e, loginUser)}
+       />
+      )}
+    </Mutation>
+  }
+}
+
+export default withApollo(LoginButton)
