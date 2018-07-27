@@ -36,10 +36,10 @@ class AffiliateDetailsWrapper extends Component {
           return `There was an error contacting the server`;
         }
 
-        const { viewerMccAffiliate: { mccAffiliate } } = data;
+        const { viewerAffiliate: { affiliate } } = data;
         // console.log(affiliate);
         return (
-          <AffiliateDetailsContext.Provider value={{affiliate: mccAffiliate}}>
+          <AffiliateDetailsContext.Provider value={{affiliate: affiliate}}>
             {this.props.children}
           </AffiliateDetailsContext.Provider>
         )

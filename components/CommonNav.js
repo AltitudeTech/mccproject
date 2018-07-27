@@ -73,7 +73,7 @@ export default class CommonNav extends Component{
                                                     //   Router.push('/user/dashboard');
                                                     // } else if (userType == 'Institution') {
                                                     //   Router.push('/institution/dashboard');
-                                                    // } else if (userType == 'MccAffiliate') {
+                                                    // } else if (userType == 'Affiliate') {
                                                     //   Router.push('/affiliate/dashboard');
                                                     // } else {
                                                     //   toggleModal();
@@ -85,7 +85,7 @@ export default class CommonNav extends Component{
                                                     let target = `/user/dashboard`;
                                                     userType == 'Candidate' && (target=`/user/dashboard`);
                                                     userType == 'Institution' && (target=`/institution/dashboard`);
-                                                    userType == 'MccAffiliate' && (target=`/affiliate/dashboard`);
+                                                    userType == 'Affiliate' && (target=`/affiliate/dashboard`);
                                                     redirect({}, target)
                                                   } else {
                                                     toggleModal();

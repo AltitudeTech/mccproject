@@ -17,7 +17,7 @@ export default withApollo(
   class RegisterButton extends Component{
 
     onsignUpCompleted = (data) => {
-      document.cookie = cookie.serialize('userType', 'MccAffiliate', {
+      document.cookie = cookie.serialize('userType', 'Affiliate', {
         maxAge: 30 * 24 * 60 * 60 // 30 days
       })
 

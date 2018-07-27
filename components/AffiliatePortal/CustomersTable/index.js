@@ -51,7 +51,7 @@ export default class CustomersTable extends Component{
               if (error)
                 return `Error! ${error.message}`;
 
-              const {viewerMccAffiliate: { mccAffiliate : { customerPayments } }, currentTime } = data;
+              const {viewerAffiliate: { affiliate : { customerPayments } }, currentTime } = data;
               return <Fragment>
                 <div>
                   showing

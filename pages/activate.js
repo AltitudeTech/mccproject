@@ -67,7 +67,7 @@ class ActivationPage extends Component {
       let target = `/user/dashboard`;
       userType == 'Candidate' && (target=`/user/dashboard`);
       userType == 'Institution' && (target=`/institution/dashboard`);
-      userType == 'MccAffiliate' && (target=`/affiliate/dashboard`);
+      userType == 'Affiliate' && (target=`/affiliate/dashboard`);
       setTimeout(()=>redirect({}, target), 2.5*1000)
     })
   }

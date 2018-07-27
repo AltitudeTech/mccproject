@@ -26,15 +26,17 @@ export default function withLayout(Child, opts={}) {
       //Validate loggedin user
       const {isAuthenticated} = await checkLoggedIn(context.apolloClient)
       if (!isAuthenticated) {
+        if (process.browser) {
+          document.cookie = cookie.serialize('token', '', {
+            maxAge: -1, // Expire the cookie immediately
+            path: '/'
+          })
+          document.cookie = cookie.serialize('userType', '', {
+            maxAge: -1, // Expire the cookie immediately
+            path: '/'
+          })
+        }
         // If not signed in, send them somewhere more useful
-        document.cookie = cookie.serialize('token', '', {
-          maxAge: -1, // Expire the cookie immediately
-          path: '/'
-        })
-        document.cookie = cookie.serialize('userType', '', {
-          maxAge: -1, // Expire the cookie immediately
-          path: '/'
-        })
         let target = `/?show=signIn`
         // let asPath = `/login`
         if (context.pathname !== '/user'){

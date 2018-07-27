@@ -37,7 +37,7 @@ class LoginButton extends Component{
       let target = `/user/dashboard`;
       userType == 'Candidate' && (target=`/user/dashboard`);
       userType == 'Institution' && (target=`/institution/dashboard`);
-      userType == 'MccAffiliate' && (target=`/affiliate/dashboard`);
+      userType == 'Affiliate' && (target=`/affiliate/dashboard`);
       redirect({}, target)
     })
   }

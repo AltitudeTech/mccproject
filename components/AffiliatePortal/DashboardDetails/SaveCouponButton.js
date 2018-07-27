@@ -51,11 +51,11 @@ export default class SaveCouponButton extends Component{
         onCompleted={()=>this.props.setModalOpen(false)}
         onError={this.onCreateError}
         update={(cache, { data: { affiliateCreateCoupon } }) => {
-        const { viewerMccAffiliate } = cache.readQuery({ query: HOME_VIEWER_AFFILIATE_QUERY });
-        viewerMccAffiliate.mccAffiliate.coupon = affiliateCreateCoupon;
+        const { viewerAffiliate } = cache.readQuery({ query: HOME_VIEWER_AFFILIATE_QUERY });
+        viewerAffiliate.affiliate.coupon = affiliateCreateCoupon;
         cache.writeQuery({
           query: HOME_VIEWER_AFFILIATE_QUERY,
-          data: { viewerMccAffiliate }
+          data: { viewerAffiliate }
         });
       }}>
         {(runMutation)=>(
