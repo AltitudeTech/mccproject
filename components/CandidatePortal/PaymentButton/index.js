@@ -19,7 +19,7 @@ export default class PaymentButton extends Component {
 	}
 
 	componentDidMount(){
-		let paystackInline = document.createElement('script')
+		const paystackInline = document.createElement('script')
 		paystackInline.src = 'https://js.paystack.co/v1/inline.js'
 
     document.getElementById('paystack-script').appendChild(paystackInline)

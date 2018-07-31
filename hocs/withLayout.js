@@ -37,7 +37,7 @@ export default function withLayout(Child, opts={}) {
               <link rel="stylesheet" href="/static/css/font-awesome.min.css" />
               <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
               <link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
-              <script type="text/javascript" src="/static/js/jquery-2.1.4.min.js"></script>
+              {/* <script type="text/javascript" src="/static/js/jquery-2.1.4.min.js"></script> */}
               <link rel="stylesheet" href="/static/css/flexslider.css" type="text/css" media="screen" property="" />
               <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800,900&amp;subset=vietnamese" rel="stylesheet"/>
             </Head>

@@ -152,7 +152,7 @@ export default class CandidateModal extends React.Component {
                           value={this.state.username}
                           onChange={this.usernameText.bind(this)}
                           floatingLabelText="Email"
-                          type="text"
+                          type="email"
                         />
                         <TextField
                           underlineFocusStyle={{borderColor: "#0c6053"}}
@@ -164,6 +164,7 @@ export default class CandidateModal extends React.Component {
                           floatingLabelText="Password"
                           type="password"
                         />
+                        <span className="password-reset"><a href="/password-reset">Forgot password?</a></span>
                         {this.state.loginErrorText && (
                           <p className='login-error-text'>{this.state.loginErrorText}</p>
                         )}
@@ -234,6 +235,10 @@ export default class CandidateModal extends React.Component {
                         </div>
                       </SwipeableViews>
                       <style jsx>{`
+                        .password-reset{
+                          padding-top: 0.4em;
+                          float: right;
+                        }
                         .login-error-text {
                           padding-top: 10px;
                           color: #ec1818;
