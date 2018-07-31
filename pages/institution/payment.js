@@ -95,8 +95,6 @@ class PaymentPage extends Component{
                         style={styles.checkbox}
                       />
                       <PaymentButton email={this.state.email} amount={this.state.amount}/>
-
-
                       </CardActions>
                     </CardText>
                     </div>
