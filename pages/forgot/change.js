@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { Mutation, withApollo } from 'react-apollo'
+import cookie from 'cookie'
+import redirect from '../../lib/auth/redirect'
 
 import withMUI from '../../hocs/withMUI'
 import { USER_CHANGE_PASSWORD_MUTATION } from '../../lib/graphql/mutations'
@@ -65,6 +67,9 @@ class IndexPage extends Component {
         case `expired token`:
         this.showError(`This link has expired, start the password reset process again to get a new one`)
         break;
+        case `invalid token`:
+        this.showError(`This link is invalid`)
+        break;
         default:
         this.showError(`Something went wrong while contacting the server`)
       }
@@ -84,7 +89,7 @@ class IndexPage extends Component {
           <Mutation mutation={USER_CHANGE_PASSWORD_MUTATION}
             onCompleted={this.onCompleted}
             onError={this.onError}>{
-              (doMutation, {data, error, loading}) => (
+              (doMutation, {loading}) => (
                 <form onSubmit={e=>{
                   e.preventDefault();
                   e.stopPropagation();
@@ -92,7 +97,7 @@ class IndexPage extends Component {
                   if (password == confirmPassword) {
                     doMutation({variables: {
                       code,
-                      newPassword: password
+                      password
                     }})
                   } else {
                     this.showError('The passwords above do not match')

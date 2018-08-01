@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 import Dialog from 'material-ui/Dialog';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -164,7 +165,7 @@ export default class CandidateModal extends React.Component {
                           floatingLabelText="Password"
                           type="password"
                         />
-                        <span className="password-reset"><a href="/password-reset">Forgot password?</a></span>
+                        <span className="password-reset"><Link href="/forgot"><a>Forgot password?</a></Link></span>
                         {this.state.loginErrorText && (
                           <p className='login-error-text'>{this.state.loginErrorText}</p>
                         )}
