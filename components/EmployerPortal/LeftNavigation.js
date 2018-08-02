@@ -6,9 +6,9 @@ import { ApolloConsumer } from 'react-apollo'
 import cookie from 'cookie'
 import redirect from '../../lib/auth/redirect'
 
-import NotificationsList from '../CandidatePortal/NotificationsList'
+import NotificationsList from './NotificationsList'
 
-import { CandidateDetailsContext } from '../../contexts/CandidateDetailsContext'
+import { EmployerDetailsContext } from '../../contexts/EmployerDetailsContext'
 
 export default class LeftNavigation extends Component{
   constructor(props){
@@ -33,15 +33,15 @@ export default class LeftNavigation extends Component{
                     background-color: #f1f3fa;
                   }
                 `}</style>
-                <CandidateDetailsContext.Consumer>{
-                  ({ candidate: { name } }) => <Fragment>
+                <EmployerDetailsContext.Consumer>{
+                  ({ employer: { name } }) => <Fragment>
                     <div className="profile-usertitle-name">
                       {name}
                     </div>
                   </Fragment>
-                }</CandidateDetailsContext.Consumer>
+                }</EmployerDetailsContext.Consumer>
                 <div className="profile-usertitle-job">
-                    Candidate
+                    Employer
                 </div>
             </div>
 
@@ -53,14 +53,14 @@ export default class LeftNavigation extends Component{
             <div className="profile-usermenu">
                 <ul className="nav">
                     <li className={this.props.activePage=='/' ? "active" : ""} >
-                      <Link prefetch href="/user/dashboard">
+                      <Link prefetch href="/institution/dashboard">
                         <a>
                         <i className="glyphicon glyphicon-home"></i>
                         Home </a>
                       </Link>
                     </li>
                     <li className={this.props.activePage=='/payment' ? "active" : ""}>
-                        <Link prefetch href="/user/payment">
+                        <Link prefetch href="/institution/payment">
                         <a>
                         <i className="glyphicon glyphicon-user"></i>
                         Make Payment  </a>
@@ -68,14 +68,14 @@ export default class LeftNavigation extends Component{
 
                     </li>
                     <li className={this.props.activePage=='/history' ? "active" : ""}>
-                        <Link prefetch href="/user/history">
+                        <Link prefetch href="/institution/history">
                         <a>
                         <i className="glyphicon glyphicon-edit"></i>
                         Payment History </a>
                         </Link>
                     </li>
                     <li className={this.props.activePage=='/career-coach' ? "active" : ""}>
-                        <Link prefetch href="/user/career-coach">
+                        <Link prefetch href="/institution/career-coach">
                         <a>
                         <i className="glyphicon glyphicon-ok"></i>
                         Career Coach</a>
@@ -92,7 +92,7 @@ export default class LeftNavigation extends Component{
                       </a>
                     </li>
                     {/* <li className={this.props.activePage=='/faq' ? "active" : ""}>
-                        <Link prefetch href="/user/faq">
+                        <Link prefetch href="/institution/faq">
                         <a>
                         <i className="glyphicon glyphicon-flag"></i>
                         Help / FAQ </a>

@@ -3,7 +3,7 @@ import { Component } from 'react';
 import PaystackButton from './PaystackButton';
 import { Mutation } from 'react-apollo';
 
-import { CREATE_PAYMENT_MUTATION } from '../../../lib/graphql/mutations'
+import { EMPLOYER_CREATE_PAYMENT_MUTATION } from '../../../lib/graphql/mutations'
 
 const PAYSTACK_PUBLIC_KEY = 'pk_test_43f8936830aea3a5b9838c4893b16c9f1e7dee34';
 // const PAYSTACK_PUBLIC_KEY = 'pk_live_ec169fc011a4a8a16544c851b69a5c89571f46a7 ';
@@ -14,7 +14,7 @@ export default class PaymentButton extends Component {
 		key: process.env.PAYSTACK_PUBLIC_KEY || PAYSTACK_PUBLIC_KEY, // PAYSTACK PUBLIC KEY
 		email: this.props.email,  // customer email
 		amount: this.props.amount, // equals NGN100,
-		message: ''
+		loading: false
 	}
 
 	componentDidMount(){
@@ -26,7 +26,7 @@ export default class PaymentButton extends Component {
 
 	callback = (response, runMutation) => {
 		// console.log(response); // card charged successfully, get reference here
-		this.setState({message: ''})
+		this.setState({loading: false})
 		if (response.reference) {//successfully
 			runMutation({
 				variables: {
@@ -38,7 +38,7 @@ export default class PaymentButton extends Component {
 
 	close = () => {
 		console.log("Payment closed");
-		this.setState({message: ''})
+		this.setState({loading: false})
 	}
 
 	getReference = () => {
@@ -52,22 +52,22 @@ export default class PaymentButton extends Component {
 		return text;
 	}
 
-	setMessage = (message)=>this.setState({message})
+	showLoading = (loading)=>this.setState({loading})
 
   render() {
-		const {message} = this.state;
+		const {loading} = this.state;
     return (
-      // <div onClick={()=>this.setState({message: 'Contacting payment server please wait!'})}>
+      // <div onClick={()=>this.setState({loading: 'Contacting payment server please wait!'})}>
       <div>
       	<div id="paystack-script"/>
         {/* <script src="https://js.paystack.co/v1/inline.js"></script> */}
-				<Mutation mutation={CREATE_PAYMENT_MUTATION}
+				<Mutation mutation={EMPLOYER_CREATE_PAYMENT_MUTATION}
 					onError={(error) => {
           	console.log(error)
         	}}>
-					{(candidateFindOrCreatePaymentRecord, {data, error}) => (
+					{(institutionFindOrCreateMccPayment, {data, error}) => (
 						<p className="pay-section">
-							{message ? (
+							{loading ? (
 								<div className="spinner">
 									<div className="rect1"></div>
 									<div className="rect2"></div>
@@ -79,21 +79,21 @@ export default class PaymentButton extends Component {
 								<PaystackButton
 									text="Pay Now"
 									btnClassName="payButton"
-									callback={(response)=>{this.callback(response, candidateFindOrCreatePaymentRecord)}}
+									callback={(response)=>{this.callback(response, institutionFindOrCreateMccPayment)}}
 									close={this.close}
 									disabled={this.props.disabled}
 									embed={false}
 									reference={this.getReference()}
 									email={this.state.email}
-									amount={this.state.amount}
+									amount={this.props.amount}
 									paystackkey={this.state.key}
-									setMessage={this.setMessage}
+									showLoading={this.showLoading}
 									coupon={this.props.coupon}
+									uses={this.props.uses}
 									priceId={this.props.priceId}
 								/>
 							)}
 							{error && <p>:( There was an generating your test code visit out help center here to resolve the issue</p>}
-							{/* {message && <p className="payment-message">{message}</p>} */}
 						</p>
 					)}
 				</Mutation>
@@ -101,7 +101,7 @@ export default class PaymentButton extends Component {
 					// .pay-section{
 					// 	display: inline;
 					// }
-					.payment-message {
+					.payment-loading {
 						color: #3c763d;
 					}
 					.payButton {

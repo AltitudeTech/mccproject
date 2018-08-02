@@ -4,6 +4,8 @@ import cookie from 'cookie'
 import RaisedButton from 'material-ui/RaisedButton';
 
 import { ToastContainer, toast} from 'react-toastify'
+
+import Loading from '../../Loading'
 import { TOAST_STYLE } from '../../../utils/common'
 import redirect from '../../../lib/auth/redirect'
 
@@ -36,7 +38,7 @@ class LoginButton extends Component{
       // const target = this.props.url.query.from || `/user/dashboard`;
       let target = `/user/dashboard`;
       userType == 'Candidate' && (target=`/user/dashboard`);
-      userType == 'Institution' && (target=`/institution/dashboard`);
+      userType == 'Employer' && (target=`/institution/dashboard`);
       userType == 'Affiliate' && (target=`/affiliate/dashboard`);
       redirect({}, target)
     })
@@ -100,7 +102,7 @@ class LoginButton extends Component{
     return <Mutation mutation={LOGIN_USER_MUTATION}
       onCompleted={this.onLoginCompleted}
       onError={this.onLoginError}>
-      {(loginUser, { data, error }) => (
+      {(loginUser, { loading }) => loading ? <Loading color="#0c6053"/> : (
         <RaisedButton
          label='Login'
          style={style}

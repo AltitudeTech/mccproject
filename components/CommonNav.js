@@ -84,7 +84,7 @@ export default class CommonNav extends Component{
                                                     // })
                                                     let target = `/user/dashboard`;
                                                     userType == 'Candidate' && (target=`/user/dashboard`);
-                                                    userType == 'Institution' && (target=`/institution/dashboard`);
+                                                    userType == 'Employer' && (target=`/institution/dashboard`);
                                                     userType == 'Affiliate' && (target=`/affiliate/dashboard`);
                                                     redirect({}, target)
                                                   } else {

@@ -4,10 +4,12 @@ import cookie from 'cookie'
 import RaisedButton from 'material-ui/RaisedButton';
 
 import { ToastContainer, toast} from 'react-toastify'
+
+import Loading from '../../Loading'
 import { TOAST_STYLE } from '../../../utils/common'
 import redirect from '../../../lib/auth/redirect'
 
-import { SIGNUP_CANDIDATE_MUTATION, SIGNUP_INSTITUTION_MUTATION } from '../../../lib/graphql/mutations'
+import { SIGNUP_CANDIDATE_MUTATION, SIGNUP_EMPLOYER_MUTATION } from '../../../lib/graphql/mutations'
 
 const style = {
   margin: 12,
@@ -30,9 +32,9 @@ export default withApollo(
        }
        // TODO
       if (REGISTER_TYPES[registerType]=='Institution') {
-         user=data.institutionCreateAccount;
+         user=data.employerCreateAccount;
          target = `/institution/dashboard`;
-         document.cookie = cookie.serialize('userType', 'Institution', {
+         document.cookie = cookie.serialize('userType', 'Employer', {
            maxAge: 30 * 24 * 60 * 60 // 30 days
          })
        }
@@ -40,7 +42,7 @@ export default withApollo(
       // Store the token in cookie
       const {jwt, name} = user;
       // toast(`Welcome Back ${last}!`, {...TOAST_STYLE.success});
-      console.log(`Welcome Back ${name}!`);
+      console.log(`Welcome Back ${name}! Hold on while we prepare your portal`);
       this.props.showRegisterMessage(`Welcome ${name}!`)
       document.cookie = cookie.serialize('token', jwt, {
         maxAge: 30 * 24 * 60 * 60 // 30 days
@@ -61,17 +63,11 @@ export default withApollo(
 
       error.graphQLErrors.forEach(error=>{
         switch(error.message) {
-          case `password incorrect`:
-          this.props.showRegisterError("Incorrect username/password")
-          // toast("Incorrect username/password", {...TOAST_STYLE.fail});
-          break;
-          case `email/user not found`:
-          this.props.showRegisterError("Incorrect username/password")
-          // toast("Incorrect username/password", {...TOAST_STYLE.fail});
+          case `email already exists`:
+          this.props.showRegisterError("An account with this email already exists in our database")
           break;
           default:
           this.props.showRegisterError("Something went wrong while contacting the server")
-          // toast("Something Went Wrong", {...TOAST_STYLE.fail});
         }
       })
     }
@@ -119,13 +115,13 @@ export default withApollo(
       // console.log(REGISTER_TYPES[registerType]);
       let mutation = SIGNUP_CANDIDATE_MUTATION;
       REGISTER_TYPES[registerType]=='Candidate' && (mutation=SIGNUP_CANDIDATE_MUTATION);
-      REGISTER_TYPES[registerType]=='Institution' && (mutation=SIGNUP_INSTITUTION_MUTATION);
+      REGISTER_TYPES[registerType]=='Institution' && (mutation=SIGNUP_EMPLOYER_MUTATION);
       // REGISTER_TYPES[registerType]=='Career Adviser' && (mutation=LOGIN_USER_MUTATION);
 
       return <Mutation mutation={mutation}
         onCompleted={this.onsignUpCompleted}
         onError={this.onsignUpError}>
-        {(doMutation) => (
+        {(doMutation, {loading}) => loading ? <Loading color="#0c6053"/> : (
             <RaisedButton
             label='Register'
             style={style}

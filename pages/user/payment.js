@@ -48,7 +48,7 @@ class PaymentPage extends Component{
     };
     render(){
         return <div className="profile-content">
-          <CandidatePaymentsWrapper>
+          {/* <CandidatePaymentsWrapper> */}
             <CandidateDetailsContext.Consumer>{({price, candidate})=>{
               const payPrice = price.mccPrice*100 //convert to kobo for payStack
               const displayPrice = `${price.symbol}${price.mccPrice}${price.symbol ? '' : price.currency}`
@@ -73,7 +73,7 @@ class PaymentPage extends Component{
                   <CardTitle title="Purchase My Career Choice Test Code" subtitle="A service of Career Intelligence" />
                   <div className="row" style={{padding : '0px'}}>
                     <div className="col-md-6" style={{textAlign: 'center'}}>
-                      <img src="/static/images/product.jpg" style={{width:"80%", border:'1px solid #b2b2b2', margin: 'auto' }} />
+                      <img src="/static/images/student.svg" style={{width:"80%", margin: 'auto' }} />
                     </div>
                     <div className="col-md-6">
                       <CardText>
@@ -103,7 +103,7 @@ class PaymentPage extends Component{
                     </div>
                   </div>
                 </div>
-                <CandidatePaymentsContext.Consumer>{
+                {/* <CandidatePaymentsContext.Consumer>{
                   ({ payments }) => <Fragment>
                   <div>
                     <h3>Payment History</h3><hr/>
@@ -114,10 +114,10 @@ class PaymentPage extends Component{
                     ))}
                   </div>
                 </Fragment>
-              }</CandidatePaymentsContext.Consumer>
+              }</CandidatePaymentsContext.Consumer> */}
               </Fragment>
             )}}</CandidateDetailsContext.Consumer>
-          </CandidatePaymentsWrapper>
+          {/* </CandidatePaymentsWrapper> */}
           <style jsx>{`
             span{
               display : block ;

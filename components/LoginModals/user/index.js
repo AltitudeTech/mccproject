@@ -37,7 +37,7 @@ const styles = {
   slide: {
     paddingTop : 10,
     paddingBottom: 0,
-    height : 325
+    height : 335
   },
   tab: {
     backgroundColor : '#fff',

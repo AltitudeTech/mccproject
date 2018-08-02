@@ -35,7 +35,7 @@ export default function withLayout(Child, opts={}) {
               <meta httpEquiv="X-UA-Compatible" content="IE=edge"/>
               <meta charSet="utf-8"/>
               <link rel="stylesheet" href="/static/css/font-awesome.min.css" />
-              <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+              <link href="/static/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
               <link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
               {/* <script type="text/javascript" src="/static/js/jquery-2.1.4.min.js"></script> */}
               <link rel="stylesheet" href="/static/css/flexslider.css" type="text/css" media="screen" property="" />

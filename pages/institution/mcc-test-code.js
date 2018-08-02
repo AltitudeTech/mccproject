@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 // import Link from 'next/link'
-import withCandidatePortal from '../../hocs/candidate/withCandidatePortal'
+import withEmployerPortal from '../../hocs/employer/withEmployerPortal'
 
 class MccTestCode extends Component{
     constructor(props){
@@ -27,4 +27,4 @@ class MccTestCode extends Component{
         </div>
     }
 }
-export default withCandidatePortal(MccTestCode, {activePage: '/test'})
+export default withEmployerPortal(MccTestCode, {activePage: '/test'})

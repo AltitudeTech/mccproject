@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 // import Link from 'next/link'
-import withCandidatePortal from '../../hocs/candidate/withCandidatePortal'
+import withEmployerPortal from '../../hocs/employer/withEmployerPortal'
 
 class CareerCoach extends Component{
     constructor(props){
@@ -27,4 +27,4 @@ class CareerCoach extends Component{
         </div>
     }
 }
-export default withCandidatePortal(CareerCoach, {activePage: '/career-coach'})
+export default withEmployerPortal(CareerCoach, {activePage: '/career-coach'})
