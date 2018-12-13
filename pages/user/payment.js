@@ -1,17 +1,11 @@
 import React, {Component, Fragment} from 'react';
 // import Link from 'next/link'
 import withCandidatePortal from '../../hocs/candidate/withCandidatePortal'
-
 import PaymentButton from '../../components/CandidatePortal/PaymentButton'
-
 import Checkbox from 'material-ui/Checkbox';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import RaisedButton from 'material-ui/RaisedButton';
-// import SelectField from 'material-ui/SelectField';
-// import MenuItem from 'material-ui/MenuItem';
+import { CardTitle, CardText} from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 
-import { CandidatePaymentsWrapper, CandidatePaymentsContext } from '../../contexts/CandidatePaymentsContext'
 import { CandidateDetailsContext } from '../../contexts/CandidateDetailsContext'
 
 
