@@ -3,8 +3,8 @@ import CommonNav from './CommonNav'
 
 const Nav2 = (props) => (
 <Fragment>
-    <div className="banner1">
     <CommonNav {...props} />
+    <div className="banner1">
     </div>
     <style jsx>{`
         .banner1{

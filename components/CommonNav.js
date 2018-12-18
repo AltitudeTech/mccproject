@@ -17,7 +17,7 @@ export default class CommonNav extends Component{
 
     render(){
         return <Fragment>
-        <div className="container ">
+        <div className="container-fluid" style={{backgroundColor : "#000"}}>
             <nav className="navbar navbar-default">
                 <div className="navbar-header navbar-left">
                     <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -52,7 +52,7 @@ export default class CommonNav extends Component{
                                 <a href="/contact" data-hover="Contact">Contact</a>
                             </li>
                         </ul>
-                        <div className="w3_social_icons">
+                        {/* <div className="w3_social_icons">
                             <ul className="w3layouts_social">
                                 <li>
                                   <LoginModalContext.Consumer>{
@@ -116,7 +116,7 @@ export default class CommonNav extends Component{
                                     </a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> */}
                     </nav>
                 </div>
             </nav>

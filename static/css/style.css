@@ -17,7 +17,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Nunito", serif;
+  font-family: "Montserrat", serif;
   margin: 0;
 }
 ul,
@@ -49,17 +49,17 @@ input[type="reset"],
   -moz-background-size: cover;
   -o-background-size: cover;
   -ms-background-size: cover;
-  min-height: 700px;
+  *min-height: 100%;
   position: relative;
 }
 .banner1 {
-  background: url(../images/banner.jpg) no-repeat 0px -200px;
+  background: url(../images/banner.jpg) no-repeat 0px 0px;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   -ms-background-size: cover;
-  min-height: 325px;
+  min-height: 465px;
 }
 /*-- nav --*/
 .navbar {
@@ -110,7 +110,7 @@ input[type="reset"],
 }
 .nav > li > a {
   padding: 0 10px;
-  font-family: "Nunito", serif;
+  font-family: "Montserrat", serif;
   text-transform: uppercase;
   font-weight: 900;
   letter-spacing: 1px;
@@ -125,7 +125,7 @@ input[type="reset"],
   min-width: 160px;
   font-size: 14px;
   text-align: center;
-  font-family: "Nunito", serif;
+  font-family: "Montserrat", serif;
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
@@ -147,7 +147,7 @@ input[type="reset"],
   display: block;
   text-align: center;
   background: transparent;
-  margin : 0px 1px ;
+  margin: 0px 1px;
 }
 .w3layouts_social li a i {
   display: block;
@@ -194,7 +194,6 @@ a.w3l_instagram:hover {
   padding: 2em;
   width: 80%;
   text-align: center;
-  background: rgba(0, 0, 0, 0.438);
   margin: 25em auto 0;
 }
 .banner_info h3 {
@@ -209,8 +208,8 @@ a.w3l_instagram:hover {
   color: #fff;
   line-height: 2em;
   width: 80%;
-  font-weight: 600;
-  font-size: 1.35em !important ;
+  font-weight: 400;
+  font-size: 1.2em !important ;
 }
 /*-- //banner --*/
 /*-- banner-bottom --*/
@@ -254,7 +253,7 @@ a.w3l_instagram:hover {
   font-size: 14px;
   text-transform: uppercase;
   text-decoration: none;
-  font-family: "Nunito", serif;
+  font-family: "Montserrat", serif;
   letter-spacing: 3px;
 }
 .w3_more a:focus {
@@ -283,19 +282,18 @@ a.w3l_instagram:hover {
 /*-- about --*/
 .about {
   padding: 3em 0;
-  background: #0c6053;
   position: relative;
+  
 }
 .about h2 {
   font-size: 3em;
   text-transform: capitalize;
-  color: #fff;
 }
 a#discover {
   color: #fff;
 }
 a#discover:hover {
-  color: #FFFB1D;
+  color: #fffb1d;
 }
 .about p {
   color: #394b01;
@@ -304,7 +302,7 @@ a#discover:hover {
 }
 
 img {
-    *pointer-events: none;
+  *pointer-events: none;
 }
 .w3l_about_pos {
   position: absolute;
@@ -325,25 +323,7 @@ img {
 .featured-services {
   padding: 5em 0;
 }
-.w3ls_para {
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 5px;
-  color: #ff5722;
-  position: relative;
-  padding-bottom: 0.5em;
-  margin-bottom: 1em !important;
-  font-weight: 500 !important;
-}
-.w3ls_para:after {
-  background: #ff5722;
-  width: 9.6%;
-  height: 2px;
-  position: absolute;
-  bottom: 0%;
-  left: 45%;
-  content: "";
-}
+
 .agileits_head {
   font-size: 2em;
   color: #212121;
@@ -432,8 +412,8 @@ img {
 .agile_testimonials_grid1 {
   padding: 2em;
   background: #f5f5f5;
-  border : 3px solid #e2dfdf ;
-  height : 250px ;
+  border: 3px solid #e2dfdf;
+  height: 250px;
   -webkit-box-shadow: 0 10px 6px -6px #777;
   -moz-box-shadow: 0 10px 6px -6px #777;
   box-shadow: 0 10px 6px -6px #777;
@@ -499,9 +479,19 @@ img {
 /*-- //testimonials --*/
 /*-- footer --*/
 .footer {
-  padding: 4em 0;
+  padding: 4em 0 1em;
   background: #000;
 }
+.footer .copyright span {
+  display: block;
+  margin: 6px;
+  color: #999;
+}
+.w3layouts_footer_grid .privacy a {
+  padding: 3px;
+  color: #333 !important;
+}
+
 .w3layouts_footer_grid_left {
   float: left;
 }
@@ -533,7 +523,7 @@ img {
   border-radius: 50px;
 }
 .w3_footer_grid h3 {
-  font-size: 1.8em;
+  font-size: 1.2em;
   color: #fff;
   padding-bottom: 0.3em;
   position: relative;
@@ -541,19 +531,10 @@ img {
   letter-spacing: 3px;
   margin-bottom: 1em;
 }
-.w3_footer_grid h3:after {
-  content: "";
-  background: #fff;
-  height: 2px;
-  width: 25%;
-  position: absolute;
-  left: 0%;
-  bottom: 0%;
-}
 .w3layouts_footer_grid {
   margin-top: 2em;
-  padding-top: 2em;
-  border-top: 1px dashed #999;
+  padding-top: 1em;
+  border-top: 1px solid #333;
 }
 .w3_footer_grid p {
   color: #999;
@@ -568,8 +549,8 @@ img {
   margin-bottom: 0;
 }
 .w3_footer_grid ul li a {
-  text-transform: uppercase;
-  color: #fff;
+  color: #f2f2f2;
+  font-weight: thin;
   text-decoration: none;
 }
 .w3_footer_grid ul li.active a {
@@ -601,7 +582,7 @@ img {
   background: url(../images/right.png) no-repeat 27px 11px #0c6053;
 }
 .w3_footer_grid input[type="submit"]:hover {
-  background: url(../images/right.png) no-repeat 27px 11px #FFFB1D;
+  background: url(../images/right.png) no-repeat 27px 11px #fffb1d;
 }
 .w3_footer_grid form {
   margin-bottom: 0.5em;
@@ -614,7 +595,7 @@ img {
 .modal-header {
   font-size: 2em;
   color: #ff5722;
-  font-family: "Nunito", serif;
+  font-family: "Montserrat", serif;
   text-align: center;
   text-transform: uppercase;
 }
@@ -1182,15 +1163,7 @@ h2.typoh2 {
   margin-top: 1em;
   color: #212121;
 }
-.services-bottom {
-  background: url(../images/2.jpg) no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  background-size: 100% 100%;
-  -webkit-background-size: 100% 100%;
-  -moz-background-size: 100% 100%;
-  -o-background-size: 100% 100%;
-}
+
 .agileits_head_w3 {
   color: #fff;
 }
@@ -1544,7 +1517,7 @@ h2.typoh2 {
   border: none;
   text-transform: uppercase;
   margin: 2em 0 0;
-  font-family: "Nunito", serif;
+  font-family: "Montserrat", serif;
   letter-spacing: 5px;
 }
 .w3_agile_mail_grid input[type="submit"]:hover {
@@ -1561,7 +1534,7 @@ h2.typoh2 {
 .w3_agileits_mail_left h4 {
   padding: 1em;
   color: #fff;
-  background: #0C6053;
+  background: #0c6053;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
@@ -1675,7 +1648,7 @@ p.agileinfo_para {
     margin: 6em 0 0;
   }
   .w3_footer_grid h3 {
-    font-size: 1.6em;
+    font-size: 1.2em;
     letter-spacing: 2px;
   }
   .agileits_w3layouts_mail {
@@ -1685,10 +1658,6 @@ p.agileinfo_para {
 @media (max-width: 1024px) {
   .banner1 {
     background-position: 0px -80px;
-  }
-  .w3ls_para:after {
-    width: 11.6%;
-    left: 44%;
   }
 }
 @media (max-width: 991px) {
@@ -1852,10 +1821,7 @@ p.agileinfo_para {
   .w3_agile_mail_grid textarea {
     min-height: 250px;
   }
-  .w3ls_para:after {
-    width: 15.4%;
-    left: 42%;
-  }
+
   .w3_agile_mail_grids {
     margin: 1em 0 0 !important;
   }
@@ -1973,15 +1939,12 @@ p.agileinfo_para {
   .nbs-flexisel-nav-left {
     left: 85%;
   }
-  .w3ls_para:after {
-    width: 17.4%;
-    left: 41%;
-  }
+
   .footer {
     padding: 3em 0;
   }
   .w3_footer_grid h3 {
-    font-size: 1.5em;
+    font-size: 1em;
   }
   .w3_footer_grid input[type="submit"] {
     background: url(../images/right.png) no-repeat 40px 12px #ff5722;
@@ -2009,10 +1972,7 @@ p.agileinfo_para {
   .agileits_head {
     font-size: 1.8em;
   }
-  .w3ls_para:after {
-    width: 19.4%;
-    left: 40%;
-  }
+
   .wthree_team_grid h4 {
     font-size: 1.2em;
   }
@@ -2098,10 +2058,7 @@ p.agileinfo_para {
     min-height: 420px;
     background-position: -130px 0px;
   }
-  .w3ls_para:after {
-    width: 21.4%;
-    left: 39%;
-  }
+
   .agileits_w3layouts_stats_grid p {
     font-size: 2em;
   }
@@ -2167,10 +2124,7 @@ p.agileinfo_para {
     width: 35%;
     top: -70%;
   }
-  .w3ls_para:after {
-    width: 24.4%;
-    left: 37%;
-  }
+
   .agileinfo_team_grid {
     float: none;
     width: 80%;
@@ -2211,7 +2165,7 @@ p.agileinfo_para {
     padding: 2em 0;
   }
   .w3_footer_grid h3 {
-    font-size: 1.3em;
+    font-size: 1em;
   }
   .w3_footer_grid:nth-child(2) {
     margin: 2em 0;
@@ -2276,10 +2230,7 @@ p.agileinfo_para {
   .agileinfo_team_grid {
     width: 100%;
   }
-  .w3ls_para:after {
-    width: 29.4%;
-    left: 35%;
-  }
+
   .agileits_w3layouts_stats_grid h3 {
     font-size: 1em;
   }
@@ -2434,7 +2385,7 @@ p.agileinfo_para {
     font-size: 1em;
   }
   .w3_footer_grid h3 {
-    font-size: 1.2em;
+    font-size: 1em;
     letter-spacing: 0px;
   }
   .nav-tabs > li {
@@ -2538,14 +2489,16 @@ p.agileinfo_para {
   .hovereffect p.info {
     margin: 5.5em 0 0;
   }
-  .w3ls_para:after {
-    width: 38.4%;
-    left: 30%;
-  }
+
   .w3_agileits_mail_left h4 {
     letter-spacing: 0px;
   }
   .agileits_w3layouts_mail_left:nth-child(2) {
     margin: 1em auto;
   }
+}
+
+a.carousel-control.left,
+a.carousel-control.right {
+  background: none !important;
 }

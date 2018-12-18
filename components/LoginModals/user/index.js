@@ -19,6 +19,7 @@ import { LoginModalContext } from '../../../contexts/LoginModalContext'
 import LoginButton from './LoginButton'
 import RegisterButton from './RegisterButton'
 
+
 const EMAIL_REGEX = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
 const muiThemebtn = getMuiTheme()
 const customContentStyle = {
@@ -67,7 +68,8 @@ export default class CandidateModal extends React.Component {
     loginErrorText: '',
     loginSuccessText: '',
     registerErrorText: '',
-    registerSuccessText: ''
+    registerSuccessText: '',
+    REGISTER_TYPES : [],
   };
 
   usernameText = (event) => {

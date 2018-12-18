@@ -1,19 +1,20 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component, Fragment } from "react";
 
-import Nav2 from '../components/Nav2'
-import TextContent from '../components/Contactpage/TextContent' 
-import withLayout from '../hocs/withLayout'
-
+import Nav from "../components/Nav";
+import TextContent from "../components/Contactpage/TextContent";
+import Layout from "../components/layout/Layout";
 
 class ContactPage extends Component {
-  constructor(props){
-    super(props) ;
+  constructor(props) {
+    super(props);
   }
-  render(){
-    return <Fragment>
-      <Nav2 contactpage="active" image="bannerContact.jpg"/>
-      <TextContent />
-    </Fragment>
+  render() {
+    return (
+      <Layout>
+        <Nav pageTitle="Contact Us" image="contactpage.png" />
+        <TextContent />
+      </Layout>
+    );
   }
 }
-export default withLayout(ContactPage)
+export default ContactPage;

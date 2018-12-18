@@ -1,0 +1,36 @@
+.aboutCost {
+  padding: 0.5em 0;
+  position: relative;
+  background: linear-gradient(45deg, #018977, #005f52);
+  h1 {
+    color: #fff;
+    text-align: center;
+    font-weight: bolder;
+  }
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+
+  .twentyFive {
+    background: linear-gradient(45deg, #018977, #005f52);
+    text-align: center;
+    padding: 35px;
+    width: 150px;
+    height: 140px;
+    position: relative;
+    left: 0px;
+    h3 {
+      font-size: 3em;
+      font-weight: bolder;
+      color: #fff;
+    }
+    span {
+      color: #fffb1d;
+      font-weight: bold;
+    }
+  }
+}

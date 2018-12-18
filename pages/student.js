@@ -1,32 +1,25 @@
-import React, { Component, Fragment } from 'react'
-
-import Nav2 from '../components/Nav2'
-import TextContent from '../components/Studentpage/TextContent'  
-import withLayout from '../hocs/withLayout'
-
+import React, { Component, Fragment } from "react";
+import Nav from "../components/Nav";
+import StudentContent from "../components/Studentpage/StudentContent";
+import StudentContent2 from "../components/Studentpage/StudentContent2";
+import Layout from "../components/layout/Layout";
+import TextContent2 from "../components/Aboutpage/TextContent2";
+import Cost from "../components/Aboutpage/Cost";
 
 class StudentPage extends Component {
-  constructor(props){
-    super(props) ;
+  constructor(props) {
+    super(props);
   }
-  render(){
-    return <Fragment>
-      <Nav2 studentpage="active" image="bannerStudent.png"/>
-      <TextContent />
-      <div className="about">
-        <div className="container">
-        <h1>PURCHASE AN MCC CODE</h1>
-        </div>
-      </div>  
-      <style jsx>{`
-        h1{
-          color: #fff ;
-          text-align:center ;
-          cursor : pointer ;
-        }
-      `}
-      </style>    
-    </Fragment>
+  render() {
+    return (
+      <Layout>
+        <Nav pageTitle="Student" image="studentpage.png" />
+        <StudentContent />
+        <TextContent2 />
+        <StudentContent2 />
+        <Cost />
+      </Layout>
+    );
   }
 }
-export default withLayout(StudentPage)
+export default StudentPage;
