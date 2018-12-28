@@ -62,7 +62,7 @@ const Nav = props => (
       )}
       {props.pageTitle && (
         <div className="banner_info">
-          <h3>{props.pageTitle}</h3>
+          <h3 style={{ color : props.gold ? "#8d730f" : ""}}>{props.pageTitle}</h3>
         </div>
       )}
     </section>
@@ -104,9 +104,19 @@ class MyMenu extends React.Component {
             Institution
           </a>
         </Link>
+        <Link href="/pricing">
+          <a id="pricing" className="menu-item">
+            Pricing
+          </a>
+        </Link>
         <Link href="/contact">
           <a id="contact" className="menu-item">
             Contact
+          </a>
+        </Link>
+        <Link href="/login">
+          <a id="contact" className="menu-item">
+            Login
           </a>
         </Link>
         <style jsx>{`
@@ -125,6 +135,7 @@ class MyMenu extends React.Component {
             text-align: center;
             font-weight: bold;
             font-size: 1.5em;
+            padding : .7em 0 ;
             background: linear-gradient(
               90deg,
               #005f52 0%,

@@ -1,24 +1,28 @@
-import React, { Component, Fragment } from 'react'
-
-import Nav2 from '../components/Nav2'
-import TextContent from '../components/Pricingpage/TextContent'  
-import withLayout from '../hocs/withLayout'
-
+import React, { Component } from "react";
+import Nav from "../components/Nav";
+import TextContent from "../components/Pricingpage/TextContent";
+import Layout from "../components/layout/Layout";
 
 class StudentPage extends Component {
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
   }
-  render(){
-    return <Fragment>
-      <Nav2 pricingpage="active" image="pricing.gif"/>
-      <div className="about">
-        <div className="container">
-        <h2 className="text-center"><a style={{color : '#fff'}} href="">MCC Pricing Plans</a></h2>
-          <TextContent />
+  render() {
+    return (
+      <Layout>
+        <Nav gold pageTitle="MCC PRICING PLAN" image="pricing.gif" />
+        <div
+          className="about"
+          style={{
+            backgroundImage: "url(/static/images/pat.png)"
+          }}
+        >
+          <div className="container">
+            <TextContent />
+          </div>
         </div>
-      </div>      
-    </Fragment>
+      </Layout>
+    );
   }
 }
-export default withLayout(StudentPage)
+export default StudentPage;
